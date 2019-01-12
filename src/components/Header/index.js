@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './Header.css';
+import Login from './Login';
+import './Header.sass';
 
 const Header = props=>{
   const {isAdmin, logoff, login} = props;
@@ -13,7 +14,7 @@ const Header = props=>{
       </Link>
       {
         isAdmin ?
-          <div>
+          <div className='loginArea'>
             <a className='logoff' onClick={logoff}>
               Выйти
             </a>
@@ -21,11 +22,11 @@ const Header = props=>{
           :
           <Login login={login}/>
         }
-    <div/>
+    </div>
   )
 };
 
-Header.PropTypes = {
+Header.propTypes = {
   isAdmin: PropTypes.bool.isRequired,
   logoff: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired
