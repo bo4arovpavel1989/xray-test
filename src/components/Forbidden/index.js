@@ -1,17 +1,17 @@
-import React from 'react';
-import {withRouter} from 'react-router-dom';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class Forbidden extends React.Component {
-  constructor(){
-    super();
+  constructor () {
+    super()
   }
 
-  render(){
-    return(
+  render () {
+    return (
       <div>
       </div>
     )
   }
 }
 
-export default withRouter(Forbidden);
+export default withRouter(Forbidden)

@@ -1,17 +1,17 @@
-import React from 'react';
-import {withRouter} from 'react-router-dom';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class Test extends React.Component {
-  constructor(){
-    super();
+  constructor () {
+    super()
   }
 
-  render(){
-    return(
+  render () {
+    return (
       <div>
       </div>
     )
   }
 }
 
-export default withRouter(Test);
+export default withRouter(Test)

@@ -1,10 +1,10 @@
-import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import './Header.sass';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import './Header.sass'
 
-const Login = props=>{
-  const {login} = props;
+const Login = props => {
+  const { login } = props
 
   return (
       <form className='loginForm' onSubmit={login}>
@@ -13,10 +13,10 @@ const Login = props=>{
         <input type='submit' value='Войти'/>
       </form>
   )
-};
+}
 
 Login.propTypes = {
   login: PropTypes.func.isRequired
-};
+}
 
-export default withRouter(Login);
+export default withRouter(Login)

@@ -1,13 +1,13 @@
-import {API_URL, defaultFetch} from './config';
-import {handleResponse} from './helpers';
+import { API_URL, defaultFetch } from './config'
+import { handleResponse } from './helpers'
 
-const postData = function(url, data){
-  return new Promise((resolve, reject)=>{
+const postData = function (url, data) {
+  return new Promise((resolve, reject) => {
     fetch(`${API_URL}/${url}`, defaultFetch('POST', data))
      .then(handleResponse)
-     .then(rep=>resolve(rep))
-     .catch(err=>reject(err))
-  });
-};
+     .then(rep => resolve(rep))
+     .catch(err => reject(err))
+  })
+}
 
-export {postData}
+export { postData }
