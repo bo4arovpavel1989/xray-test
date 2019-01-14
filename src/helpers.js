@@ -10,10 +10,8 @@ export const handleResponse = response => response.json().then(json => response.
  * @param {object} data - object that contains access token data (login, token, id)
  * @returns {null} - returns nothing if param wasnt defined
  */
-export const setToken = data => {
-  if (!data) return localStorage.setItem('token', null);
-
-  return localStorage.setItem('token', data.token);
+export const setToken = token => {
+  return localStorage.setItem('token', token);
 }
 
 /**

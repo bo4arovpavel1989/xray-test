@@ -3,7 +3,7 @@ const db = require('./dbqueries')
 
 module.exports.login = function (req, res) {
   const cred = req.body
-  console.log(cred)
+  
   authService.login(cred)
     .then(rep => {
       if (rep.auth) {
@@ -12,7 +12,7 @@ module.exports.login = function (req, res) {
           db.update('Session', { login: cred.login }, { token: rep.token }, { upsert: true })
         ])
       }
-      
+
       // Made array coz i use array in first case if rep.auth === true
       return Promise.resolve([{ auth: false }])
     })

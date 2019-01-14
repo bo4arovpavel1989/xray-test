@@ -40,7 +40,8 @@ class App extends React.Component {
 
   handleAuth (rep) {
     this.setState({ isAdmin: rep.auth, authFail: !rep.auth, token: rep.token })
-    setToken(rep)
+
+    setToken(rep.token)
   }
 
   logoff () {
@@ -48,6 +49,8 @@ class App extends React.Component {
       isAdmin: false,
       token: undefined
      })
+
+     setToken(null)
   }
 
   render () {
