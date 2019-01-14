@@ -1,4 +1,5 @@
 .headerArea
+  padding-top: 20px
   border-bottom: 1px solid grey
 
 .header
@@ -8,5 +9,18 @@
 .loginArea
   display: inline-block
 
-.loginForm
+.loginForm, .loginArea
   float: right
+  position: relative
+
+.logoff
+  padding-left: 30px
+  cursor: pointer
+  color: blue
+
+.authFailMessage
+  position: absolute
+  border: 1px solid red
+  top: -18px
+  left: 15px
+  font-size: 10px

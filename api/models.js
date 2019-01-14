@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/vacation-controller')
+mongoose.connect('mongodb://localhost/xray-test')
 mongoose.Promise = global.Promise
 
 let models = {}

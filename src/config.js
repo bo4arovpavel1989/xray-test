@@ -1,3 +1,5 @@
+import { getToken } from './helpers'
+
 export const API_URL = 'http://localhost:3001'
 
 export const defaultFetch = function (method = 'GET', body) {
@@ -5,8 +7,9 @@ export const defaultFetch = function (method = 'GET', body) {
       method,
       mode: 'cors',
       headers: {
-        'Accept': 'application/json,text/plain',
-        'Content-Type': 'application/json,text/plain'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': getToken()
       }
     }
 

@@ -5,7 +5,7 @@ import Login from './Login'
 import './Header.sass'
 
 const Header = props => {
-  const { isAdmin, logoff, login } = props
+  const { isAdmin, authFail, logoff, login } = props
 
   return (
     <div className='headerArea'>
@@ -15,12 +15,12 @@ const Header = props => {
       {
         isAdmin
           ? <div className='loginArea'>
-            Вход выполнен &esp;
+            Вход выполнен
             <a className='logoff' onClick={logoff}>
               Выйти
             </a>
           </div>
-          : <Login login={login}/>
+          : <Login login={login} authFail={authFail}/>
         }
     </div>
   )

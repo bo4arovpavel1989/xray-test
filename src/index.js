@@ -8,6 +8,7 @@ import Forbidden from './components/Forbidden'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './main.sass'
 import { postData } from './actions'
+import { setToken } from './helpers'
 
 class App extends React.Component {
   constructor () {
@@ -15,8 +16,13 @@ class App extends React.Component {
 
     this.state = {
       isAdmin: false,
-      token: ''
+      authFail: false,
+      token: undefined
     }
+
+    this.login = this.login.bind(this)
+    this.logoff = this.logoff.bind(this)
+    this.handleAuth = this.handleAuth.bind(this)
   }
 
   login (e) {
@@ -27,28 +33,32 @@ class App extends React.Component {
       password: e.target.password.value
     }
 
-    console.log(data)
-
     postData('login', data)
-      .then(rep => console.log(rep))
+      .then(rep => this.handleAuth(rep))
       .catch(err => console.log(err))
+  }
+
+  handleAuth (rep) {
+    this.setState({ isAdmin: rep.auth, authFail: !rep.auth, token: rep.token })
+    setToken(rep)
   }
 
   logoff () {
     this.setState({
       isAdmin: false,
-      token: ''
+      token: undefined
      })
   }
 
   render () {
-    const { isAdmin } = this.state
+    const { isAdmin, authFail } = this.state
 
     return (
       <BrowserRouter>
         <div>
           <Header
            isAdmin={isAdmin}
+           authFail={authFail}
            login={this.login}
            logoff={this.logoff}
            />
