@@ -162,12 +162,6 @@
     "valid-typeof": ["error", { "requireStringLiterals": true }],
     "wrap-iife": ["error", "any", { "functionPrototypeMethods": true }],
     "yield-star-spacing": ["error", "both"],
-    "yoda": ["error", "never"],
-
-    "import/export": "error",
-    "import/first": "error",
-    "import/no-duplicates": "error",
-    "import/no-named-default": "error",
-    "import/no-webpack-loader-syntax": "error"
+    "yoda": ["error", "never"]
   }
 }

@@ -1,4 +1,4 @@
-module.exports.login = function(req, res){
+module.exports.login = function (req, res) {
   console.log(req)
-  res.json({test:'ok'})
-};
+  res.json({ test: 'ok' })
+}

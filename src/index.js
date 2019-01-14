@@ -14,7 +14,8 @@ class App extends React.Component {
     super()
 
     this.state = {
-      isAdmin: false
+      isAdmin: false,
+      token: ''
     }
   }
 
@@ -34,7 +35,10 @@ class App extends React.Component {
   }
 
   logoff () {
-    this.setState({ isAdmin: false })
+    this.setState({
+      isAdmin: false,
+      token: ''
+     })
   }
 
   render () {

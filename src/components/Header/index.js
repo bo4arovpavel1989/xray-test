@@ -15,6 +15,7 @@ const Header = props => {
       {
         isAdmin
           ? <div className='loginArea'>
+            Вход выполнен &esp;
             <a className='logoff' onClick={logoff}>
               Выйти
             </a>

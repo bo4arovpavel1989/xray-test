@@ -1,3 +1,3 @@
-module.exports.noMiddleware = function(req, res, next){
-  return next();
+module.exports.noMiddleware = function (req, res, next) {
+  return next()
 }
