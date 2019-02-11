@@ -22,10 +22,11 @@ models.Test = new mongoose.Schema({
 })
 
 models.Question = new mongoose.Schema({
+  name: { type: String },
   background: { type: String },
   isSafe: { type: Boolean },
   dangerPicture: { type: String },
-  dangerArea: { type: Object }
+  dangerArea: { type: Array }
 })
 
 for (let schema of Object.keys(models)) {

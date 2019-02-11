@@ -5,6 +5,8 @@ import Menu from './components/Menu'
 import Test from './components/Test'
 import Admin from './components/Admin'
 import Forbidden from './components/Forbidden'
+import CreateTest from './components/CreateTest'
+import CreateQuestion from './components/CreateQuestion'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './main.sass'
 import { postData } from './actions'
@@ -69,6 +71,8 @@ class App extends React.Component {
             <Route path='/' render={Menu} exact/>
             <Route path='/test' render={Test}/>
             <Route path='/admin' render={isAdmin ? Admin : Forbidden}/>
+            <Route path='/create/test' render={isAdmin ? CreateTest : Forbidden}/>
+            <Route path='/create/question' render={isAdmin ? CreateQuestion : Forbidden}/>
           </Switch>
         </div>
       </BrowserRouter>

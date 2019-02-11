@@ -3,10 +3,6 @@ import { withRouter, Link } from 'react-router-dom'
 import './Menu.sass'
 
 class Menu extends React.Component {
-  constructor () {
-    super()
-  }
-
   render () {
     return (
       <div>
