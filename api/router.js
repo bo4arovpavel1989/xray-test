@@ -4,6 +4,11 @@ const deleteReq = require('./delete')
 const middleware = require('./middleware')
 
 const getRequests = [
+  {
+    url: '/tests',
+    middleware: middleware.noMiddleware,
+    callback: getReq.tests
+  }
 ]
 
 const postRequests = [

@@ -40,7 +40,6 @@
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "func-call-spacing": ["error", "never"],
     "generator-star-spacing": ["error", { "before": true, "after": true }],
-    "handle-callback-err": ["error", "^(err|error)$" ],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "new-cap": ["error", { "newIsCap": true, "capIsNew": false }],
