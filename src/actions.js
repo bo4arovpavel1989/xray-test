@@ -1,4 +1,4 @@
-import { API_URL, defaultFetch } from './config'
+import { API_URL, defaultFetch, fileFetch } from './config'
 import { handleResponse } from './helpers'
 
 const postData = function (url, data) {
@@ -19,4 +19,13 @@ const getData = function (url, data) {
   })
 }
 
-export { postData, getData }
+const postFile = function (url, data) {
+  return new Promise((resolve, reject) => {
+    fetch(`${API_URL}/${url}`, fileFetch(data))
+     .then(handleResponse)
+     .then(rep => resolve(rep))
+     .catch(err => reject(err))
+  })
+}
+
+export { postData, getData, postFile }

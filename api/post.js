@@ -30,3 +30,7 @@ module.exports.logoff = function (req, res) {
     })
     .catch(err => res.status(500).json({ err }))
 }
+
+module.exports.preupload = function (req, res) {
+  console.log(req)
+};

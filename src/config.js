@@ -17,3 +17,14 @@ export const defaultFetch = function (method = 'GET', body) {
 
   return configFetch
 }
+
+export const fileFetch = function (body) {
+  return {
+      method: 'POST',
+      mode: 'cors',
+      body: body,
+      headers: {
+        'token': getToken()
+      }
+    }
+}

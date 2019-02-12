@@ -23,9 +23,11 @@ const authService = {
     })
   },
   checkToken (data) {
+    console.log(data)
     return new Promise((resolve, reject) => {
-      db.findOne('Session', { login: data.login, token: data.token })
+      db.findOne('Session', { token: data.token })
         .then(rep => {
+          console.log(rep)
           if (rep) resolve(true)
           else resolve(false)
         })

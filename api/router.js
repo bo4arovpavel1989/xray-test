@@ -16,8 +16,12 @@ const postRequests = [
     url: '/login',
     middleware: middleware.noMiddleware,
     callback: postReq.login
+  },
+  {
+    url: '/preupload',
+    middleware: middleware.checkAccess,
+    callback: postReq.preupload
   }
-
 ]
 
 const deleteRequests = [

@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import { postFile } from './../../actions'
 
 class CreateQuestion extends React.Component {
   constructor () {
@@ -12,31 +13,69 @@ class CreateQuestion extends React.Component {
         isDanger: true
       }
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.uploadPhotos = this.uploadPhotos.bind(this);
+  }
+
+  uploadPhotos (e) {
+    e.preventDefault();
+
+    const input = document.querySelector('input[type="file"]');
+    const data = new FormData();
+    const { name, isDanger } = this.state.question;
+
+    data.append('question', name);
+    data.append('slide', input.files[0]);
+    if (isDanger) data.append('photo', input.files[1]);
+
+    postFile('preupload', data)
+      .then(rep => console.log(rep))
+      .catch(err => console.log(err));
+  }
+
+  handleChange (e) {
+    const { question } = this.state;
+
+    question[e.target.id] = e.target.value;
+
+    this.setState({ question });
   }
 
   render () {
     return (
       <div>
         <div className='formArea'>
-          <form>
+          <form onSubmit={this.uploadPhotos}>
             <div>
               <label>
                 Вопрос: &emsp;
-                <input pattern='[0-9]+_[0-9]+' name='name' type='text' placeholder='№ Теста_№ вопроса'/>
+                <input
+                  id='name'
+                  onChange={this.handleChange}
+                  pattern='[0-9]+_[0-9]+'
+                  name='name'
+                  type='text'
+                  placeholder='№ Теста_№ вопроса'
+                  required
+                />
               </label>
             </div>
             <div>
               <label>
                 Загрузите слайд: &emsp;
-                <input name='slide' type='file'/>
+                <input
+                  name='slide'
+                  type='file'
+                />
               </label>
             </div>
             <div>
               <label>
                 Багаж опасен? &emsp;
-                <select>
-                  <option value='1' selected>Да</option>
-                  <option value='0'>нет</option>
+                <select id='isDanger' onChange={this.handleChange}>
+                  <option value='true' selected>Да</option>
+                  <option value='false'>нет</option>
                 </select>
               </label>
             </div>
