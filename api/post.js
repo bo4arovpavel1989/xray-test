@@ -1,5 +1,6 @@
-const { authService } = require('./authservice')
 const db = require('./dbqueries')
+const AuthService = require('./authservice');
+const authService = new AuthService();
 
 module.exports.login = function (req, res) {
   const cred = req.body

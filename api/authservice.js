@@ -1,7 +1,11 @@
 const db = require('./dbqueries')
 const { setToken } = require('./helpers')
 
-const authService = {
+class AuthService extends Object {
+  constructor () {
+    super()
+  }
+
   login (cred) {
     return new Promise((resolve, reject) => {
       db.findOne('Admin', {
@@ -21,19 +25,19 @@ const authService = {
           reject(err)
         })
     })
-  },
+  }
+
   checkToken (data) {
-    console.log(data)
     return new Promise((resolve, reject) => {
       db.findOne('Session', { token: data.token })
         .then(rep => {
-          console.log(rep)
           if (rep) resolve(true)
           else resolve(false)
         })
         .catch(err => reject(err))
     })
-  },
+  }
+
   logoff (data) {
     return new Promise((resolve, reject) => {
       db.del('Session', data)
@@ -43,4 +47,4 @@ const authService = {
   }
 }
 
-module.exports.authService = authService
+module.exports = AuthService;
