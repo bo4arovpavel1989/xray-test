@@ -1,3 +1,5 @@
+const multer = require('multer')
+const upload = multer({ dest: 'api/uploads/' })
 const AuthService = require('./authservice');
 const authService = new AuthService();
 /**
@@ -27,3 +29,8 @@ module.exports.checkAccess = function (req, res, next) {
     })
     .catch(err => res.status(500).json({ err }))
 };
+
+module.exports.uploadSlide = upload.fields([
+  { name: 'slide' },
+  {name: 'photo' }
+]);

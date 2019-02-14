@@ -21,13 +21,14 @@ class CreateQuestion extends React.Component {
   uploadPhotos (e) {
     e.preventDefault();
 
-    const input = document.querySelector('input[type="file"]');
+    const slide = document.querySelector('input[name="slide"]');
+    const photo = document.querySelector('input[name="photo"]');
     const data = new FormData();
     const { name, isDanger } = this.state.question;
 
     data.append('question', name);
-    data.append('slide', input.files[0]);
-    if (isDanger) data.append('photo', input.files[1]);
+    data.append('slide', slide.files[0]);
+    if (isDanger) data.append('photo', photo.files[0]);
 
     postFile('preupload', data)
       .then(rep => console.log(rep))
@@ -81,7 +82,11 @@ class CreateQuestion extends React.Component {
             </div>
             <div>
               <label>
-                Загрузите фото: &emsp; <input name='photo' type='file'/>
+                Загрузите фото: &emsp;
+                <input
+                  name='photo'
+                  type='file'
+                />
               </label>
             </div>
             <div>

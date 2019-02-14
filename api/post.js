@@ -33,5 +33,6 @@ module.exports.logoff = function (req, res) {
 }
 
 module.exports.preupload = function (req, res) {
-  console.log(req)
+  console.log(req.body)
+  console.log(req.files)
 };
