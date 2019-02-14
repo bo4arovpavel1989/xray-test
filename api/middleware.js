@@ -1,7 +1,10 @@
 const multer = require('multer')
-const upload = multer({ dest: 'api/uploads/' })
+const config = require('./config');
+const uploadSlide = multer({ storage: multer.diskStorage(config.slideStorage) });
+
 const AuthService = require('./authservice');
 const authService = new AuthService();
+
 /**
  * Function that contains mutual logick for checkAccess middlewares
  * @param {object} req - request object
@@ -30,7 +33,7 @@ module.exports.checkAccess = function (req, res, next) {
     .catch(err => res.status(500).json({ err }))
 };
 
-module.exports.uploadSlide = upload.fields([
+module.exports.uploadSlide = uploadSlide.fields([
   { name: 'slide' },
-  {name: 'photo' }
+  { name: 'photo' }
 ]);
