@@ -1,6 +1,6 @@
-const multer = require('multer')
+const multer = require('multer');
+const fs = require('fs');
 const config = require('./config');
-const uploadSlide = multer({ storage: multer.diskStorage(config.slideStorage) });
 
 const AuthService = require('./authservice');
 const authService = new AuthService();
@@ -33,7 +33,13 @@ module.exports.checkAccess = function (req, res, next) {
     .catch(err => res.status(500).json({ err }))
 };
 
+const uploadSlide = multer({ destination: 'public/images' });
+
 module.exports.uploadSlide = uploadSlide.fields([
   { name: 'slide' },
   { name: 'photo' }
 ]);
+
+module.exports.saveSlide = function (req, res, next) {
+  
+};

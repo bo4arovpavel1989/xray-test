@@ -3,6 +3,16 @@ module.exports.slideStorage = {
     cb(null, 'public/images')
   },
   filename: function (req, file, cb) {
-    cb(null, `${req.body.question}_${file.fieldname}.jpg`)
+    let ext;
+
+    switch (file.mimetype) {
+                case 'image/jpeg':
+                    ext = '.jpeg';
+                    break;
+                case 'image/png':
+                    ext = '.png';
+                    break;
+            }
+    cb(null, `${req.body.question}_${file.fieldname}${ext}`)
   }
 }

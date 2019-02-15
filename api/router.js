@@ -21,7 +21,8 @@ const postRequests = [
     url: '/preupload',
     middleware: [
       middleware.checkAccess,
-      middleware.uploadSlide
+      middleware.uploadSlide,
+      middleware.saveSlide
     ],
     callback: postReq.preupload
   }

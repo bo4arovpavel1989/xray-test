@@ -10,7 +10,7 @@ class CreateQuestion extends React.Component {
       err: false,
       question: {
         name: '',
-        isDanger: true
+        isDanger: '1'
       }
     }
 
@@ -28,22 +28,25 @@ class CreateQuestion extends React.Component {
 
     data.append('question', name);
     data.append('slide', slide.files[0]);
-    if (isDanger) data.append('photo', photo.files[0]);
+    if (isDanger === '1') data.append('photo', photo.files[0]);
 
     postFile('preupload', data)
-      .then(rep => console.log(rep))
-      .catch(err => console.log(err));
+      .then(rep => alert(rep))
+      .catch(err => alert(err));
   }
 
   handleChange (e) {
     const { question } = this.state;
 
     question[e.target.id] = e.target.value;
-
-    this.setState({ question });
+    this.setState({ question }, () => {
+      console.log(this.state)
+    });
   }
 
   render () {
+    const { isDanger } = this.state.question;
+
     return (
       <div>
         <div className='formArea'>
@@ -68,6 +71,7 @@ class CreateQuestion extends React.Component {
                 <input
                   name='slide'
                   type='file'
+                  required
                 />
               </label>
             </div>
@@ -75,20 +79,25 @@ class CreateQuestion extends React.Component {
               <label>
                 Багаж опасен? &emsp;
                 <select id='isDanger' onChange={this.handleChange}>
-                  <option value='true' selected>Да</option>
-                  <option value='false'>нет</option>
+                  <option value='1' selected>Да</option>
+                  <option value='0'>нет</option>
                 </select>
               </label>
             </div>
-            <div>
-              <label>
-                Загрузите фото: &emsp;
-                <input
-                  name='photo'
-                  type='file'
-                />
-              </label>
-            </div>
+            {
+              isDanger === '1' ?
+              <div>
+                <label>
+                  Загрузите фото: &emsp;
+                  <input
+                    name='photo'
+                    type='file'
+                    required
+                  />
+                </label>
+              </div> :
+              <span></span>
+            }
             <div>
               <input type='submit' value='Продолжить'/>
             </div>
