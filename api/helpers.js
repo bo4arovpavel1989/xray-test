@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const secret = require('./credentials');
+const fs = require('fs');
 
 /**
  * Return JSON web token, based on response object

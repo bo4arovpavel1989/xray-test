@@ -1,12 +1,16 @@
 module.exports.slideStorage = {
   destination: function (req, file, cb) {
-    cb(null, 'public/images')
+    // For production change to public/images
+    cb(null, 'api/images')
   },
   filename: function (req, file, cb) {
     let ext;
 
     switch (file.mimetype) {
                 case 'image/jpeg':
+                    ext = '.jpeg';
+                    break;
+                case 'image/jpg':
                     ext = '.jpeg';
                     break;
                 case 'image/png':

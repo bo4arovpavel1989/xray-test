@@ -1,13 +1,19 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { postFile } from './../../actions'
+import './CreateQuestion.sass'
 
 class CreateQuestion extends React.Component {
   constructor () {
     super()
 
     this.state = {
+      loading: false,
       err: false,
+      imgLoaded: false,
+      imgPath: '',
+      dangerZone: [],
+      dimensions: { width: 0, height: 0 },
       question: {
         name: '',
         isDanger: '1'
@@ -20,6 +26,7 @@ class CreateQuestion extends React.Component {
 
   uploadPhotos (e) {
     e.preventDefault();
+    this.setState({ loading: true });
 
     const slide = document.querySelector('input[name="slide"]');
     const photo = document.querySelector('input[name="photo"]');
@@ -31,20 +38,53 @@ class CreateQuestion extends React.Component {
     if (isDanger === '1') data.append('photo', photo.files[0]);
 
     postFile('preupload', data)
-      .then(rep => alert(rep))
-      .catch(err => alert(err));
+      .then(rep => {
+        console.log(rep)
+        this.setState({
+          loading: false,
+          imgLoaded: true,
+          imgPath: `/images/${name}_slide.${rep.type}`,
+          dimensions: rep
+        }, () => {
+          this.prepareCanvas();
+        })
+      })
+      .catch(err => {
+        this.setState({ loading: false })
+        alert(err)
+      });
   }
 
   handleChange (e) {
     const { question } = this.state;
 
     question[e.target.id] = e.target.value;
-    this.setState({ question }, () => {
-      console.log(this.state)
-    });
+    this.setState({ question });
+  }
+
+  prepareCanvas () {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const { width, height } = this.state.dimensions;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const background = new Image();
+
+    background.src = this.state.imgPath;
+    background.onload = () => {
+      ctx.drawImage(background, 0, 0);
+      this.drawDangerZone();
+    }
+  }
+
+  drawDangerZone () {
+  // TODO draw rectangles
   }
 
   render () {
+    const { loading, imgLoaded } = this.state;
     const { isDanger } = this.state.question;
 
     return (
@@ -78,8 +118,8 @@ class CreateQuestion extends React.Component {
             <div>
               <label>
                 Багаж опасен? &emsp;
-                <select id='isDanger' onChange={this.handleChange}>
-                  <option value='1' selected>Да</option>
+                <select id='isDanger' onChange={this.handleChange} defaultValue='1'>
+                  <option value='1'>Да</option>
                   <option value='0'>нет</option>
                 </select>
               </label>
@@ -99,10 +139,17 @@ class CreateQuestion extends React.Component {
               <span></span>
             }
             <div>
-              <input type='submit' value='Продолжить'/>
+              <input disabled={loading} type='submit' value='Продолжить'/>
             </div>
           </form>
         </div>
+        {
+          imgLoaded ?
+          <div className='canvasArea'>
+            <canvas id="canvas"></canvas>
+          </div> :
+          ''
+        }
       </div>
     )
   }

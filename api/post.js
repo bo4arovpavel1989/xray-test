@@ -1,3 +1,4 @@
+const sizeOf = require('image-size');
 const db = require('./dbqueries')
 const AuthService = require('./authservice');
 const authService = new AuthService();
@@ -19,7 +20,7 @@ module.exports.login = function (req, res) {
     })
     // Send reps[0] - only result of auth
     .then(reps => res.json(reps[0]))
-    .catch(err => res.status(500).json({ err }))
+    .catch(err => res.status(500).json({ err: err.message }))
 }
 
 module.exports.logoff = function (req, res) {
@@ -33,6 +34,7 @@ module.exports.logoff = function (req, res) {
 }
 
 module.exports.preupload = function (req, res) {
-  console.log(req.body)
-  console.log(req.files)
+  sizeOf(req.files.slide[0].path, (err, dimensions) => {
+    res.json(dimensions);
+  })
 };
