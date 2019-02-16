@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { postFile } from './../../actions'
+import Drawer from '../Drawer'
 import './CreateQuestion.sass'
 
 class CreateQuestion extends React.Component {
@@ -22,6 +23,7 @@ class CreateQuestion extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.uploadPhotos = this.uploadPhotos.bind(this);
+    this.clearCanvas = this.clearCanvas.bind(this);
   }
 
   uploadPhotos (e) {
@@ -63,24 +65,36 @@ class CreateQuestion extends React.Component {
   }
 
   prepareCanvas () {
-    const canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('canvasBackground');
+    const canvasDraw = document.getElementById('canvasDrawArea');
     const ctx = canvas.getContext('2d');
     const { width, height } = this.state.dimensions;
 
     canvas.width = width;
     canvas.height = height;
+    canvasDraw.width = width;
+    canvasDraw.height = height;
 
     const background = new Image();
 
     background.src = this.state.imgPath;
     background.onload = () => {
       ctx.drawImage(background, 0, 0);
-      this.drawDangerZone();
+      this.drawDangerZone(canvasDraw);
     }
   }
 
-  drawDangerZone () {
-  // TODO draw rectangles
+  drawDangerZone (c) {
+    const drawer = new Drawer(c);
+
+    drawer.start();
+    this.setState({ clearDangerZone: drawer.clearZones })
+  }
+
+  clearCanvas () {
+    const clear = this.state.clearDangerZone;
+
+    clear();
   }
 
   render () {
@@ -145,8 +159,13 @@ class CreateQuestion extends React.Component {
         </div>
         {
           imgLoaded ?
-          <div className='canvasArea'>
-            <canvas id="canvas"></canvas>
+          <div>
+            <button onClick={this.clearCanvas}>Очистить</button>
+            <button>Сохранить</button>
+            <div className='canvasArea'>
+              <canvas id="canvasBackground"></canvas>
+              <canvas id="canvasDrawArea"></canvas>
+            </div>
           </div> :
           ''
         }
