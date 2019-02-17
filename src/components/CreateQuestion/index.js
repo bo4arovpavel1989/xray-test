@@ -24,24 +24,42 @@ class CreateQuestion extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.uploadPhotos = this.uploadPhotos.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.saveQuestion = this.saveQuestion.bind(this);
+  }
+
+  componentDidMount () {
+    const canvasDraw = '#canvasDrawArea';
+    const canvasBackground = '#canvasBackground';
+    this.setState({ canvasBackground, canvasDraw })
+
+    this.drawer = new Drawer(document.querySelector(canvasDraw));
+  }
+
+  componentWillUnmount () {
+    this.drawer.reset();
+  }
+
+  getCanvasDraw () {
+    return document.querySelector(this.state.canvasDraw)
+  }
+
+  getCanvasBackground () {
+    return document.querySelector(this.state.canvasBackground)
   }
 
   uploadPhotos (e) {
     e.preventDefault();
+
+    const data = this.handleFormData();
+
     this.setState({ loading: true });
-
-    const slide = document.querySelector('input[name="slide"]');
-    const photo = document.querySelector('input[name="photo"]');
-    const data = new FormData();
-    const { name, isDanger } = this.state.question;
-
-    data.append('question', name);
-    data.append('slide', slide.files[0]);
-    if (isDanger === '1') data.append('photo', photo.files[0]);
-
     postFile('preupload', data)
       .then(rep => {
         console.log(rep)
+        const { name } = this.state.question;
+
+        this.drawer.reset();
+
         this.setState({
           loading: false,
           imgLoaded: true,
@@ -57,6 +75,19 @@ class CreateQuestion extends React.Component {
       });
   }
 
+  handleFormData () {
+    const slide = document.querySelector('input[name="slide"]');
+    const photo = document.querySelector('input[name="photo"]');
+    const { name, isDanger } = this.state.question;
+    const data = new FormData();
+
+    data.append('question', name);
+    data.append('slide', slide.files[0]);
+    if (isDanger === '1') data.append('photo', photo.files[0]);
+
+    return data;
+  }
+
   handleChange (e) {
     const { question } = this.state;
 
@@ -65,36 +96,40 @@ class CreateQuestion extends React.Component {
   }
 
   prepareCanvas () {
-    const canvas = document.getElementById('canvasBackground');
-    const canvasDraw = document.getElementById('canvasDrawArea');
-    const ctx = canvas.getContext('2d');
-    const { width, height } = this.state.dimensions;
-
-    canvas.width = width;
-    canvas.height = height;
-    canvasDraw.width = width;
-    canvasDraw.height = height;
+    this.setCanvasDimensions();
 
     const background = new Image();
 
     background.src = this.state.imgPath;
     background.onload = () => {
-      ctx.drawImage(background, 0, 0);
-      this.drawDangerZone(canvasDraw);
+      this.setCanvasBackground(background)
+      this.drawDangerZone();
     }
   }
 
-  drawDangerZone (c) {
-    const drawer = new Drawer(c);
+  setCanvasDimensions () {
+    const { width, height } = this.state.dimensions;
 
-    drawer.start();
-    this.setState({ clearDangerZone: drawer.clearZones })
+    this.getCanvasDraw().width = width;
+    this.getCanvasDraw().height = height;
+    this.getCanvasBackground().width = width;
+    this.getCanvasBackground().height = height;
+  }
+
+  setCanvasBackground (bg) {
+    return this.getCanvasBackground().getContext('2d').drawImage(bg, 0, 0)
+  }
+
+  drawDangerZone (c) {
+    return this.drawer.start()
   }
 
   clearCanvas () {
-    const clear = this.state.clearDangerZone;
+    return this.drawer.clearZones()
+  }
 
-    clear();
+  saveQuestion () {
+    console.log(this.drawer.getZones())
   }
 
   render () {
@@ -157,18 +192,14 @@ class CreateQuestion extends React.Component {
             </div>
           </form>
         </div>
-        {
-          imgLoaded ?
-          <div>
-            <button onClick={this.clearCanvas}>Очистить</button>
-            <button>Сохранить</button>
-            <div className='canvasArea'>
-              <canvas id="canvasBackground"></canvas>
-              <canvas id="canvasDrawArea"></canvas>
-            </div>
-          </div> :
-          ''
-        }
+        <div className={imgLoaded ? '' : 'hidden'}>
+          <button onClick={this.clearCanvas}>Очистить</button>
+          <button onClick={this.saveQuestion}>Сохранить</button>
+          <div className='canvasArea'>
+            <canvas id="canvasBackground"></canvas>
+            <canvas id="canvasDrawArea"></canvas>
+          </div>
+        </div>
       </div>
     )
   }

@@ -35,6 +35,7 @@ module.exports.logoff = function (req, res) {
 
 module.exports.preupload = function (req, res) {
   sizeOf(req.files.slide[0].path, (err, dimensions) => {
-    res.json(dimensions);
+    if (!err) res.json(dimensions)
+    else res.status(500).json(err)
   })
 };

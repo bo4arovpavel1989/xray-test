@@ -2,7 +2,6 @@ class Drawer {
   constructor (canvas) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.strokeStyle = 'red';
 
     this.zones = [];
 
@@ -39,8 +38,15 @@ class Drawer {
     const rectProperties = this.getRectProperties();
 
     this.drawRect(rectProperties);
-    this.prevProperties = [0, 0, 0, 0]
-    this.zones.push([this.x1, this.y1, this.x2, this.y2]);
+    this.prevProperties = [0, 0, 0, 0];
+    this.saveZones();
+  }
+
+  saveZones () {
+    const leftUpCorner = this.getLeftUpCorner();
+    const rightDownCorner = this.getRightDownCorner();
+
+    this.zones.push([...leftUpCorner, ...rightDownCorner]);
   }
 
   handelMouseMove (e) {
@@ -56,7 +62,8 @@ class Drawer {
     }
   }
 
-  drawRect (rectProperties) {
+  drawRect (rectProperties, color = 'red') {
+    this.ctx.strokeStyle = color;
     this.ctx.rect(...rectProperties);
     this.ctx.stroke();
     this.prevProperties = rectProperties;
@@ -103,7 +110,8 @@ class Drawer {
     this.canvas.removeEventListener('mousemove', this.handelMouseMove)
   }
 
-  getZonex () {
+  getZones () {
+    console.log(this.ctx.strokeStyle)
     return this.zones;
   }
 
@@ -111,6 +119,11 @@ class Drawer {
     this.zones = [];
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.beginPath();
+  }
+
+  reset () {
+    this.clearListeners();
+    this.clearZones();
   }
 }
 
