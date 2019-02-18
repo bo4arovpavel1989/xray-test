@@ -28,10 +28,25 @@ class Drawer {
     this.y1 = e.offsetY;
   }
 
+  handelMouseMove (e) {
+    if (this.isDrawing) {
+      this.clearPreviousRect();
+
+      this.x2 = e.offsetX;
+      this.y2 = e.offsetY;
+
+      const rectProperties = this.getRectProperties();
+
+      this.drawRect(rectProperties);
+      this.prevProperties = rectProperties;
+    }
+  }
+
   handelMouseUp (e) {
     this.isDrawing = false;
 
     this.clearPreviousRect();
+
     this.x2 = e.offsetX;
     this.y2 = e.offsetY;
 
@@ -40,6 +55,19 @@ class Drawer {
     this.drawRect(rectProperties);
     this.prevProperties = [0, 0, 0, 0];
     this.saveZones();
+  }
+
+  drawRect (rectProperties, color = 'red') {
+    this.ctx.strokeStyle = color;
+    this.ctx.rect(...rectProperties);
+    this.ctx.stroke();
+  }
+
+  clearPreviousRect () {
+    const [x, y, width, heigth] = this.prevProperties;
+
+    this.ctx.clearRect(x - 1, y - 1, width + 2, heigth + 2);
+    this.ctx.beginPath();
   }
 
   saveZones () {
@@ -65,36 +93,6 @@ class Drawer {
 
       this.drawRect(rectProperties);
     })
-
-    // As for drawRect method sets rectProperties = this.prevProperties
-    this.prevProperties = [0, 0, 0, 0];
-  }
-
-  handelMouseMove (e) {
-    if (this.isDrawing) {
-      this.clearPreviousRect();
-
-      this.x2 = e.offsetX;
-      this.y2 = e.offsetY;
-
-      const rectProperties = this.getRectProperties();
-
-      this.drawRect(rectProperties);
-    }
-  }
-
-  drawRect (rectProperties, color = 'red') {
-    this.ctx.strokeStyle = color;
-    this.ctx.rect(...rectProperties);
-    this.ctx.stroke();
-    this.prevProperties = rectProperties;
-  }
-
-  clearPreviousRect () {
-    const [x, y, width, heigth] = this.prevProperties;
-
-    this.ctx.clearRect(x - 1, y - 1, width + 2, heigth + 2);
-    this.ctx.beginPath();
   }
 
   getLeftUpCorner () {

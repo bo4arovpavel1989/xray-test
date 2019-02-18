@@ -174,8 +174,8 @@ class CreateQuestion extends React.Component {
   }
 
   /**
-   * Method draws rectangles if any
-   * and starts to listen to user draw
+   * Method draws old rectangles got from API if any
+   * and starts to listen to new user draw
    * @returns {Function} - start method of this.draw
    */
   drawDangerZone (c) {
