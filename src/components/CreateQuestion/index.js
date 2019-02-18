@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { postFile } from './../../actions'
+import { postFile, postData, getData } from './../../actions'
 import Drawer from '../Drawer'
 import './CreateQuestion.sass'
 
@@ -11,14 +11,11 @@ class CreateQuestion extends React.Component {
     this.state = {
       loading: false,
       err: false,
-      imgLoaded: false,
       imgPath: '',
-      dangerZone: [],
       dimensions: { width: 0, height: 0 },
-      question: {
-        name: '',
-        isDanger: '1'
-      }
+      dangerZones: [],
+      name: '',
+      isDanger: '1'
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,6 +30,7 @@ class CreateQuestion extends React.Component {
     this.setState({ canvasBackground, canvasDraw })
 
     this.drawer = new Drawer(document.querySelector(canvasDraw));
+    this.checkIfQuestionCreated()
   }
 
   componentWillUnmount () {
@@ -47,6 +45,43 @@ class CreateQuestion extends React.Component {
     return document.querySelector(this.state.canvasBackground)
   }
 
+  /**
+   * Method checks location query
+   * if query is defined ( /create/question?question=name )
+   * it means user want to edit old question
+   * so we fetch question to API
+   * @return {Function} - fetch to API for question data
+   */
+  checkIfQuestionCreated () {
+    if (this.props.location.search.length > 0) {
+      const query = new URLSearchParams(this.props.location.search);
+      const question = query.get('question');
+
+      return this.getQuestion(question)
+    }
+  }
+
+  /**
+   * Method fetches to API for question data
+   * if any - renders it
+   * @returns {Function} - fetch to API
+   */
+  getQuestion (question) {
+    return getData(`question/${question}`)
+            .then(rep => {
+              console.log(rep)
+              if (rep) {
+                this.setState(rep, this.prepareCanvas)
+              }
+            })
+            .catch(err => alert(err))
+  }
+
+  /**
+   * Method handles upload of slide and photo
+   * then it gets dimensions of slide and prepares canvas for it
+   * @return {void}
+   */
   uploadPhotos (e) {
     e.preventDefault();
 
@@ -55,20 +90,15 @@ class CreateQuestion extends React.Component {
     this.setState({ loading: true });
     postFile('preupload', data)
       .then(rep => {
-        console.log(rep)
-        const { name } = this.state.question;
+        const { name } = this.state;
         const imgPath = `/images/${name}_slide.${rep.type}`;
-        console.log(imgPath)
         this.drawer.reset();
 
         this.setState({
           loading: false,
-          imgLoaded: true,
           imgPath: imgPath,
           dimensions: rep
-        }, () => {
-          this.prepareCanvas();
-        })
+        }, this.prepareCanvas)
       })
       .catch(err => {
         this.setState({ loading: false })
@@ -76,10 +106,14 @@ class CreateQuestion extends React.Component {
       });
   }
 
+  /**
+   * Method gatheres all formData to single object for upload
+   * @return {Object} - object to upload
+   */
   handleFormData () {
     const slide = document.querySelector('input[name="slide"]');
     const photo = document.querySelector('input[name="photo"]');
-    const { name, isDanger } = this.state.question;
+    const { name, isDanger } = this.state;
     const data = new FormData();
 
     data.append('question', name);
@@ -89,13 +123,23 @@ class CreateQuestion extends React.Component {
     return data;
   }
 
+  /**
+   * Method handles changes in input and pass it to state
+   * @returns {void}
+   */
   handleChange (e) {
-    const { question } = this.state;
+    const data = {};
 
-    question[e.target.id] = e.target.value;
-    this.setState({ question });
+    data[e.target.id] = e.target.value;
+
+    this.setState(data);
   }
 
+  /**
+   * Method sets canvas width and heigth, add background image
+   * and inits drawing dangerzone rectangels
+   * @returns {void}
+   */
   prepareCanvas () {
     this.setCanvasDimensions();
 
@@ -108,6 +152,10 @@ class CreateQuestion extends React.Component {
     }
   }
 
+  /**
+   * Method set canvas width and heigth - both for background and draw layers
+   * @returns {void}
+   */
   setCanvasDimensions () {
     const { width, height } = this.state.dimensions;
 
@@ -117,31 +165,65 @@ class CreateQuestion extends React.Component {
     this.getCanvasBackground().height = height;
   }
 
+  /**
+   * Method calls background layer canvas to draw background
+   * @returns {Function} - drawImage method of canvas
+   */
   setCanvasBackground (bg) {
     return this.getCanvasBackground().getContext('2d').drawImage(bg, 0, 0)
   }
 
+  /**
+   * Method draws rectangles if any
+   * and starts to listen to user draw
+   * @returns {Function} - start method of this.draw
+   */
   drawDangerZone (c) {
+    const { dangerZones } = this.state;
+
+    if (dangerZones.length > 0) this.drawer.drawOldZones(dangerZones);
+
     return this.drawer.start()
   }
 
+  /**
+   * Method calls clearZones mthod of this.drawer
+   * to clear canvas draw layer
+   */
   clearCanvas () {
     return this.drawer.clearZones()
   }
 
+  /**
+   * Method gatheres all question data to single object and post to API
+   * @returns {Function} - fetch post API
+   */
   saveQuestion () {
-    const { imgPath } = this.state;
-    let { name, isDanger } = this.state.question;
+    const { imgPath, name, isDanger, dimensions } = this.state;
 
-    isDanger = isDanger === '1' ? true : false;
+    const question = {
+      name,
+      isDanger,
+      dangerZones: this.drawer.getZones(),
+      imgPath,
+      dimensions
+     };
 
-    const question = { name, isDanger, dangerZone: this.drawer.getZones(), imgPath };
+     this.setState({ loading: true });
 
-    
-}
+     return postData('savequestion', question)
+              .then(rep => {
+                alert('Успешно сохранено!');
+                this.setState({ loading: false })
+              })
+              .catch(err => {
+                alert(err);
+                this.setState({ loading: false })
+              })
+  }
+
   render () {
-    const { loading, imgLoaded } = this.state;
-    const { isDanger } = this.state.question;
+    const { loading, isDanger, name } = this.state;
 
     return (
       <div>
@@ -156,6 +238,7 @@ class CreateQuestion extends React.Component {
                   pattern='[0-9]+_[0-9]+'
                   name='name'
                   type='text'
+                  value = {name.length > 0 ? name : ''}
                   placeholder='№ Теста_№ вопроса'
                   required
                 />
@@ -174,7 +257,11 @@ class CreateQuestion extends React.Component {
             <div>
               <label>
                 Багаж опасен? &emsp;
-                <select id='isDanger' onChange={this.handleChange} defaultValue='1'>
+                <select
+                  id='isDanger'
+                  onChange={this.handleChange}
+                  value={isDanger === '1' ? '1' : '0'}
+                >
                   <option value='1'>Да</option>
                   <option value='0'>нет</option>
                 </select>
@@ -199,9 +286,9 @@ class CreateQuestion extends React.Component {
             </div>
           </form>
         </div>
-        <div className={imgLoaded ? '' : 'hidden'}>
+        <div>
           <button onClick={this.clearCanvas}>Очистить</button>
-          <button onClick={this.saveQuestion}>Сохранить</button>
+          <button disabled={loading} onClick={this.saveQuestion}>Сохранить</button>
           <div className='canvasArea'>
             <canvas id="canvasBackground"></canvas>
             <canvas id="canvasDrawArea"></canvas>

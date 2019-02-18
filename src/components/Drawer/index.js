@@ -49,6 +49,27 @@ class Drawer {
     this.zones.push([...leftUpCorner, ...rightDownCorner]);
   }
 
+  /**
+   * Method draws rectangles got from API
+   */
+  drawOldZones (rectArray) {
+    this.zones = rectArray;
+
+    rectArray.forEach(dimensions => {
+      const rectProperties = [dimensions[0], dimensions[1]];
+      const width = dimensions[2] - dimensions[0];
+      const height = dimensions[3] - dimensions[1];
+
+      rectProperties.push(width);
+      rectProperties.push(height);
+
+      this.drawRect(rectProperties);
+    })
+
+    // As for drawRect method sets rectProperties = this.prevProperties
+    this.prevProperties = [0, 0, 0, 0];
+  }
+
   handelMouseMove (e) {
     if (this.isDrawing) {
       this.clearPreviousRect();
@@ -111,7 +132,6 @@ class Drawer {
   }
 
   getZones () {
-    console.log(this.ctx.strokeStyle)
     return this.zones;
   }
 

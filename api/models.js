@@ -24,9 +24,10 @@ models.Test = new mongoose.Schema({
 models.Question = new mongoose.Schema({
   name: { type: String },
   imgPath: { type: String },
-  isDanger: { type: Boolean },
+  isDanger: { type: String },
   dangerPicture: { type: String },
-  dangerZone: { type: Array }
+  dangerZones: { type: Array },
+  dimensions: { type: Object }
 })
 
 for (let schema of Object.keys(models)) {

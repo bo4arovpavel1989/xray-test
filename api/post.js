@@ -37,11 +37,11 @@ module.exports.preupload = function (req, res) {
   const name = req.body.question;
   let dangerPicture = '';
 
-  if (req.files.photo.length > 0) {
+  if (req.files.photo) {
     dangerPicture = req.files.photo[0].destination;
     // To make public/images/file -> images/file
     dangerPicture = dangerPicture.split('/').slice(1).join('/');
-    dangerPicture = dangerPicture + '/' + req.files.photo[0].filename;
+    dangerPicture = '/' + dangerPicture + '/' + req.files.photo[0].filename;
   }
 
   db.update('Question', { name }, { dangerPicture }, { upsert: true })
@@ -49,5 +49,16 @@ module.exports.preupload = function (req, res) {
       return sizeOf(req.files.slide[0].path)
     })
     .then(dimensions => res.json(dimensions))
+    .catch(err => res.status(500).json(err.message))
+};
+
+module.exports.saveQuestion = function (req, res) {
+  const question = req.body;
+  const { name } = question;
+
+  console.log(question)
+
+  db.update('Question', { name }, question, { upsert: true })
+    .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).json(err.message))
 };

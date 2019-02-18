@@ -6,15 +6,20 @@ const middleware = require('./middleware')
 const getRequests = [
   {
     url: '/tests',
-    middleware: middleware.noMiddleware,
+    middleware: [],
     callback: getReq.tests
+  },
+  {
+    url: '/question/:name',
+    middleware: [],
+    callback: getReq.question
   }
 ]
 
 const postRequests = [
   {
     url: '/login',
-    middleware: middleware.noMiddleware,
+    middleware: [],
     callback: postReq.login
   },
   {
@@ -24,6 +29,11 @@ const postRequests = [
       middleware.uploadSlide
     ],
     callback: postReq.preupload
+  },
+  {
+    url: '/savequestion',
+    middleware: middleware.checkAccess,
+    callback: postReq.saveQuestion
   }
 ]
 
