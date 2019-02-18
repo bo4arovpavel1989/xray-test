@@ -1,5 +1,5 @@
-const sizeOf = require('image-size');
-const db = require('./dbqueries')
+const db = require('./dbqueries');
+const { sizeOf } = require('./helpers');
 const AuthService = require('./authservice');
 const authService = new AuthService();
 
@@ -34,8 +34,20 @@ module.exports.logoff = function (req, res) {
 }
 
 module.exports.preupload = function (req, res) {
-  sizeOf(req.files.slide[0].path, (err, dimensions) => {
-    if (!err) res.json(dimensions)
-    else res.status(500).json(err)
-  })
+  const name = req.body.question;
+  let dangerPicture = '';
+
+  if (req.files.photo.length > 0) {
+    dangerPicture = req.files.photo[0].destination;
+    // To make public/images/file -> images/file
+    dangerPicture = dangerPicture.split('/').slice(1).join('/');
+    dangerPicture = dangerPicture + '/' + req.files.photo[0].filename;
+  }
+
+  db.update('Question', { name }, { dangerPicture }, { upsert: true })
+    .then(rep => {
+      return sizeOf(req.files.slide[0].path)
+    })
+    .then(dimensions => res.json(dimensions))
+    .catch(err => res.status(500).json(err.message))
 };

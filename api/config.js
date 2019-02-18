@@ -8,10 +8,10 @@ module.exports.slideStorage = {
 
     switch (file.mimetype) {
                 case 'image/jpeg':
-                    ext = '.jpeg';
+                    ext = '.jpg';
                     break;
                 case 'image/jpg':
-                    ext = '.jpeg';
+                    ext = '.jpg';
                     break;
                 case 'image/png':
                     ext = '.png';

@@ -57,13 +57,14 @@ class CreateQuestion extends React.Component {
       .then(rep => {
         console.log(rep)
         const { name } = this.state.question;
-
+        const imgPath = `/images/${name}_slide.${rep.type}`;
+        console.log(imgPath)
         this.drawer.reset();
 
         this.setState({
           loading: false,
           imgLoaded: true,
-          imgPath: `/images/${name}_slide.${rep.type}`,
+          imgPath: imgPath,
           dimensions: rep
         }, () => {
           this.prepareCanvas();
@@ -129,9 +130,15 @@ class CreateQuestion extends React.Component {
   }
 
   saveQuestion () {
-    console.log(this.drawer.getZones())
-  }
+    const { imgPath } = this.state;
+    let { name, isDanger } = this.state.question;
 
+    isDanger = isDanger === '1' ? true : false;
+
+    const question = { name, isDanger, dangerZone: this.drawer.getZones(), imgPath };
+
+    
+}
   render () {
     const { loading, imgLoaded } = this.state;
     const { isDanger } = this.state.question;
