@@ -62,3 +62,11 @@ module.exports.saveQuestion = function (req, res) {
     .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).json(err.message))
 };
+
+module.exports.test = function (req, res) {
+  console.log(req.body)
+  const { name } = req.body;
+
+  // TODO: collect all questions starter from same name (regexp: /+name+_)
+  res.json({})
+};

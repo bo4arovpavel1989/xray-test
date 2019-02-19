@@ -39,6 +39,11 @@ const postRequests = [
     url: '/savequestion',
     middleware: middleware.checkAccess,
     callback: postReq.saveQuestion
+  },
+  {
+    url: '/test',
+    middleware: middleware.checkAccess,
+    callback: postReq.test
   }
 ]
 

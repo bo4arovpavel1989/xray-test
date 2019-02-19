@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { getData } from './../../actions'
+import { postData } from './../../actions'
 
 class CreateTest extends React.Component {
   constructor () {
@@ -8,44 +8,54 @@ class CreateTest extends React.Component {
 
     this.state = {
       err: false,
-      questions: []
+      loading: false,
+      name: ''
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount () {
+  handleSubmit (e) {
+    e.preventDefault();
 
+    const { name } = this.state;
+
+    this.setState({ loading: true });
+    console.log(this.state)
+    return postData('test', { name })
+            .then(rep => {
+              alert('Успешно сохранено!');
+              this.setState({ loading: false })
+            })
+            .catch(err => {
+              alert(err);
+              this.setState({ loading: false })
+            })
   }
 
-  getQuestions () {
-    getData('questions')
-      .then(questions => this.setState({ questions }))
-      .catch(err => this.setState({ err: true }))
+  handleChange (e) {
+    const data = {};
+
+    data[e.target.id] = e.target.value;
+
+    this.setState(data);
   }
 
   render () {
-    const { questions } = this.state;
+    const { loading } = this.state;
 
     return (
       <div>
         <div className='formArea'>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div>
               <label>
-                Номер теста: &emsp;<input name='number' type='number' min='1'/>
+                Номер теста: &emsp;<input id='name' onChange={this.handleChange} type='number' min='1'/>
               </label>
             </div>
             <div>
-              <label>
-                Вопросы: &emsp;
-                <select id='question'>
-                  {
-                    questions.map(q => {
-                      return <option value={q._id}>{q.name}</option>
-                    })
-                  }
-                </select>
-                &emsp; <span className='addQuestion'>&#10010;</span>
-              </label>
+              <input disabled={loading} type='submit' value='Создать'/>
             </div>
           </form>
         </div>
