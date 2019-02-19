@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { getData } from './../../actions'
+import { getData, deleteData } from './../../actions'
 
 class Admin extends React.Component {
   constructor () {
@@ -11,6 +11,8 @@ class Admin extends React.Component {
       tests: [],
       err: false
     }
+
+    this.deleteQuestion = this.deleteQuestion.bind(this);
   }
 
   componentDidMount () {
@@ -28,6 +30,16 @@ class Admin extends React.Component {
     return getData('questions')
             .then(questions => this.setState({ questions }))
             .catch(err => this.setState({ err: true }))
+  }
+
+  deleteQuestion (name) {
+    let conf = window.confirm('Вы уверены?');
+
+    if (conf) {
+      return deleteData(`question/${name}`)
+              .then(rep => this.getQuestions())
+              .catch(err => this.setState({ err: true }))
+    }
   }
 
   render () {
@@ -58,7 +70,7 @@ class Admin extends React.Component {
               questions.map(q => {
                 return <li>{q.name} &emsp;
                   <Link to={`/create/question?question=${q.name}`}>Изменить</Link>
-                  &emsp;<a onClick={() => this.deleteQuestion(q.name)}>Удалить</a>
+                  &emsp;<a className='danger' onClick={() => this.deleteQuestion(q.name)}>Удалить</a>
                 </li>
               })
             }

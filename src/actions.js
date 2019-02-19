@@ -19,6 +19,15 @@ const getData = function (url, data) {
   })
 }
 
+const deleteData = function (url, data) {
+  return new Promise((resolve, reject) => {
+    fetch(`${API_URL}/${url}`, defaultFetch('DELETE', data))
+     .then(handleResponse)
+     .then(rep => resolve(rep))
+     .catch(err => reject(err))
+  })
+}
+
 const postFile = function (url, data) {
   return new Promise((resolve, reject) => {
     fetch(`${API_URL}/${url}`, fileFetch(data))
@@ -28,4 +37,4 @@ const postFile = function (url, data) {
   })
 }
 
-export { postData, getData, postFile }
+export { postData, getData, postFile, deleteData }

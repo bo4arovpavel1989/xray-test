@@ -41,9 +41,8 @@ class App extends React.Component {
   }
 
   handleAuth (rep) {
+    if (rep.auth) setToken(rep.token)
     this.setState({ isAdmin: rep.auth, authFail: !rep.auth, token: rep.token })
-
-    setToken(rep.token)
   }
 
   logoff () {

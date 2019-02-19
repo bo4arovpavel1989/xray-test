@@ -43,7 +43,11 @@ const postRequests = [
 ]
 
 const deleteRequests = [
-
+  {
+    url: '/question/:name',
+    middleware: middleware.checkAccess,
+    callback: deleteReq.question
+  }
 ]
 
 const router = function (app) {

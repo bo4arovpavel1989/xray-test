@@ -37,10 +37,18 @@ class CreateQuestion extends React.Component {
     this.drawer.reset();
   }
 
+  /**
+   * Get selector for canvas draw layer
+   * @returns {Object} - DOM selector
+   */
   getCanvasDraw () {
     return document.querySelector(this.state.canvasDraw)
   }
 
+  /**
+   * Get selector for canvas background layer
+   * @returns {Object} - DOM selector
+   */
   getCanvasBackground () {
     return document.querySelector(this.state.canvasBackground)
   }
