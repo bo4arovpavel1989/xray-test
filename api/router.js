@@ -10,6 +10,11 @@ const getRequests = [
     callback: getReq.tests
   },
   {
+    url: '/questions',
+    middleware: middleware.checkAccess,
+    callback: getReq.allQuestions
+  },
+  {
     url: '/question/:name',
     middleware: [],
     callback: getReq.question

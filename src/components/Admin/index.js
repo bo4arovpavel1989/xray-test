@@ -14,7 +14,8 @@ class Admin extends React.Component {
   }
 
   componentDidMount () {
-    this.getTests()
+    this.getTests();
+    this.getQuestions();
   }
 
   getTests () {
@@ -24,9 +25,9 @@ class Admin extends React.Component {
   }
 
   getQuestions () {
-    getData('questions')
-      .then(questions => this.setState({ questions }))
-      .catch(err => this.setState({ err: true }))
+    return getData('questions')
+            .then(questions => this.setState({ questions }))
+            .catch(err => this.setState({ err: true }))
   }
 
   render () {
@@ -55,7 +56,10 @@ class Admin extends React.Component {
           <ul>
             {
               questions.map(q => {
-                return <li>q.name &emsp; <a>Изменить</a> &emsp;<a>Удалить</a></li>
+                return <li>{q.name} &emsp;
+                  <Link to={`/create/question?question=${q.name}`}>Изменить</Link>
+                  &emsp;<a onClick={() => this.deleteQuestion(q.name)}>Удалить</a>
+                </li>
               })
             }
           </ul>

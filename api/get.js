@@ -13,3 +13,9 @@ module.exports.question = function (req, res) {
     .then(rep => res.json(rep))
     .catch(err => res.status(500).json({ err: err.message }))
 }
+
+module.exports.allQuestions = function (req, res) {
+  db.find('Question', {}, 'name -_id')
+    .then(rep => res.json(rep))
+    .catch(err => res.status(500).json({ err: err.message }))
+};
