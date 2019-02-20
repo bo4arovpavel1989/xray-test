@@ -18,6 +18,11 @@ const getRequests = [
     url: '/question/:name',
     middleware: [],
     callback: getReq.question
+  },
+  {
+    url: '/settings',
+    middleware: [],
+    callback: getReq.settings
   }
 ]
 
@@ -44,6 +49,11 @@ const postRequests = [
     url: '/test',
     middleware: middleware.checkAccess,
     callback: postReq.test
+  },
+  {
+    url: '/settings',
+    middleware: middleware.checkAccess,
+    callback: postReq.settings
   }
 ]
 

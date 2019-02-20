@@ -15,7 +15,13 @@ module.exports.question = function (req, res) {
 }
 
 module.exports.allQuestions = function (req, res) {
-  db.find('Question', {}, 'name -_id')
+  db.find('Question', {}, 'name')
+    .then(rep => res.json(rep))
+    .catch(err => res.status(500).json({ err: err.message }))
+};
+
+module.exports.settings = function (req, res) {
+  db.find('Settings', {})
     .then(rep => res.json(rep))
     .catch(err => res.status(500).json({ err: err.message }))
 };

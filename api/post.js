@@ -77,3 +77,11 @@ module.exports.test = function (req, res) {
     .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).json(err.message))
 };
+
+module.exports.settings = function (req, res) {
+  const { settings } = req.body;
+
+  //TODO - execute update for array of all settings
+  // Promise.all([arrayOfQueries])
+  // arrayOfQueries - make generation in helpers
+};

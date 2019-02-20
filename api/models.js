@@ -30,6 +30,13 @@ models.Question = new mongoose.Schema({
   dimensions: { type: Object }
 })
 
+models.Settings = new mongoose.Schema({
+  description: { type: String },
+  type: { type: String },
+  name: { type: String },
+  value: { type: {} }
+})
+
 for (let schema of Object.keys(models)) {
   models[schema] = mongoose.model(schema.toLowerCase(), models[schema])
 }
