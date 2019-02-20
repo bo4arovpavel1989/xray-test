@@ -17,7 +17,7 @@ models.Session = new mongoose.Schema({
 })
 
 models.Test = new mongoose.Schema({
-  number: { type: String },
+  name: { type: String },
   questions: { type: Array }
 })
 

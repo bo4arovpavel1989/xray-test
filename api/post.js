@@ -56,17 +56,24 @@ module.exports.saveQuestion = function (req, res) {
   const question = req.body;
   const { name } = question;
 
-  console.log(question)
-
   db.update('Question', { name }, question, { upsert: true })
     .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).json(err.message))
 };
 
 module.exports.test = function (req, res) {
-  console.log(req.body)
   const { name } = req.body;
+  const nameRegEx = new RegExp('^' + name + '_');
 
-  // TODO: collect all questions starter from same name (regexp: /+name+_)
-  res.json({})
+  db.find('Question', { name: { $regex: nameRegEx } }, 'name -_id', { name: 1 })
+    .then(questions => {
+      // Making questions array [{name}] -> array of strings [name]
+      questions.forEach((q, i) => {
+        questions[i] = q.name;
+      });
+
+      return db.update('Test', { name }, { questions }, { upsert: true })
+    })
+    .then(rep => res.json({ success: true }))
+    .catch(err => res.status(500).json(err.message))
 };

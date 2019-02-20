@@ -49,9 +49,9 @@ const postRequests = [
 
 const deleteRequests = [
   {
-    url: '/question/:name',
+    url: '/deleteobj/:type/:name',
     middleware: middleware.checkAccess,
-    callback: deleteReq.question
+    callback: deleteReq.object
   }
 ]
 

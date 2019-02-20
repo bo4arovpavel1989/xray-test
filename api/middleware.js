@@ -1,6 +1,5 @@
 const multer = require('multer');
 const AuthService = require('./authservice');
-const { fsRename } = require('./helpers');
 const { slideStorage } = require('./config');
 const authService = new AuthService();
 
@@ -17,10 +16,6 @@ const checkAccessMiddleware = function (req) {
         .then(rep => resolve(rep))
         .catch(err => reject(err))
   })
-}
-
-module.exports.noMiddleware = function (req, res, next) {
-  return next()
 }
 
 module.exports.checkAccess = function (req, res, next) {

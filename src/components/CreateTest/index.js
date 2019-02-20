@@ -22,7 +22,7 @@ class CreateTest extends React.Component {
     const { name } = this.state;
 
     this.setState({ loading: true });
-    console.log(this.state)
+
     return postData('test', { name })
             .then(rep => {
               alert('Успешно сохранено!');

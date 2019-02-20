@@ -1,9 +1,9 @@
 const models = require('./models')
 
 const dbQueries = {
-  find (schema, val, opt) {
+  find (schema, val, select = null, opt = {}) {
     return new Promise((resolve, reject) => {
-      models[schema].find(val, opt, (err, rep) => {
+      models[schema].find(val, select, opt, (err, rep) => {
         if (err) reject(err)
         else resolve(rep)
       })
