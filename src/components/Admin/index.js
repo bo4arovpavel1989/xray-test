@@ -102,7 +102,7 @@ class Admin extends React.Component {
     const { settings, tests, questions } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         <div className='newTest'>
           <div className='menuItem'>
             <Link className='menuButton' to='/create/test'>Создать новый тест</Link>

@@ -46,7 +46,7 @@ class CreateTest extends React.Component {
     const { loading } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         <div className='formArea'>
           <form onSubmit={this.handleSubmit}>
             <div>

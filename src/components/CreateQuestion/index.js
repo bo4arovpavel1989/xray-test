@@ -234,7 +234,7 @@ class CreateQuestion extends React.Component {
     const { loading, isDanger, name } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         <div className='formArea'>
           <form onSubmit={this.uploadPhotos}>
             <div>

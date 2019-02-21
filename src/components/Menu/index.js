@@ -5,7 +5,7 @@ import './Menu.sass'
 class Menu extends React.Component {
   render () {
     return (
-      <div>
+      <div className='container'>
         <div className='menuItem'>
           <Link className='menuButton' to='/test'>Начать тест</Link>
         </div>
