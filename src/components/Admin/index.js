@@ -65,16 +65,27 @@ class Admin extends React.Component {
   }
 
   handleChange (e) {
-    const { value, type } = e.target;
+    let { value, type } = e.target;
     const { description } = e.target.dataset;
     const name = e.target.id;
     const { settings } = this.state;
+
+    value = this.handleTypes(value, type);
 
     settings.forEach((tune, i) => {
       if (name === tune.name) settings[i] = { name, value, type, description }
     })
 
     this.setState({ settings })
+  }
+
+  handleTypes (val, type) {
+    const typesMap = {
+      number: () => Number(val)
+    }
+
+    if (typesMap[type]) return typesMap[type](val)
+    else return val
   }
 
   handleSubmit (e) {

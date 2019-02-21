@@ -1,5 +1,5 @@
 const db = require('./dbqueries');
-const { sizeOf } = require('./helpers');
+const { sizeOf, getSettingsQueryArray } = require('./helpers');
 const AuthService = require('./authservice');
 const authService = new AuthService();
 
@@ -80,8 +80,9 @@ module.exports.test = function (req, res) {
 
 module.exports.settings = function (req, res) {
   const { settings } = req.body;
+  const queries = getSettingsQueryArray(settings);
 
-  //TODO - execute update for array of all settings
-  // Promise.all([arrayOfQueries])
-  // arrayOfQueries - make generation in helpers
+  Promise.all(queries)
+         .then(rep => res.json({ success: true }))
+         .catch(err => res.status(500).json(err.message))
 };

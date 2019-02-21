@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secret = require('./credentials');
 const sizeOfCallback = require('image-size');
+const db = require('./dbqueries');
 
 /**
  * Return JSON web token, based on response object
@@ -21,3 +22,23 @@ const sizeOf = function (file) {
 };
 
 module.exports.sizeOf = sizeOf;
+
+/**
+ * Function generates array of db update queries for settings
+ * to use it in Promise.all
+ * @params {Array} settings - got from client
+ * @returns {Array} - db update queries
+ */
+const getSettingsQueryArray = function (settings) {
+  const settingsQueryArray = [];
+
+  settings.forEach(tune => {
+    const { name } = tune;
+
+    settingsQueryArray.push(db.update('Settings', { name }, tune))
+  });
+
+  return settingsQueryArray;
+}
+
+module.exports.getSettingsQueryArray = getSettingsQueryArray;
