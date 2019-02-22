@@ -82,7 +82,7 @@ class CreateQuestion extends React.Component {
                 this.setState(rep, this.prepareCanvas)
               }
             })
-            .catch(err => alert(err))
+            .catch(err => window.alert(err))
   }
 
   /**
@@ -110,7 +110,7 @@ class CreateQuestion extends React.Component {
       })
       .catch(err => {
         this.setState({ loading: false })
-        alert(err)
+        window.alert(err)
       });
   }
 
@@ -221,11 +221,11 @@ class CreateQuestion extends React.Component {
 
      return postData('savequestion', question)
               .then(rep => {
-                alert('Успешно сохранено!');
+                window.alert('Успешно сохранено!');
                 this.setState({ loading: false })
               })
               .catch(err => {
-                alert(err);
+                window.alert(err);
                 this.setState({ loading: false })
               })
   }

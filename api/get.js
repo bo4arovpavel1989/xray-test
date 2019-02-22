@@ -25,3 +25,12 @@ module.exports.settings = function (req, res) {
     .then(rep => res.json(rep))
     .catch(err => res.status(500).json({ err: err.message }))
 };
+
+module.exports.allQuestionsForTest = function (req, res) {
+  const { test } = req.params;
+  const nameRegEx = new RegExp('^' + test + '_');
+
+  db.find('Question', { name: { $regex: nameRegEx } }, null, { sort: { name: 1 } })
+    .then(questions => res.json(questions))
+    .catch(err => res.status(500).json({ err: err.message }))
+};

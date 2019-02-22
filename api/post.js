@@ -65,7 +65,7 @@ module.exports.test = function (req, res) {
   const { name } = req.body;
   const nameRegEx = new RegExp('^' + name + '_');
 
-  db.find('Question', { name: { $regex: nameRegEx } }, 'name -_id', { name: 1 })
+  db.find('Question', { name: { $regex: nameRegEx } }, 'name -_id', { sort: { name: 1 } })
     .then(questions => {
       // Making questions array [{name}] -> array of strings [name]
       questions.forEach((q, i) => {
