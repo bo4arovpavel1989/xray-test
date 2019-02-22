@@ -11,17 +11,20 @@ class Test extends React.Component {
     this.state = {
       loading: false,
       testStarted: false,
+      testFinished: false,
       user: '',
       settings: {},
       tests: [],
       currentTest: '',
       currentQuestion: -1,
-      questions: []
+      questions: [],
+      total: 100
     }
 
     this.setSettings = this.setSettings.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
 
   componentDidMount () {
@@ -69,30 +72,43 @@ class Test extends React.Component {
     const { tests } = this.state;
     const howMany = tests.length;
     const variant = Math.floor(Math.random() * howMany);
+    const chosenTest = tests[variant].name;
 
-    this.getQuestions(variant);
+    this.getQuestions(chosenTest);
   }
 
-  getQuestions (variant) {
-    return getData(`questions/${variant}`)
+  getQuestions (chosenTest) {
+    return getData(`questions/${chosenTest}`)
             .then(questions => this.setState({ questions }, this.setCurrentQuestion))
             .catch(err => window.alert(err))
   }
 
   setCurrentQuestion () {
-    console.log(this.state)
-    this.setState({ testStarted: true })
+    const currentQuestion = this.state.currentQuestion + 1;
+    const totalQuestions = this.state.questions.length;
+
+    if (currentQuestion <= totalQuestions - 1) this.setState({ testStarted: true, currentQuestion })
+    else this.setState({ testFinished: true })
+  }
+
+  nextQuestion (result) {
+    let { total } = this.state;
+
+    total = total - result;
+    this.setState({ total }, this.setCurrentQuestion);
   }
 
   render () {
-    const { testStarted } = this.state;
+    const { testStarted, settings, currentQuestion, questions } = this.state;
 
     return (
       <div className='container'>
         { testStarted ?
           <div className='testArea'>
             <Slide
-              currentQuestion = { this.currentQuestion }
+              question = { questions[currentQuestion] }
+              settings = { settings }
+              nextQuestion = { this.nextQuestion }
             />
           </div> :
           <div className='userArea'>
