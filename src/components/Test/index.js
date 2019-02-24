@@ -25,6 +25,7 @@ class Test extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.sendResult = this.sendResult.bind(this);
   }
 
   componentDidMount () {
@@ -91,23 +92,31 @@ class Test extends React.Component {
     else this.setState({ testFinished: true })
   }
 
-  nextQuestion (result) {
+  nextQuestion () {
+    return this.setCurrentQuestion();
+  }
+
+  sendResult (result) {
     let { total } = this.state;
 
     total = total - result;
-    this.setState({ total }, this.setCurrentQuestion);
+    this.setState({ total });
   }
 
   render () {
-    const { testStarted, settings, currentQuestion, questions } = this.state;
+    const { testStarted, settings, currentQuestion, questions, total } = this.state;
 
     return (
       <div className='container'>
         { testStarted ?
           <div className='testArea'>
+            <div>
+              Итого: { total }%
+            </div>
             <Slide
               question = { questions[currentQuestion] }
               settings = { settings }
+              sendResult = { this.sendResult }
               nextQuestion = { this.nextQuestion }
             />
           </div> :

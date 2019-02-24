@@ -10,12 +10,20 @@ class Slide extends React.Component {
     this.state = {
       settings: {},
       question: {},
+      warningShowed: false,
       answered: false,
       result: 0
     }
 
     this.setClear = this.setClear.bind(this);
     this.getResult = this.getResult.bind(this);
+    this.handleCanvasClick = this.handleCanvasClick.bind(this);
+    this.clearTimers = this.clearTimers.bind(this);
+    this.setTimers = this.setTimers.bind(this);
+    this.showWarning = this.showWarning.bind(this);
+    this.handleTimer = this.handleTimer.bind(this);
+    this.prepareCanvas = this.prepareCanvas.bind(this);
+    this.setNewQuestion = this.setNewQuestion.bind(this);
   }
 
   componentDidMount () {
@@ -36,6 +44,11 @@ class Slide extends React.Component {
     }
   }
 
+  componentWillUnmount () {
+    this.clearTimers();
+    this.removeClickListener();
+  }
+
   static getDerivedStateFromProps (nextProps, prevState) {
     const prevQuestion = prevState.question;
     const newQuestion = nextProps.question;
@@ -50,7 +63,13 @@ class Slide extends React.Component {
   }
 
   setNewQuestion (question) {
-    this.setState({ answered: false, result: 0 }, this.prepareCanvas);
+    this.setState({ answered: false, warningShowed: false, result: 0 }, this.prepareCanvas);
+  }
+
+  removeClickListener () {
+    const drawLayer = this.getCanvasDraw();
+
+    drawLayer.removeEventListener('click', this.handleCanvasClick)
   }
 
   /**
@@ -65,7 +84,9 @@ class Slide extends React.Component {
 
     background.src = this.state.question.imgPath;
     background.onload = () => {
-      this.setCanvasBackground(background)
+      this.setClickListener();
+      this.setCanvasBackground(background);
+      this.setTimers();
     }
   }
 
@@ -97,7 +118,9 @@ class Slide extends React.Component {
    */
   drawDangerZone (c) {
     const { dangerZones } = this.state.question;
-    return this.drawer.drawOldZones(dangerZones);
+    if (dangerZones.length > 0) return this.drawer.drawOldZones(dangerZones);
+
+    return false;
   }
 
   /**
@@ -124,19 +147,92 @@ class Slide extends React.Component {
     else this.finishQuestion();
   }
 
+  setClickListener () {
+    const drawLayer = this.getCanvasDraw();
+
+    drawLayer.addEventListener('click', this.handleCanvasClick)
+  }
+
+  setTimers () {
+    const { timeWarning, time } = this.state.settings;
+
+    this.warningTimer = setTimeout(this.showWarning, timeWarning * 1000)
+    this.finishTimer = setTimeout(this.handleTimer, time * 1000)
+  }
+
+  clearTimers () {
+    clearTimeout(this.warningTimer)
+    clearTimeout(this.finishTimer)
+  }
+
+  handleTimer () {
+    const { answered } = this.state;
+    const { redError, yellowError } = this.state.settings;
+    const { isDanger } = this.state.question;
+
+    if (!answered) {
+      let result;
+
+      result = isDanger === '1' ? redError : yellowError;
+      return this.setState({ answered: true, result }, this.finishQuestion)
+    }
+
+    return false;
+  }
+
+  showWarning () {
+    return this.setState({ warningShowed: true })
+  }
+
+  handleCanvasClick (e) {
+    const { dangerZones } = this.state.question;
+    const { yellowError } = this.state.settings;
+
+    if (dangerZones.length === 0) {
+      return this.setState({ result: yellowError }, this.finishQuestion)
+    }
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    return this.checkIfClickInDangerZone(x, y)
+  }
+
+  checkIfClickInDangerZone (x, y) {
+    const { dangerZones } = this.state.question;
+    const { redError } = this.state.settings;
+    const isRight = dangerZones.some(zone =>
+      x > zone[0] && y > zone[1] && x < zone[2] && y < zone[3]
+    );
+
+    if (isRight) this.finishQuestion();
+    else this.setState({ result: redError }, this.finishQuestion)
+  }
+
   finishQuestion () {
-    if (this.state.result > 0) this.drawDangerZone()
+    this.clearTimers();
+    this.removeClickListener();
+    this.drawDangerZone();
     this.setState({ answered: true });
+    this.showResult();
+  }
+
+  showResult () {
+    const { result } = this.state;
+    const { sendResult } = this.props;
+
+    return sendResult(result);
   }
 
   getResult () {
-    const { result } = this.state;
     const { nextQuestion } = this.props;
-    return nextQuestion(result);
+
+    return nextQuestion();
   }
 
   render () {
-    const { answered, question } = this.state;
+    const { answered, question, warningShowed, result } = this.state;
+    const { yellowError } = this.state.settings;
 
     return (
       <div>
@@ -144,8 +240,20 @@ class Slide extends React.Component {
           Вопрос { question.name}
         </div>
         <div className='controls'>
-          <button onClick= { this.setClear } >Чисто!</button>
+          <button disabled = { answered } onClick= { this.setClear } >Чисто!</button>
           <button disabled = { !answered } onClick = { this.getResult }>Далее</button>
+        {
+          warningShowed ?
+          <span>Время истекает!</span> :
+          ''
+        }
+        {
+          answered ?
+          <span
+            className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
+          ></span> :
+          ''
+        }
         </div>
         <div className='canvasArea'>
           <canvas id="canvasBackground"></canvas>
