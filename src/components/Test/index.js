@@ -88,7 +88,7 @@ class Test extends React.Component {
   setCurrentQuestion () {
     const currentQuestion = this.state.currentQuestion + 1;
     const totalQuestions = this.state.questions.length;
-    console.log(currentQuestion < totalQuestions)
+
     if (currentQuestion < totalQuestions) this.setState({ testStarted: true, currentQuestion })
     else this.setState({ testFinished: true, testStarted: false })
   }

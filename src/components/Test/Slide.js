@@ -187,20 +187,20 @@ class Slide extends React.Component {
   }
 
   handleCanvasClick (e) {
-    const { dangerZones } = this.state.question;
+    const { answered } = this.state;
+    const { isDanger } = this.state.question;
     const { yellowError } = this.state.settings;
 
-    if (dangerZones.length === 0) {
+    if (isDanger === '0' && !answered) {
       return this.setState({ result: yellowError }, this.finishQuestion)
     }
 
-    const x = e.offsetX;
-    const y = e.offsetY;
-
-    return this.checkIfClickInDangerZone(x, y)
+    return this.checkIfClickInDangerZone(e)
   }
 
-  checkIfClickInDangerZone (x, y) {
+  checkIfClickInDangerZone (e) {
+    const x = e.offsetX;
+    const y = e.offsetY;
     const { answered } = this.state;
     const { dangerZones } = this.state.question;
     const { redError } = this.state.settings;
@@ -213,13 +213,22 @@ class Slide extends React.Component {
       else this.setState({ result: redError }, this.finishQuestion)
     }
 
-    if (isRight) this.showPhoto();
+    if (isRight) this.showPhoto(e);
   }
 
-  showPhoto () {
+  showPhoto (e) {
     this.setState({ photoShowed: true }, () => {
+      this.handlePhotoPosition(e)
       setTimeout(this.setState.bind(this, { photoShowed: false }), 3000)
     });
+  }
+
+  handlePhotoPosition (e) {
+    const photo = document.querySelector('.dangerPicture');
+
+    photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
+    photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';
+    setTimeout(() => photo.classList.add('naturalSize'), 0)
   }
 
   finishQuestion () {
@@ -273,8 +282,6 @@ class Slide extends React.Component {
         <div className='canvasArea'>
           <canvas id="canvasBackground"></canvas>
           <canvas id="canvasDrawArea"></canvas>
-        </div>
-        <div className='photoArea'>
           {
             photoShowed ?
             <img class='dangerPicture' src= { dangerPicture } alt='Опасный предмет'/> :
