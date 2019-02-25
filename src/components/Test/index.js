@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import Slide from './Slide'
 import User from './User'
+import './Test.sass'
 import { getData } from './../../actions'
 
 class Test extends React.Component {
@@ -87,9 +88,9 @@ class Test extends React.Component {
   setCurrentQuestion () {
     const currentQuestion = this.state.currentQuestion + 1;
     const totalQuestions = this.state.questions.length;
-
-    if (currentQuestion <= totalQuestions - 1) this.setState({ testStarted: true, currentQuestion })
-    else this.setState({ testFinished: true })
+    console.log(currentQuestion < totalQuestions)
+    if (currentQuestion < totalQuestions) this.setState({ testStarted: true, currentQuestion })
+    else this.setState({ testFinished: true, testStarted: false })
   }
 
   nextQuestion () {
@@ -104,7 +105,8 @@ class Test extends React.Component {
   }
 
   render () {
-    const { testStarted, settings, currentQuestion, questions, total } = this.state;
+    const { testStarted, settings, currentQuestion, questions, total, testFinished } = this.state;
+    const { errorThreshold } = settings;
 
     return (
       <div className='container'>
@@ -119,6 +121,13 @@ class Test extends React.Component {
               sendResult = { this.sendResult }
               nextQuestion = { this.nextQuestion }
             />
+          </div> :
+          testFinished ?
+          <div>
+            Ваш результат:
+            <span
+            className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
+            > { total }%</span>
           </div> :
           <div className='userArea'>
             <User

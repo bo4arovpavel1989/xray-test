@@ -12,7 +12,8 @@ class Slide extends React.Component {
       question: {},
       warningShowed: false,
       answered: false,
-      result: 0
+      result: 0,
+      photoShowed: false
     }
 
     this.setClear = this.setClear.bind(this);
@@ -24,6 +25,7 @@ class Slide extends React.Component {
     this.handleTimer = this.handleTimer.bind(this);
     this.prepareCanvas = this.prepareCanvas.bind(this);
     this.setNewQuestion = this.setNewQuestion.bind(this);
+    this.showPhoto = this.showPhoto.bind(this);
   }
 
   componentDidMount () {
@@ -199,21 +201,31 @@ class Slide extends React.Component {
   }
 
   checkIfClickInDangerZone (x, y) {
+    const { answered } = this.state;
     const { dangerZones } = this.state.question;
     const { redError } = this.state.settings;
     const isRight = dangerZones.some(zone =>
       x > zone[0] && y > zone[1] && x < zone[2] && y < zone[3]
     );
 
-    if (isRight) this.finishQuestion();
-    else this.setState({ result: redError }, this.finishQuestion)
+    if (!answered) {
+      if (isRight) this.finishQuestion();
+      else this.setState({ result: redError }, this.finishQuestion)
+    }
+
+    if (isRight) this.showPhoto();
+  }
+
+  showPhoto () {
+    this.setState({ photoShowed: true }, () => {
+      setTimeout(this.setState.bind(this, { photoShowed: false }), 3000)
+    });
   }
 
   finishQuestion () {
-    this.clearTimers();
-    this.removeClickListener();
-    this.drawDangerZone();
     this.setState({ answered: true });
+    this.clearTimers();
+    this.drawDangerZone();
     this.showResult();
   }
 
@@ -227,12 +239,15 @@ class Slide extends React.Component {
   getResult () {
     const { nextQuestion } = this.props;
 
+    this.removeClickListener();
+
     return nextQuestion();
   }
 
   render () {
-    const { answered, question, warningShowed, result } = this.state;
+    const { answered, question, warningShowed, result, photoShowed } = this.state;
     const { yellowError } = this.state.settings;
+    const { dangerPicture } = question;
 
     return (
       <div>
@@ -258,6 +273,13 @@ class Slide extends React.Component {
         <div className='canvasArea'>
           <canvas id="canvasBackground"></canvas>
           <canvas id="canvasDrawArea"></canvas>
+        </div>
+        <div className='photoArea'>
+          {
+            photoShowed ?
+            <img class='dangerPicture' src= { dangerPicture } alt='Опасный предмет'/> :
+            ''
+          }
         </div>
       </div>
     )
