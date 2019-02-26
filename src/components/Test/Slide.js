@@ -10,6 +10,7 @@ class Slide extends React.Component {
     this.state = {
       settings: {},
       question: {},
+      comment: 'Поздравляем! Правильный ответ.',
       warningShowed: false,
       answered: false,
       result: 0,
@@ -65,7 +66,7 @@ class Slide extends React.Component {
   }
 
   setNewQuestion (question) {
-    this.setState({ answered: false, warningShowed: false, result: 0 }, this.prepareCanvas);
+    this.setState({ comment: 'Поздравляем! Правильный ответ.', answered: false, warningShowed: false, result: 0 }, this.prepareCanvas);
   }
 
   removeClickListener () {
@@ -145,7 +146,7 @@ class Slide extends React.Component {
     const { isDanger } = this.state.question;
     const { redError } = this.state.settings;
 
-    if (isDanger === '1') this.setState({ result: redError }, this.finishQuestion)
+    if (isDanger === '1') this.setState({ comment: 'Ошибка! Опасный предмет есть!', result: redError }, this.finishQuestion)
     else this.finishQuestion();
   }
 
@@ -176,7 +177,7 @@ class Slide extends React.Component {
       let result;
 
       result = isDanger === '1' ? redError : yellowError;
-      return this.setState({ answered: true, result }, this.finishQuestion)
+      return this.setState({ comment: 'Время истекло!', answered: true, result }, this.finishQuestion)
     }
 
     return false;
@@ -192,7 +193,7 @@ class Slide extends React.Component {
     const { yellowError } = this.state.settings;
 
     if (isDanger === '0' && !answered) {
-      return this.setState({ result: yellowError }, this.finishQuestion)
+      return this.setState({ comment: 'Ошибка! Опасных предметов нет!', result: yellowError }, this.finishQuestion)
     }
 
     return this.checkIfClickInDangerZone(e)
@@ -210,7 +211,7 @@ class Slide extends React.Component {
 
     if (!answered) {
       if (isRight) this.finishQuestion();
-      else this.setState({ result: redError }, this.finishQuestion)
+      else this.setState({ comment: 'Ошибка! Опасного предмета нет в обозначенной Вами области!', result: redError }, this.finishQuestion)
     }
 
     if (isRight) this.showPhoto(e);
@@ -228,7 +229,7 @@ class Slide extends React.Component {
 
     photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
     photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';
-    setTimeout(() => photo.classList.add('naturalSize'), 0)
+    setTimeout(() => photo.classList.add('naturalSize'), 10)
   }
 
   finishQuestion () {
@@ -254,7 +255,7 @@ class Slide extends React.Component {
   }
 
   render () {
-    const { answered, question, warningShowed, result, photoShowed } = this.state;
+    const { answered, question, warningShowed, result, photoShowed, comment } = this.state;
     const { yellowError } = this.state.settings;
     const { dangerPicture } = question;
 
@@ -263,31 +264,27 @@ class Slide extends React.Component {
         <div>
           Вопрос { question.name}
         </div>
-        <div className='controls'>
-          <button disabled = { answered } onClick= { this.setClear } >Чисто!</button>
-          <button disabled = { !answered } onClick = { this.getResult }>Далее</button>
-        {
-          warningShowed ?
-          <span>Время истекает!</span> :
-          ''
-        }
-        {
-          answered ?
-          <span
-            className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
-          ></span> :
-          ''
-        }
-        </div>
         <div className='canvasArea'>
+          <div className='actionComment'>{ answered ? comment : '' }</div>
           <canvas id="canvasBackground"></canvas>
           <canvas id="canvasDrawArea"></canvas>
+            <button id='clearButton' disabled = { answered } onClick= { this.setClear } >Чисто!</button>
           {
-            photoShowed ?
-            <img class='dangerPicture' src= { dangerPicture } alt='Опасный предмет'/> :
+            answered ?
+            <span
+              id='markIcon'
+              className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
+            ></span> :
             ''
           }
+        <span id='timerWarning'>{ warningShowed ? 'Время истекает!' : ''}</span>
+        <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>Далее</button>
         </div>
+        {
+          photoShowed ?
+          <img class='dangerPicture' src= { dangerPicture } alt='Опасный предмет'/> :
+          ''
+        }
       </div>
     )
   }
