@@ -265,20 +265,34 @@ class Slide extends React.Component {
           Вопрос { question.name}
         </div>
         <div className='canvasArea'>
-          <div className='actionComment'>{ answered ? comment : '' }</div>
-          <canvas id="canvasBackground"></canvas>
-          <canvas id="canvasDrawArea"></canvas>
+          <div className='actionComment_container'>
+            <div className='actionComment'>{ answered ? comment : '' }</div>
+          </div>
+          <div className='markIcon_cotainer'>
+            {
+              answered ?
+              <span
+                id='markIcon'
+                className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
+              ></span> :
+              ''
+            }
+          </div>
+          <div className='clearButton_container'>
             <button id='clearButton' disabled = { answered } onClick= { this.setClear } >Чисто!</button>
-          {
-            answered ?
-            <span
-              id='markIcon'
-              className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
-            ></span> :
-            ''
-          }
-        <span id='timerWarning'>{ warningShowed ? 'Время истекает!' : ''}</span>
-        <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>Далее</button>
+          </div>
+          <div className='canvas_container'>
+            <canvas id="canvasBackground"></canvas>
+          </div>
+          <div className='canvas_container'>
+            <canvas id="canvasDrawArea"></canvas>
+          </div>
+          <div className='timerWarning_container'>
+            <span id='timerWarning'>{ warningShowed ? 'Время истекает!' : ''}</span>
+          </div>
+          <div className='forwardButton_container'>
+            <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>Далее</button>
+          </div>
         </div>
         {
           photoShowed ?
