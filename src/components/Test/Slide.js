@@ -266,7 +266,7 @@ class Slide extends React.Component {
         </div>
         <div className='canvasArea'>
           <div className='actionComment_container'>
-            <div className='actionComment'>{ answered ? comment : '' }</div>
+            <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ answered ? comment : '' }</div>
           </div>
           <div className='markIcon_cotainer'>
             {
@@ -279,7 +279,7 @@ class Slide extends React.Component {
             }
           </div>
           <div className='clearButton_container'>
-            <button id='clearButton' disabled = { answered } onClick= { this.setClear } >Чисто!</button>
+            <button id='clearButton' disabled = { answered } onClick= { this.setClear } >&#9745;</button>
           </div>
           <div className='canvas_container'>
             <canvas id="canvasBackground"></canvas>
