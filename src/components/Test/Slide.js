@@ -219,8 +219,8 @@ class Slide extends React.Component {
 
   showPhoto (e) {
     this.setState({ photoShowed: true }, () => {
-      this.handlePhotoPosition(e)
-      setTimeout(this.setState.bind(this, { photoShowed: false }), 3000)
+      this.handlePhotoPosition(e);
+      setTimeout(this.setState.bind(this, { photoShowed: false }), 2000)
     });
   }
 
@@ -229,7 +229,7 @@ class Slide extends React.Component {
 
     photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
     photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';
-    setTimeout(() => photo.classList.add('naturalSize'), 10)
+    setTimeout(() => photo.classList.add('naturalSize'), 20)
   }
 
   finishQuestion () {
@@ -288,17 +288,13 @@ class Slide extends React.Component {
             <canvas id="canvasDrawArea"></canvas>
           </div>
           <div className='timerWarning_container'>
-            <span id='timerWarning'>{ warningShowed ? 'Время истекает!' : ''}</span>
+            <span id='timerWarning' className={warningShowed ? '' : 'invisible'}>Внимание! Время истекает!</span>
           </div>
           <div className='forwardButton_container'>
-            <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>Далее</button>
+            <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>&#x25ba;</button>
           </div>
         </div>
-        {
-          photoShowed ?
-          <img class='dangerPicture' src= { dangerPicture } alt='Опасный предмет'/> :
-          ''
-        }
+        <img className={photoShowed ? 'dangerPicture' : 'hidden'} src= { dangerPicture } alt='Опасный предмет'/>
       </div>
     )
   }
