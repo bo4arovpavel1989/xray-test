@@ -265,8 +265,12 @@ class Slide extends React.Component {
           Вопрос { question.name}
         </div>
         <div className='canvasArea'>
-          <div className='actionComment_container'>
-            <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ answered ? comment : '' }</div>
+          <div className='actionComment_container speech'>
+            {
+              answered ?
+              <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ answered ? comment : '' }</div> :
+              ''
+            }
           </div>
           <div className='markIcon_cotainer'>
             {
