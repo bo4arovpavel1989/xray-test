@@ -87,10 +87,46 @@ class Slide extends React.Component {
 
     background.src = this.state.question.imgPath;
     background.onload = () => {
-      this.setClickListener();
       this.setCanvasBackground(background);
-      this.setTimers();
+      this.animateSlideShow()
+          .then(() => {
+            this.setTimers();
+            this.setClickListener();
+          })
+          .catch(err => window.alert(err));
     }
+  }
+
+  /**
+   * Method removes class 'canvasBeyondScreen' from canvasBackground
+   * to make it animated drive from the right end of screen
+   * @returns {void}
+   */
+  animateSlideShow () {
+    return new Promise((resolve, reject) => {
+      try {
+        const slide = this.getCanvasBackground();
+
+        slide.classList.add('hasTransition');
+        setTimeout(() => slide.classList.add('canvasShowed'), 10)
+        // 3s - time of animation. then timer starts and user can click
+        setTimeout(resolve, 3000)
+      } catch (err) {
+        reject(err)
+      }
+    });
+  }
+
+  /**
+   * Method removes transition from slide - to make it disappear immediately
+   * it disappears - with removingh class 'canvasShowed'
+   * @returns {void}
+   */
+  hideSlide () {
+    const slide = this.getCanvasBackground();
+
+    slide.classList.remove('hasTransition');
+    slide.classList.remove('canvasShowed');
   }
 
   /**
@@ -250,6 +286,7 @@ class Slide extends React.Component {
     const { nextQuestion } = this.props;
 
     this.removeClickListener();
+    this.hideSlide();
 
     return nextQuestion();
   }
@@ -286,7 +323,7 @@ class Slide extends React.Component {
             <button id='clearButton' disabled = { answered } onClick= { this.setClear } >&#9745;</button>
           </div>
           <div className='canvas_container'>
-            <canvas id="canvasBackground"></canvas>
+            <canvas className='canvasBeyondScreen hasTransition' id="canvasBackground"></canvas>
           </div>
           <div className='canvas_container'>
             <canvas id="canvasDrawArea"></canvas>
