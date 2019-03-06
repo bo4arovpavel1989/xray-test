@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './Slide.sass'
 import Drawer from '../Drawer'
 
@@ -21,12 +22,14 @@ class Slide extends React.Component {
     this.getResult = this.getResult.bind(this);
     this.handleCanvasClick = this.handleCanvasClick.bind(this);
     this.clearTimers = this.clearTimers.bind(this);
-    this.setTimers = this.setTimers.bind(this);
+    this.setQuestionTimers = this.setQuestionTimers.bind(this);
     this.showWarning = this.showWarning.bind(this);
     this.handleTimer = this.handleTimer.bind(this);
     this.prepareCanvas = this.prepareCanvas.bind(this);
     this.setNewQuestion = this.setNewQuestion.bind(this);
     this.showPhoto = this.showPhoto.bind(this);
+
+    this.timers = [];
   }
 
   componentDidMount () {
@@ -90,7 +93,7 @@ class Slide extends React.Component {
       this.setCanvasBackground(background);
       this.animateSlideShow()
           .then(() => {
-            this.setTimers();
+            this.setQuestionTimers();
             this.setClickListener();
           })
           .catch(err => window.alert(err));
@@ -108,9 +111,9 @@ class Slide extends React.Component {
         const slide = this.getCanvasBackground();
 
         slide.classList.add('hasTransition');
-        setTimeout(() => slide.classList.add('canvasShowed'), 10)
+        this.setTimer(setTimeout(() => slide.classList.add('canvasShowed'), 10))
         // 3s - time of animation. then timer starts and user can click
-        setTimeout(resolve, 3000)
+        this.setTimer(setTimeout(resolve, 3000))
       } catch (err) {
         reject(err)
       }
@@ -192,16 +195,39 @@ class Slide extends React.Component {
     drawLayer.addEventListener('click', this.handleCanvasClick)
   }
 
-  setTimers () {
-    const { timeWarning, time } = this.state.settings;
+  /**
+   * Method add timer to this.timers array
+   * for proper handling them
+   * @returns {void}
+   */
+  setTimer (timer) {
+    const totalTimers = this.timers.length;
 
-    this.warningTimer = setTimeout(this.showWarning, timeWarning * 1000)
-    this.finishTimer = setTimeout(this.handleTimer, time * 1000)
+    this.timers[totalTimers] = timer;
   }
 
+  /**
+   * Method adds timers for showing warning and
+   * for total time for question
+   * @returns {void}
+   */
+  setQuestionTimers () {
+    const { timeWarning, time } = this.state.settings;
+
+    this.setTimer(setTimeout(this.showWarning, timeWarning * 1000))
+    this.setTimer(setTimeout(this.handleTimer, time * 1000))
+  }
+
+  /**
+   * Method clears all timers in this.timers array
+   * @returns {void}
+   */
   clearTimers () {
-    clearTimeout(this.warningTimer)
-    clearTimeout(this.finishTimer)
+    this.timers.forEach(timer => {
+      clearTimeout(timer)
+    });
+
+    this.timers = [];
   }
 
   handleTimer () {
@@ -256,7 +282,7 @@ class Slide extends React.Component {
   showPhoto (e) {
     this.setState({ photoShowed: true }, () => {
       this.handlePhotoPosition(e);
-      setTimeout(this.setState.bind(this, { photoShowed: false }), 2000)
+      this.setTimer(setTimeout(this.setState.bind(this, { photoShowed: false }), 2000))
     });
   }
 
@@ -265,7 +291,7 @@ class Slide extends React.Component {
 
     photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
     photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';
-    setTimeout(() => photo.classList.add('naturalSize'), 20)
+    this.setTimer(setTimeout(() => photo.classList.add('naturalSize'), 20))
   }
 
   finishQuestion () {
@@ -339,6 +365,13 @@ class Slide extends React.Component {
       </div>
     )
   }
+}
+
+Slide.propTypes = {
+  settings: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequires,
+  sendResult: PropTypes.func.isRequired,
+  nextQuestion: PropTypes.func.isRequired
 }
 
 export default withRouter(Slide)
