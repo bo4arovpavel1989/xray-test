@@ -8,7 +8,7 @@ const User = props => {
 
   return (
       <div>
-        <form onSubmit = { handleSubmit }>
+        <form className = 'userLogin' onSubmit = { handleSubmit }>
           <div>
             <label>
               Ваше имя: &emsp;

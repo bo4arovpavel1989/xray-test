@@ -26,3 +26,14 @@ export const getToken = () => {
 
   return false;
 }
+
+/**
+ * Comments for differen results
+ */
+export const comments = {
+  right: 'Поздравляем! Правильный ответ.',
+  yellow: 'Ошибка! Опасных предметов нет!',
+  red1: 'Ошибка! Опасный предмет есть!',
+  red2: 'Ошибка! Опасного предмета нет в обозначенной Вами области!',
+  time: 'Время истекло!'
+}

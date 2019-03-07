@@ -111,30 +111,32 @@ class Test extends React.Component {
     return (
       <div className='container'>
         { testStarted ?
-          <div className='testArea'>
-            <div>
-              Итого: { total }%
-            </div>
-            <Slide
-              question = { questions[currentQuestion] }
-              settings = { settings }
-              sendResult = { this.sendResult }
-              nextQuestion = { this.nextQuestion }
-            />
-          </div> :
+            (<div className='testArea'>
+              <div>
+                Итого: { total }%
+              </div>
+              <Slide
+                question = { questions[currentQuestion] }
+                settings = { settings }
+                sendResult = { this.sendResult }
+                nextQuestion = { this.nextQuestion }
+              />
+            </div>)
+          :
           testFinished ?
-          <div>
-            Ваш результат:
-            <span
-            className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
-            > { total }%</span>
-          </div> :
-          <div className='userArea'>
-            <User
-              handleChange = { this.handleChange }
-              handleSubmit = { this.handleSubmit }
-            />
-          </div>
+            (<div>
+              Ваш результат:
+              <span
+              className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
+              > { total }%</span>
+            </div>)
+          :
+            (<div className='userArea'>
+              <User
+                handleChange = { this.handleChange }
+                handleSubmit = { this.handleSubmit }
+              />
+            </div>)
         }
       </div>
     )

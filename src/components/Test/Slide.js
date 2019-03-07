@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './Slide.sass'
+import { comments } from './../../helpers';
 import Drawer from '../Drawer'
 
 class Slide extends React.Component {
@@ -11,7 +12,7 @@ class Slide extends React.Component {
     this.state = {
       settings: {},
       question: {},
-      comment: 'Поздравляем! Правильный ответ.',
+      comment: comments.right,
       warningShowed: false,
       answered: false,
       result: 0,
@@ -38,7 +39,12 @@ class Slide extends React.Component {
     const { settings, question } = this.props;
 
     this.drawer = new Drawer(document.querySelector(canvasDraw));
-    this.setState({ settings, question, canvasBackground, canvasDraw }, this.setNewQuestion);
+    this.setState({
+      settings,
+      question,
+      canvasBackground,
+      canvasDraw
+     }, this.setNewQuestion);
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -69,7 +75,12 @@ class Slide extends React.Component {
   }
 
   setNewQuestion (question) {
-    this.setState({ comment: 'Поздравляем! Правильный ответ.', answered: false, warningShowed: false, result: 0 }, this.prepareCanvas);
+    this.setState({
+      comment: comments.right,
+      answered: false,
+      warningShowed: false,
+      result: 0
+    }, this.prepareCanvas);
   }
 
   removeClickListener () {
@@ -185,8 +196,12 @@ class Slide extends React.Component {
     const { isDanger } = this.state.question;
     const { redError } = this.state.settings;
 
-    if (isDanger === '1') this.setState({ comment: 'Ошибка! Опасный предмет есть!', result: redError }, this.finishQuestion)
-    else this.finishQuestion();
+    if (isDanger === '1') {
+      this.setState({
+        comment: comments.red1,
+        result: redError
+      }, this.finishQuestion)
+    } else this.finishQuestion();
   }
 
   setClickListener () {
@@ -239,7 +254,7 @@ class Slide extends React.Component {
       let result;
 
       result = isDanger === '1' ? redError : yellowError;
-      return this.setState({ comment: 'Время истекло!', answered: true, result }, this.finishQuestion)
+      return this.setState({ comment: comments.time, answered: true, result }, this.finishQuestion)
     }
 
     return false;
@@ -255,7 +270,7 @@ class Slide extends React.Component {
     const { yellowError } = this.state.settings;
 
     if (isDanger === '0' && !answered) {
-      return this.setState({ comment: 'Ошибка! Опасных предметов нет!', result: yellowError }, this.finishQuestion)
+      return this.setState({ comment: comments.yellow, result: yellowError }, this.finishQuestion)
     }
 
     return this.checkIfClickInDangerZone(e)
@@ -273,7 +288,7 @@ class Slide extends React.Component {
 
     if (!answered) {
       if (isRight) this.finishQuestion();
-      else this.setState({ comment: 'Ошибка! Опасного предмета нет в обозначенной Вами области!', result: redError }, this.finishQuestion)
+      else this.setState({ comment: comments.red2, result: redError }, this.finishQuestion)
     }
 
     if (isRight) this.showPhoto(e);
