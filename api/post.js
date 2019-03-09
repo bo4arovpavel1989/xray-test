@@ -16,7 +16,7 @@ module.exports.login = function (req, res) {
       }
 
       // Made array coz i use array in first case if rep.auth === true
-      return Promise.resolve([{ auth: false }])
+      return [{ auth: false }]
     })
     // Send reps[0] - only result of auth
     .then(reps => res.json(reps[0]))
