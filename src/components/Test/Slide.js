@@ -107,7 +107,7 @@ class Slide extends React.Component {
             this.setQuestionTimers();
             this.setClickListener();
           })
-          .catch(err => window.alert(err));
+          .catch(window.alert);
     }
   }
 
@@ -122,9 +122,9 @@ class Slide extends React.Component {
         const slide = this.getCanvasBackground();
 
         slide.classList.add('hasTransition');
-        this.setTimer(setTimeout(() => slide.classList.add('canvasShowed'), 10))
+        this.setTimer(() => slide.classList.add('canvasShowed'), 10)
         // 3s - time of animation. then timer starts and user can click
-        this.setTimer(setTimeout(resolve, 3000))
+        this.setTimer(resolve, 3000)
       } catch (err) {
         reject(err)
       }
@@ -213,12 +213,14 @@ class Slide extends React.Component {
   /**
    * Method add timer to this.timers array
    * for proper handling them
+   * @param {Function} timer - function to be called in time l
+   * @param {Number} l - time to call function
    * @returns {void}
    */
-  setTimer (timer) {
+  setTimer (timer, l) {
     const totalTimers = this.timers.length;
 
-    this.timers[totalTimers] = timer;
+    this.timers[totalTimers] = setTimeout(timer, l);
   }
 
   /**
@@ -229,8 +231,8 @@ class Slide extends React.Component {
   setQuestionTimers () {
     const { timeWarning, time } = this.state.settings;
 
-    this.setTimer(setTimeout(this.showWarning, timeWarning * 1000))
-    this.setTimer(setTimeout(this.handleTimer, time * 1000))
+    this.setTimer(this.showWarning, timeWarning * 1000)
+    this.setTimer(this.handleTimer, time * 1000)
   }
 
   /**
@@ -297,7 +299,7 @@ class Slide extends React.Component {
   showPhoto (e) {
     this.setState({ photoShowed: true }, () => {
       this.handlePhotoPosition(e);
-      this.setTimer(setTimeout(this.setState.bind(this, { photoShowed: false }), 2000))
+      this.setTimer(this.setState.bind(this, { photoShowed: false }), 2000)
     });
   }
 
@@ -306,7 +308,7 @@ class Slide extends React.Component {
 
     photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
     photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';
-    this.setTimer(setTimeout(() => photo.classList.add('naturalSize'), 20))
+    this.setTimer(() => photo.classList.add('naturalSize'), 20);
   }
 
   finishQuestion () {
@@ -370,7 +372,11 @@ class Slide extends React.Component {
             <canvas id="canvasDrawArea"></canvas>
           </div>
           <div className='timerWarning_container'>
-            <span id='timerWarning' className={warningShowed ? '' : 'invisible'}>Внимание! Время истекает!</span>
+            { warningShowed ?
+                <span id='timerWarning'>Внимание! Время истекает!</span>
+              :
+                ''
+            }
           </div>
           <div className='forwardButton_container'>
             <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>&#x25ba;</button>

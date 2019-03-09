@@ -97,6 +97,7 @@ $red-error: red
   cursor: pointer
   line-height: 75px
   padding-bottom: 5px
+
 .timerWarning_container
   grid-row: 4
   grid-column: 2
@@ -105,12 +106,18 @@ $red-error: red
 #timerWarning
   font-size: 40px
   background-color: #97a1e0
+  display: inline-block
   border: 3px solid blue
-  line-height: 80px
   color: #b93300
   border-radius: 10px 10px 0 0
-  padding: 5px 250px 5px 250px
-  transition: all .5s
+  padding: 0 250px 0 250px
+  animation: showWarning .5s ease-out
+@keyframes showWarning
+  from
+    transform: scale(.01, 1)
+  to
+    transform: scale(1, 1)
+
 .forwardButton_container
   grid-row: 4
   grid-column: 3
@@ -123,6 +130,7 @@ $red-error: red
   line-height: 25px
   padding-bottom: 5px
   padding-left: 15px
+
 .speech div
 	position: relative
 	height: 50px
