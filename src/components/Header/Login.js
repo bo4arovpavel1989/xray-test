@@ -4,18 +4,19 @@ import PropTypes from 'prop-types'
 import './Header.sass'
 
 const Login = props => {
-  const { login, authFail } = props
+  const { login, authFail, isLogging } = props
 
   return (
-      <form className='loginForm' onSubmit={login}>
+      <form className='loginForm' onSubmit = { login }>
         {
           authFail ?
-          <div className='authFailMessage'>Неверное имя пользователя или пароль!</div>
-          : ''
+            <div className='authFailMessage'>Неверное имя пользователя или пароль!</div>
+          :
+            ''
         }
         <input type='login' name='login' placeholder='login'/>
         <input type='password' name='password' placeholder='password'/>
-        <input type='submit' value='Войти'/>
+        <input disabled = { isLogging } type='submit' value='Войти'/>
       </form>
   )
 }

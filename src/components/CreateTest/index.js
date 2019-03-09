@@ -24,14 +24,9 @@ class CreateTest extends React.Component {
     this.setState({ loading: true });
 
     return postData('test', { name })
-            .then(rep => {
-              alert('Успешно сохранено!');
-              this.setState({ loading: false })
-            })
-            .catch(err => {
-              alert(err);
-              this.setState({ loading: false })
-            })
+            .then(rep => window.alert('Успешно сохранено!'))
+            .catch(err => window.alert(err))
+            .finally(() => this.setState({ loading: false }))
   }
 
   handleChange (e) {
@@ -55,7 +50,7 @@ class CreateTest extends React.Component {
               </label>
             </div>
             <div>
-              <input disabled={loading} type='submit' value='Создать'/>
+              <input disabled= { loading } type='submit' value='Создать'/>
             </div>
           </form>
         </div>

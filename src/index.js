@@ -19,6 +19,7 @@ class App extends React.Component {
     this.state = {
       isAdmin: false,
       authFail: false,
+      isLogging: false,
       token: undefined
     }
 
@@ -35,9 +36,12 @@ class App extends React.Component {
       password: e.target.password.value
     }
 
+    this.setState({ isLogging: true })
+
     postData('login', data)
       .then(rep => this.handleAuth(rep))
       .catch(err => console.log(err))
+      .finally(() => this.setState({ isLogging: false }))
   }
 
   handleAuth (rep) {
@@ -55,7 +59,7 @@ class App extends React.Component {
   }
 
   render () {
-    const { isAdmin, authFail } = this.state
+    const { isAdmin, authFail, isLogging } = this.state
 
     return (
       <BrowserRouter>
@@ -63,6 +67,7 @@ class App extends React.Component {
           <Header
            isAdmin={isAdmin}
            authFail={authFail}
+           isLogging = {isLogging}
            login={this.login}
            logoff={this.logoff}
            />

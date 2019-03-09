@@ -77,7 +77,6 @@ class CreateQuestion extends React.Component {
   getQuestion (question) {
     return getData(`question/${question}`)
             .then(rep => {
-              console.log(rep)
               if (rep) {
                 this.setState(rep, this.prepareCanvas)
               }
@@ -103,15 +102,12 @@ class CreateQuestion extends React.Component {
         this.drawer.reset();
 
         this.setState({
-          loading: false,
           imgPath: imgPath,
           dimensions: rep
         }, this.prepareCanvas)
       })
-      .catch(err => {
-        this.setState({ loading: false })
-        window.alert(err)
-      });
+      .catch(err => window.alert(err))
+      .finally(() => this.setState({ loading: false }));
   }
 
   /**
@@ -220,14 +216,9 @@ class CreateQuestion extends React.Component {
      this.setState({ loading: true });
 
      return postData('savequestion', question)
-              .then(rep => {
-                window.alert('Успешно сохранено!');
-                this.setState({ loading: false })
-              })
-              .catch(err => {
-                window.alert(err);
-                this.setState({ loading: false })
-              })
+              .then(rep => window.alert('Успешно сохранено!'))
+              .catch(err => window.alert(err))
+              .finally(() => this.setState({ loading: false }))
   }
 
   render () {
