@@ -5,13 +5,19 @@ import './Slide.sass'
 import { comments } from './../../helpers';
 import Drawer from '../Drawer'
 
-class Slide extends React.Component {
-  constructor () {
-    super();
+class Slide extends React.PureComponent {
+  constructor (props) {
+    super(props);
+
+    const { settings, question } = this.props;
+    const canvasDraw = '#canvasDrawArea';
+    const canvasBackground = '#canvasBackground';
 
     this.state = {
-      settings: {},
-      question: {},
+      settings,
+      question,
+      canvasBackground,
+      canvasDraw,
       comment: comments.right,
       warningShowed: false,
       answered: false,
@@ -34,25 +40,18 @@ class Slide extends React.Component {
   }
 
   componentDidMount () {
-    const canvasDraw = '#canvasDrawArea';
-    const canvasBackground = '#canvasBackground';
-    const { settings, question } = this.props;
+    const { canvasDraw } = this.state;
 
     this.drawer = new Drawer(document.querySelector(canvasDraw));
-    this.setState({
-      settings,
-      question,
-      canvasBackground,
-      canvasDraw
-     }, this.setNewQuestion);
+    this.setNewQuestion();
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const prevQuestion = prevState.question;
-    const newQuestion = this.state.question;
+    const prevQuestion = prevProps.question;
+    const newQuestion = this.props.question;
 
-    if (prevQuestion && newQuestion && newQuestion.name !== prevQuestion.name) {
-      this.setNewQuestion()
+    if (newQuestion.name !== prevQuestion.name) {
+       this.setNewQuestion()
     }
   }
 
@@ -61,21 +60,12 @@ class Slide extends React.Component {
     this.removeClickListener();
   }
 
-  static getDerivedStateFromProps (nextProps, prevState) {
-    const prevQuestion = prevState.question;
-    const newQuestion = nextProps.question;
+  setNewQuestion () {
+    const { settings, question } = this.props;
 
-    if (newQuestion && prevQuestion && prevQuestion.name !== newQuestion.name) {
-      return {
-        question: newQuestion
-      }
-    }
-
-    return null;
-  }
-
-  setNewQuestion (question) {
     this.setState({
+      settings,
+      question,
       comment: comments.right,
       answered: false,
       warningShowed: false,
@@ -390,7 +380,7 @@ class Slide extends React.Component {
 
 Slide.propTypes = {
   settings: PropTypes.object.isRequired,
-  question: PropTypes.object.isRequires,
+  question: PropTypes.object.isRequired,
   sendResult: PropTypes.func.isRequired,
   nextQuestion: PropTypes.func.isRequired
 }
