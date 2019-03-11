@@ -1,13 +1,15 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import './Slide.sass'
+import './User.sass'
 
 const User = props => {
   const { handleSubmit, handleChange } = props;
 
   return (
       <div>
+        <div className='paranja'>
+        </div>
         <form className = 'userLogin' onSubmit = { handleSubmit }>
           <div>
             <label>
