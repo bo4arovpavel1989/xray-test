@@ -2,7 +2,7 @@
   width: 100vw
   height: 100vh
   background-color: black
-  opacity: 0.9
+  opacity: 0.85
   position: fixed
   top: 0
   left: 0
@@ -11,10 +11,7 @@
 .userLoginArea
   width: 100vw
   height: 100vh
-  position: fixed
-  display: flex
-  justify-content: center
-  align-items: center
+  position: absolute
   top: 0
   left: 0
   z-index: 10
@@ -25,10 +22,12 @@
   padding: 20px
   border-radius: 2px
   display: inline-block
-  animation: showLogin .5s linear
+  transform-origin: left bottom
+  transform: translate(40vw, 45vh)
+  animation: showLogin .2s linear
 
 @keyframes showLogin
   from
-    transform: scale(0) translate(-100vw, -100vh)
+    transform: scale(0) translate(0, 0)
   to
-    transform: scale(1) translate(0, 0)
+    transform: scale(1) translate(40vw, 45vh)
