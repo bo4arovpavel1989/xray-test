@@ -10,17 +10,21 @@ const User = props => {
       <div>
         <div className='paranja'>
         </div>
-        <form className = 'userLogin' onSubmit = { handleSubmit }>
-          <div>
-            <label>
-              Ваше имя: &emsp;
-              <input type='text' id='user' onChange = { handleChange } required/>
-            </label>
-          </div>
-          <div>
-            <input type='submit' value='Начать тест'/>
-          </div>
-        </form>
+        <div className='userLoginArea'>
+          <form className = 'userLogin' onSubmit = { handleSubmit }>
+            <div>
+              <span>
+                <label>
+                  Ваше имя: &emsp;
+                  <input type='text' id='user' onChange = { handleChange } required/>
+                </label>
+              </span>
+              <span>
+                <input type='submit' value='Начать тест'/>
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
   )
 }

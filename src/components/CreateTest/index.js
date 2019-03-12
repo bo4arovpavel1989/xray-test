@@ -45,12 +45,14 @@ class CreateTest extends React.Component {
         <div className='formArea'>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <label>
-                Номер теста: &emsp;<input id='name' onChange={this.handleChange} type='number' min='1'/>
-              </label>
-            </div>
-            <div>
-              <input disabled= { loading } type='submit' value='Создать'/>
+              <span>
+                <label>
+                  Номер теста: &emsp;<input id='name' onChange={this.handleChange} type='number' min='1'/>
+                </label>
+              </span>
+              <span>
+                <input disabled= { loading } type='submit' value='Создать'/>
+              </span>
             </div>
           </form>
         </div>

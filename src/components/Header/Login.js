@@ -14,9 +14,13 @@ const Login = props => {
           :
             ''
         }
-        <input type='login' name='login' placeholder='login'/>
-        <input type='password' name='password' placeholder='password'/>
-        <input disabled = { isLogging } type='submit' value='Войти'/>
+        <span>
+          <input type='login' name='login' placeholder='login'/>
+          <input type='password' name='password' placeholder='password'/>
+        </span>
+        <span>
+          <input disabled = { isLogging } type='submit' value='Войти'/>
+        </span>
       </form>
   )
 }

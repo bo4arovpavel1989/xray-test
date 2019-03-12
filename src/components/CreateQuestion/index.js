@@ -286,8 +286,10 @@ class CreateQuestion extends React.Component {
           </form>
         </div>
         <div>
-          <button onClick={this.clearCanvas}>Очистить</button>
-          <button disabled={loading} onClick={this.saveQuestion}>Сохранить</button>
+          <div className='canvasControls'>
+            <button className='danger' onClick={this.clearCanvas}>Очистить</button>
+            <button className='success' disabled={loading || name === ''} onClick={this.saveQuestion}>Сохранить</button>
+          </div>
           <div className='createQuestion canvasArea'>
             <canvas id="canvasBackground"></canvas>
             <canvas id="canvasDrawArea"></canvas>

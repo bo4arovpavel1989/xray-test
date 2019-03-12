@@ -1,6 +1,7 @@
 $font-stack: Helvetica, sans-serif
 $header-color: #0f5919
 $primary-color: #002806
+$submit-button-color: #0059D9
 
 body
   font: 100% $font-stack
@@ -14,6 +15,10 @@ a
   cursor: pointer
   text-decoration: none
 
+button
+  background-color: white
+  border: 1px solid grey
+
 .hidden
   display: none
 
@@ -24,6 +29,9 @@ a
 .danger
   color: red
 
+.success
+  color: green
+
 .container
   padding: 10px 40px 10px 40px
 
@@ -32,3 +40,18 @@ label
 
 button
   cursor: pointer
+
+form span
+  padding: 0 10px 0 10px
+
+form input:not([type=submit])
+  height: 26px
+
+form input[type=submit]
+  background-color: $submit-button-color
+  cursor: pointer
+  color: white
+  border: none
+  padding: 10px
+form input[type=submit]:hover
+  background-color: black
