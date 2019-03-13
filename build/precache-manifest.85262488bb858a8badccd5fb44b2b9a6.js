@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/bo4arovpavel1989/xray-test/static/js/runtime~main.ba914b5b.js"
   },
   {
-    "revision": "85147f6b1b4b87688264",
+    "revision": "c5a3255499edc49990f3",
     "url": "/bo4arovpavel1989/xray-test/static/js/main.de4328fe.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/bo4arovpavel1989/xray-test/static/js/2.8a555b8b.chunk.js"
   },
   {
-    "revision": "85147f6b1b4b87688264",
-    "url": "/bo4arovpavel1989/xray-test/static/css/main.dc836db2.chunk.css"
+    "revision": "c5a3255499edc49990f3",
+    "url": "/bo4arovpavel1989/xray-test/static/css/main.d5a4054d.chunk.css"
   },
   {
-    "revision": "094d8b12bcb97c827bc654c50e527242",
+    "revision": "89b8dbf611a06c88b856768733a196b6",
     "url": "/bo4arovpavel1989/xray-test/index.html"
   }
 ];
