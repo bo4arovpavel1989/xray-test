@@ -1,7 +1,7 @@
 module.exports.slideStorage = {
   destination: function (req, file, cb) {
-    // For production change to public/images
-    cb(null, 'api/images')
+    // For production change to dist/images
+    cb(null, 'dist/images')
   },
   filename: function (req, file, cb) {
     let ext;

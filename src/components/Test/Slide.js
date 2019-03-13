@@ -369,7 +369,8 @@ class Slide extends React.PureComponent {
             }
           </div>
           <div className='forwardButton_container'>
-            <button id='forwardButton' disabled = { !answered } onClick = { this.getResult }>&#x25ba;</button>
+            { /* Disabled when photoShowed coz otherwise you can see next danger picture when clicking 'forward' before prev danger picture disappears */ }
+            <button id='forwardButton' disabled = { !answered || photoShowed} onClick = { this.getResult }>&#x25ba;</button>
           </div>
         </div>
         <img className={photoShowed ? 'dangerPicture' : 'hidden'} src= { dangerPicture } alt='Опасный предмет'/>

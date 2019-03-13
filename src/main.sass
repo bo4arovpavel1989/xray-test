@@ -22,7 +22,7 @@ a:focus
 button
   background-color: white
   border: 1px solid grey
-button[disabled]
+button:disabled
   opacity: .3
 
 .hidden
@@ -50,14 +50,14 @@ button
 form span
   padding: 0 10px 0 10px
 
-form input:not([type=submit])
+form input:not([type='submit'])
   height: 26px
 
-form input[type=submit]
+form input[type='submit']
   background-color: $submit-button-color
   cursor: pointer
   color: white
   border: none
   padding: 10px
-form input[type=submit]:hover
+form input[type='submit']:hover
   background-color: black
