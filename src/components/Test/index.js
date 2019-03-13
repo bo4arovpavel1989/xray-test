@@ -124,11 +124,13 @@ class Test extends React.Component {
             </div>)
           :
           testFinished ?
-            (<div>
-              Ваш результат:
-              <span
-              className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
-              > { total }%</span>
+            (<div className='resultArea'>
+              <h2>
+                Ваш результат:
+                <span
+                className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
+                > { total }%</span>
+              </h2>
             </div>)
           :
             (<div className='userArea'>
