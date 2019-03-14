@@ -22,11 +22,12 @@ class Slide extends React.PureComponent {
       warningShowed: false,
       answered: false,
       result: 0,
+      slideShowed: false,
       photoShowed: false
     }
 
     this.setClear = this.setClear.bind(this);
-    this.getResult = this.getResult.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
     this.handleCanvasClick = this.handleCanvasClick.bind(this);
     this.clearTimers = this.clearTimers.bind(this);
     this.setQuestionTimers = this.setQuestionTimers.bind(this);
@@ -68,6 +69,7 @@ class Slide extends React.PureComponent {
       question,
       comment: comments.right,
       answered: false,
+      slideShowed: true,
       warningShowed: false,
       result: 0
     }, this.prepareCanvas);
@@ -108,29 +110,9 @@ class Slide extends React.PureComponent {
    */
   animateSlideShow () {
     return new Promise((resolve, reject) => {
-      try {
-        const slide = this.getCanvasBackground();
-
-        slide.classList.add('hasTransition');
-        this.setTimer(() => slide.classList.add('canvasShowed'), 10)
         // 3s - time of animation. then timer starts and user can click
-        this.setTimer(resolve, 3000)
-      } catch (err) {
-        reject(err)
-      }
+        this.setTimer(() => resolve(), 3000)
     });
-  }
-
-  /**
-   * Method removes transition from slide - to make it disappear immediately
-   * it disappears - with removingh class 'canvasShowed'
-   * @returns {void}
-   */
-  hideSlide () {
-    const slide = this.getCanvasBackground();
-
-    slide.classList.remove('hasTransition');
-    slide.classList.remove('canvasShowed');
   }
 
   /**
@@ -315,17 +297,17 @@ class Slide extends React.PureComponent {
     return sendResult(result);
   }
 
-  getResult () {
+  nextQuestion () {
     const { nextQuestion } = this.props;
 
     this.removeClickListener();
-    this.hideSlide();
+    this.setState({ slideShowed: false });
 
     return nextQuestion();
   }
 
   render () {
-    const { answered, question, warningShowed, result, photoShowed, comment } = this.state;
+    const { answered, question, warningShowed, result, photoShowed, comment, slideShowed } = this.state;
     const { yellowError } = this.state.settings;
     const { dangerPicture } = question;
 
@@ -356,7 +338,11 @@ class Slide extends React.PureComponent {
             <button id='clearButton' disabled = { answered } onClick= { this.setClear } >&#9745;</button>
           </div>
           <div className='canvas_container'>
-            <canvas className='canvasBeyondScreen hasTransition' id="canvasBackground"></canvas>
+            { slideShowed ?
+                <canvas className='animatedShow' id="canvasBackground"></canvas>
+              :
+              ''
+            }
           </div>
           <div className='canvas_container'>
             <canvas id="canvasDrawArea"></canvas>
@@ -370,7 +356,7 @@ class Slide extends React.PureComponent {
           </div>
           <div className='forwardButton_container'>
             { /* Disabled when photoShowed coz otherwise you can see next danger picture when clicking 'forward' before prev danger picture disappears */ }
-            <button id='forwardButton' disabled = { !answered || photoShowed} onClick = { this.getResult }>&#x25ba;</button>
+            <button id='forwardButton' disabled = { !answered || photoShowed} onClick = { this.nextQuestion }>&#x25ba;</button>
           </div>
         </div>
         <img className={photoShowed ? 'dangerPicture' : 'hidden'} src= { dangerPicture } alt='Опасный предмет'/>

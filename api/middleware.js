@@ -4,6 +4,19 @@ const { slideStorage } = require('./config');
 const authService = new AuthService();
 
 /**
+ * Middleware gets reactRouter handled routes and redirect to '/'
+ * in order to avoid 'can not get' message from express
+ */
+module.exports.reactRoutes = function (req, res, next) {
+  const reactRoutes = ['/test', '/admin', '/create/test', '/create/question'];
+  const { originalUrl, method } = req;
+
+  if (reactRoutes.includes(originalUrl) && method === 'GET') return res.redirect('/');
+
+  return next();
+}
+
+/**
  * Function that contains mutual logick for checkAccess middlewares
  * @param {object} req - request object
  * @returns {Promise} Promise object represents if access is granted

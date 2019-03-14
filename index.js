@@ -3,6 +3,7 @@ const app = express()
 const router = require('./api/router.js')
 const bodyParser = require('body-parser')
 const server = require('http').createServer()
+const { reactRoutes } = require('./api/middleware')
 
 app.set('port', 3001)
 
@@ -16,6 +17,8 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
   next()
 })
+
+app.use(reactRoutes)
 
 server.on('request', app)
 

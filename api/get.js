@@ -15,7 +15,7 @@ module.exports.question = function (req, res) {
 }
 
 module.exports.allQuestions = function (req, res) {
-  db.find('Question', {}, 'name')
+  db.find('Question', {}, 'name', { sort: { name: 1 } })
     .then(rep => res.json(rep))
     .catch(err => res.status(500).json({ err: err.message }))
 };
