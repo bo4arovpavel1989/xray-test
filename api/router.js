@@ -28,6 +28,11 @@ const getRequests = [
     url: '/settings',
     middleware: [],
     callback: getReq.settings
+  },
+  {
+    url: '/savedb',
+    middleware: middleware.checkAccess,
+    callback: getReq.saveDb
   }
 ]
 

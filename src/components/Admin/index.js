@@ -10,6 +10,7 @@ class Admin extends React.Component {
       questions: [],
       settings: [],
       tests: [],
+      dbSaving: false,
       err: false
     }
 
@@ -17,6 +18,7 @@ class Admin extends React.Component {
     this.refreshTest = this.refreshTest.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveDb = this.saveDb.bind(this);
   }
 
   componentDidMount () {
@@ -61,7 +63,7 @@ class Admin extends React.Component {
   refreshTest (name) {
     return postData('test', { name })
             .then(rep => window.alert('Успешно обновлено!'))
-            .catch(err => window.alert(err))
+            .catch(window.alert)
   }
 
   handleChange (e) {
@@ -88,6 +90,15 @@ class Admin extends React.Component {
     else return val
   }
 
+  saveDb () {
+    this.setState({ dbSaving: true })
+
+    return getData('savedb')
+            .then()
+            .catch(window.alert)
+            .finally(() => this.setState({ dbSaving: false }))
+  }
+
   handleSubmit (e) {
     e.preventDefault();
 
@@ -99,7 +110,7 @@ class Admin extends React.Component {
   }
 
   render () {
-    const { settings, tests, questions } = this.state;
+    const { settings, tests, questions, dbSaving } = this.state;
 
     return (
       <div className='container'>
@@ -107,6 +118,7 @@ class Admin extends React.Component {
           <div className='menuItem'>
             <Link className='menuButton' to='/create/test'>Создать новый тест</Link>
             <Link className='menuButton' to='/create/question'>Создать новый вопрос</Link>
+            <button disabled={dbSaving} className='menuButton' onClick={this.saveDb}>Сохранить базу</button>
           </div>
         </div>
           <h2>Настройки</h2>

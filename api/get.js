@@ -1,4 +1,7 @@
-const db = require('./dbqueries')
+const db = require('./dbqueries');
+const fs = require('fs');
+const util = require("util");
+const writeFile = util.promisify(fs.writeFile);
 
 module.exports.tests = function (req, res) {
   db.find('Test')
@@ -34,3 +37,15 @@ module.exports.allQuestionsForTest = function (req, res) {
     .then(questions => res.json(questions))
     .catch(err => res.status(500).json({ err: err.message }))
 };
+
+module.exports.saveDb = function (req, res) {
+  Promise.all([
+    db.find('Test'),
+    db.find('Question'),
+    db.find('Settings')
+  ]).then(rep => writeFile('dump/db.json', JSON.stringify(rep)))
+    .then(rep => {
+      res.download('dump/db.json')
+    })
+    .catch(err => res.status(500).send(err.message))
+}
