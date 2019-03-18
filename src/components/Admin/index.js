@@ -94,7 +94,7 @@ class Admin extends React.Component {
     this.setState({ dbSaving: true })
 
     return getData('savedb')
-            .then()
+            .then(() => window.alert('Успешно сохранено!'))
             .catch(window.alert)
             .finally(() => this.setState({ dbSaving: false }))
   }

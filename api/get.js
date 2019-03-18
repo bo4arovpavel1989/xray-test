@@ -1,6 +1,6 @@
 const db = require('./dbqueries');
 const fs = require('fs');
-const util = require("util");
+const util = require('util');
 const writeFile = util.promisify(fs.writeFile);
 
 module.exports.tests = function (req, res) {
@@ -44,8 +44,6 @@ module.exports.saveDb = function (req, res) {
     db.find('Question'),
     db.find('Settings')
   ]).then(rep => writeFile('dump/db.json', JSON.stringify(rep)))
-    .then(rep => {
-      res.download('dump/db.json')
-    })
+    .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).send(err.message))
 }
