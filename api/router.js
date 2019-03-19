@@ -64,6 +64,14 @@ const postRequests = [
     url: '/settings',
     middleware: middleware.checkAccess,
     callback: postReq.settings
+  },
+  {
+    url: '/loaddb',
+    middleware: [
+      middleware.checkAccess,
+      middleware.uploadDb
+    ],
+    callback: postReq.loadDb
   }
 ]
 

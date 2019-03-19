@@ -1,6 +1,6 @@
 const multer = require('multer');
 const AuthService = require('./authservice');
-const { slideStorage } = require('./config');
+const { slideStorage, dbStorage } = require('./config');
 const authService = new AuthService();
 
 /**
@@ -46,3 +46,7 @@ module.exports.uploadSlide = uploadSlide.fields([
   { name: 'slide' },
   { name: 'photo' }
 ]);
+
+const uploadDb = multer({ storage: multer.diskStorage(dbStorage) });
+
+module.exports.uploadDb = uploadDb.single('db')

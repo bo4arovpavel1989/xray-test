@@ -86,3 +86,7 @@ module.exports.settings = function (req, res) {
          .then(rep => res.json({ success: true }))
          .catch(err => res.status(500).json(err.message))
 };
+
+module.exports.loadDb = function (req, res) {
+  // TODO - readFile 'dump/db.json', drop DB and parse fieds to DB
+};

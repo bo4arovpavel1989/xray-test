@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { getData, deleteData, postData } from './../../actions'
+import { getData, deleteData, postData, postFile } from './../../actions'
 
 class Admin extends React.Component {
   constructor () {
@@ -10,7 +10,7 @@ class Admin extends React.Component {
       questions: [],
       settings: [],
       tests: [],
-      dbSaving: false,
+      submitting: false,
       err: false
     }
 
@@ -19,6 +19,7 @@ class Admin extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.saveDb = this.saveDb.bind(this);
+    this.handleDbRecovery = this.handleDbRecovery.bind(this);
   }
 
   componentDidMount () {
@@ -91,26 +92,48 @@ class Admin extends React.Component {
   }
 
   saveDb () {
-    this.setState({ dbSaving: true })
+    this.setState({ submitting: true })
 
     return getData('savedb')
             .then(() => window.alert('Успешно сохранено!'))
             .catch(window.alert)
-            .finally(() => this.setState({ dbSaving: false }))
+            .finally(() => this.setState({ submitting: false }))
+  }
+
+  handleDbRecovery (e) {
+    e.preventDefault();
+
+    let sure = window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
+
+    if (sure) {
+      this.setState({ submitting: true })
+
+      const db = document.querySelector('input[name="db"]');
+      const data = new FormData();
+
+      data.append('db', db.files[0]);
+
+      return postFile('loaddb', data)
+              .then(() => window.alert('Успешно восстановлено!'))
+              .catch(window.alert)
+              .finally(() => this.setState({ submitting: false }))
+    }
   }
 
   handleSubmit (e) {
     e.preventDefault();
+    this.setState({ submitting: true })
 
     const { settings } = this.state;
 
     return postData('settings', { settings })
             .then(rep => window.alert('Успешно сохранено!'))
             .catch(err => window.alert(err))
+            .finally(() => this.setState({ submitting: false }))
   }
 
   render () {
-    const { settings, tests, questions, dbSaving } = this.state;
+    const { settings, tests, questions, submitting } = this.state;
 
     return (
       <div className='container'>
@@ -118,7 +141,13 @@ class Admin extends React.Component {
           <div className='menuItem'>
             <Link className='menuButton' to='/create/test'>Создать новый тест</Link>
             <Link className='menuButton' to='/create/question'>Создать новый вопрос</Link>
-            <button disabled={dbSaving} className='menuButton' onClick={this.saveDb}>Сохранить базу</button>
+          </div>
+          <div>
+            <button disabled={submitting} className='menuButton small' onClick={this.saveDb}>Сохранить базу</button>
+            <form onSubmit={this.handleDbRecovery}>
+              <input type='file' name='db' accept='.json'/>
+              <input disabled={submitting} type='submit' value='Восстановить базу'/>
+            </form>
           </div>
         </div>
           <h2>Настройки</h2>
@@ -141,7 +170,7 @@ class Admin extends React.Component {
                 })
               }
               <div>
-                <input type='submit' value='Сохранить'/>
+                <input disabled={submitting} type='submit' value='Сохранить'/>
               </div>
             </form>
           </div>

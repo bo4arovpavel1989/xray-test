@@ -20,3 +20,12 @@ module.exports.slideStorage = {
     cb(null, `${req.body.question}_${file.fieldname}${ext}`)
   }
 }
+
+module.exports.dbStorage = {
+  destination: function (req, file, cb) {
+    cb(null, 'dump')
+  },
+  filename: function (req, file, cb) {
+    cb(null, `db.json`)
+  }
+}
