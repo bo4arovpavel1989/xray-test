@@ -1,0 +1,3 @@
+{"name":"1_1","__v":0,"dangerPicture":"/images/1_1_photo.png","dimensions":{"width":1006,"height":1006,"type":"png"},"imgPath":"/images/1_1_slide.png","dangerZones":[[144,50,288,156],[526,89,634,171],[457,294,481,351],[239,334,282,398],[645,343,788,448]],"isDanger":"1"}
+{"name":"1_3","__v":0,"dangerPicture":"/images/1_3_photo.png","dimensions":{"width":1006,"height":1006,"type":"png"},"imgPath":"/images/1_3_slide.png","dangerZones":[],"isDanger":"0"}
+{"name":"1_2","__v":0,"dangerPicture":"/images/1_2_photo.png","dimensions":{"width":1600,"height":900,"type":"png"},"imgPath":"/images/1_2_slide.png","dangerZones":[[197,85,432,155]],"isDanger":"1"}

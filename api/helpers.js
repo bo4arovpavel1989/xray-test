@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const split = require('split2');
 const secret = require('./credentials');
 const sizeOfCallback = require('image-size');
 const db = require('./dbqueries');
@@ -44,10 +46,41 @@ const getSettingsQueryArray = function (settings) {
 module.exports.getSettingsQueryArray = getSettingsQueryArray;
 
 /**
-  * Function reads json file 'restore/db.json' and restores db from it
+  * Function creates read stream of json file and saves every entry to db collection
+  * @param {String} file - path to file
+  * @param {String} collection - name of collection
+  * @returns {Promise} representing operation status
+  */
+const restoreCollection = function (file, collection) {
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(file)
+     .pipe(split())
+     .on('data', function (line) {
+       try {
+         const entry = JSON.parse(line);
+
+         db.create(collection, entry)
+           .then(resolve)
+           .catch(reject)
+       } catch (e) {
+         reject(e)
+       }
+     })
+  })
+}
+
+/**
+  * Function reads json files  and restores db from it
+  * @returns {Promise} representing operation status
   */
 const restoreTestdata = function () {
-  // TODO - execute reading and restoring
+  return new Promise((resolve, reject) => {
+    Promise.all([
+      restoreCollection('Question', 'restore/questions.json'),
+      restoreCollection('Test', 'restore/tests.json')
+    ]).then(resolve)
+      .catch(reject)
+  })
 }
 
 module.exports.restoreTestdata = restoreTestdata;

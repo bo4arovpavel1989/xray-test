@@ -9,6 +9,17 @@ const dbQueries = {
       })
     })
   },
+  findAndStream (schema, dest, val = {}, select = null, opt = {}) {
+    return new Promise((resolve, reject) => {
+      const stream = models[schema].find(val, select, opt).stream();
+
+      stream.on('data', (chunk) => {
+        dest.write(JSON.stringify(chunk) + '\n');
+      })
+      stream.on('error', reject);
+      stream.on('close', resolve);
+    })
+  },
   findBy (schema, val, sort, skip, limit, select) {
     return new Promise((resolve, reject) => {
       models[schema].find(val).sort(sort)

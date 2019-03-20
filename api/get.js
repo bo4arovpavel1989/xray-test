@@ -1,7 +1,5 @@
 const db = require('./dbqueries');
 const fs = require('fs');
-const util = require('util');
-const writeFile = util.promisify(fs.writeFile);
 
 module.exports.tests = function (req, res) {
   db.find('Test')
@@ -40,9 +38,8 @@ module.exports.allQuestionsForTest = function (req, res) {
 
 module.exports.saveDb = function (req, res) {
   Promise.all([
-    db.find('Test'),
-    db.find('Question')
-  ]).then(rep => writeFile('dump/db.json', JSON.stringify(rep)))
-    .then(rep => res.json({ success: true }))
+    db.findAndStream('Test', fs.createWriteStream('dump/tests.json'), {}, '-_id'),
+    db.findAndStream('Question', fs.createWriteStream('dump/questions.json'), {}, '-_id')
+  ]).then(rep => res.json({ success: true }))
     .catch(err => res.status(500).send(err.message))
 }
