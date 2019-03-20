@@ -41,8 +41,7 @@ module.exports.allQuestionsForTest = function (req, res) {
 module.exports.saveDb = function (req, res) {
   Promise.all([
     db.find('Test'),
-    db.find('Question'),
-    db.find('Settings')
+    db.find('Question')
   ]).then(rep => writeFile('dump/db.json', JSON.stringify(rep)))
     .then(rep => res.json({ success: true }))
     .catch(err => res.status(500).send(err.message))

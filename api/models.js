@@ -42,3 +42,14 @@ for (let schema of Object.keys(models)) {
 }
 
 module.exports = models
+
+module.exports.dropTestData = function () {
+  return new Promise((resolve, reject) => {
+    Promise.all([
+      mongoose.connection.dropCollection('tests'),
+      mongoose.connection.dropCollection('questions')
+    ])
+    .then(resolve)
+    .catch(reject)
+  })
+}

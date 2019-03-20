@@ -42,3 +42,12 @@ const getSettingsQueryArray = function (settings) {
 }
 
 module.exports.getSettingsQueryArray = getSettingsQueryArray;
+
+/**
+  * Function reads json file 'restore/db.json' and restores db from it
+  */
+const restoreTestdata = function () {
+  // TODO - execute reading and restoring
+}
+
+module.exports.restoreTestdata = restoreTestdata;

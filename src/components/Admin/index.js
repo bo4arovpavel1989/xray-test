@@ -46,7 +46,7 @@ class Admin extends React.Component {
             .catch(err => this.setState({ err: true }))
   }
 
-  getData () {
+  getTestData () {
     this.getTests();
     this.getQuestions();
   }
@@ -56,7 +56,7 @@ class Admin extends React.Component {
 
     if (conf) {
       return deleteData(`deleteobj/${obj}/${name}`)
-              .then(rep => this.getData())
+              .then(rep => this.getTestData())
               .catch(err => this.setState({ err: true }))
     }
   }
@@ -114,7 +114,10 @@ class Admin extends React.Component {
       data.append('db', db.files[0]);
 
       return postFile('loaddb', data)
-              .then(() => window.alert('Успешно восстановлено!'))
+              .then(() => {
+                window.alert('Успешно восстановлено!');
+                this.getTestData();
+              })
               .catch(window.alert)
               .finally(() => this.setState({ submitting: false }))
     }
@@ -128,7 +131,7 @@ class Admin extends React.Component {
 
     return postData('settings', { settings })
             .then(rep => window.alert('Успешно сохранено!'))
-            .catch(err => window.alert(err))
+            .catch(window.alert)
             .finally(() => this.setState({ submitting: false }))
   }
 

@@ -23,9 +23,9 @@ module.exports.slideStorage = {
 
 module.exports.dbStorage = {
   destination: function (req, file, cb) {
-    cb(null, 'dump')
+    cb(null, 'restore')
   },
   filename: function (req, file, cb) {
-    cb(null, `db.json`)
+    cb(null, 'db.json')
   }
 }

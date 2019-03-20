@@ -1,5 +1,6 @@
 const db = require('./dbqueries');
-const { sizeOf, getSettingsQueryArray } = require('./helpers');
+const { dropTestData } = require('./models');
+const { sizeOf, getSettingsQueryArray, restoreTestdata } = require('./helpers');
 const AuthService = require('./authservice');
 const authService = new AuthService();
 
@@ -89,4 +90,8 @@ module.exports.settings = function (req, res) {
 
 module.exports.loadDb = function (req, res) {
   // TODO - readFile 'dump/db.json', drop DB and parse fieds to DB
+  dropTestData()
+  .then(restoreTestdata)
+  .then(() => res.json({ success: true }))
+  .catch(err => res.status(500).json(err.message));
 };
