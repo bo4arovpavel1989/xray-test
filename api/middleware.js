@@ -49,4 +49,7 @@ module.exports.uploadSlide = uploadSlide.fields([
 
 const uploadDb = multer({ storage: multer.diskStorage(dbStorage) });
 
-module.exports.uploadDb = uploadDb.single('db')
+module.exports.uploadDb = uploadDb.fields([
+  { name: 'tests' },
+  { name: 'questions' }
+]);

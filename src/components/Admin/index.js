@@ -108,10 +108,12 @@ class Admin extends React.Component {
     if (sure) {
       this.setState({ submitting: true })
 
-      const db = document.querySelector('input[name="db"]');
+      const questions = document.querySelector('input[type="file"][name="questions"]');
+      const tests = document.querySelector('input[type="file"][name="tests"]');
       const data = new FormData();
 
-      data.append('db', db.files[0]);
+      data.append('questions', questions.files[0]);
+      data.append('tests', tests.files[0]);
 
       return postFile('loaddb', data)
               .then(() => {
@@ -148,7 +150,12 @@ class Admin extends React.Component {
           <div>
             <button disabled={submitting} className='menuButton small' onClick={this.saveDb}>Сохранить базу</button>
             <form onSubmit={this.handleDbRecovery}>
-              <input type='file' name='db' accept='.json'/>
+              <label> Выберите JSON файл с вопросами &emsp;
+                <input type='file' name='questions' accept='.json' required/>
+              </label><br/>
+              <label> Выберите JSON файл с тестами &emsp;
+                <input type='file' name='tests' accept='.json' required/>
+              </label><br/>
               <input disabled={submitting} type='submit' value='Восстановить базу'/>
             </form>
           </div>

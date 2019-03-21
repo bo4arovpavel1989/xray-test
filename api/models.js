@@ -50,6 +50,6 @@ module.exports.dropTestData = function () {
       mongoose.connection.dropCollection('questions')
     ])
     .then(resolve)
-    .catch(reject)
+    .catch(resolve)
   })
 }

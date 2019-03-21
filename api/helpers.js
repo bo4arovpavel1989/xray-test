@@ -47,25 +47,32 @@ module.exports.getSettingsQueryArray = getSettingsQueryArray;
 
 /**
   * Function creates read stream of json file and saves every entry to db collection
-  * @param {String} file - path to file
   * @param {String} collection - name of collection
+  * @param {String} file - path to file
   * @returns {Promise} representing operation status
   */
-const restoreCollection = function (file, collection) {
+const restoreCollection = function (collection, file) {
   return new Promise((resolve, reject) => {
-    fs.createReadStream(file)
-     .pipe(split())
-     .on('data', function (line) {
-       try {
-         const entry = JSON.parse(line);
+    const stream = fs.createReadStream(file);
 
-         db.create(collection, entry)
-           .then(resolve)
-           .catch(reject)
-       } catch (e) {
-         reject(e)
-       }
-     })
+    stream.pipe(split())
+       .on('data', function (line) {
+         try {
+           const entry = JSON.parse(line);
+
+           stream.pause();
+
+           db.create(collection, entry)
+             .then(() => {
+               if (stream) stream.resume()
+             })
+             .catch(reject)
+         } catch (e) {
+           console.log(e)
+           reject(e)
+         }
+       })
+       .on('end', resolve)
   })
 }
 

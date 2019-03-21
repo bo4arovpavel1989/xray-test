@@ -26,6 +26,6 @@ module.exports.dbStorage = {
     cb(null, 'restore')
   },
   filename: function (req, file, cb) {
-    cb(null, 'db.json')
+    cb(null, `${file.fieldname}.json`)
   }
 }

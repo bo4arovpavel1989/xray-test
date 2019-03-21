@@ -89,9 +89,8 @@ module.exports.settings = function (req, res) {
 };
 
 module.exports.loadDb = function (req, res) {
-  // TODO - readFile 'dump/db.json', drop DB and parse fieds to DB
   dropTestData()
   .then(restoreTestdata)
   .then(() => res.json({ success: true }))
-  .catch(err => res.status(500).json(err.message));
+  .catch(err => {console.log(err);res.status(500).json(err.message)});
 };
