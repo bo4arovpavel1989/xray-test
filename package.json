@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bo4arovpavel1989/xray-test#readme",
   "dependencies": {
+    "downloadjs": "^1.4.7",
     "image-size": "^0.7.2",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.3",

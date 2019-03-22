@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { getData, deleteData, postData, postFile } from './../../actions'
+import { getData, deleteData, postData, postFile, downloadFile } from './../../actions'
 
 class Admin extends React.Component {
   constructor () {
@@ -95,7 +95,10 @@ class Admin extends React.Component {
     this.setState({ submitting: true })
 
     return getData('savedb')
-            .then(() => window.alert('Успешно сохранено!'))
+            .then(() => {
+              downloadFile('download_dump/tests.json');
+              downloadFile('download_dump/questions.json');
+            })
             .catch(window.alert)
             .finally(() => this.setState({ submitting: false }))
   }

@@ -33,6 +33,11 @@ const getRequests = [
     url: '/savedb',
     middleware: middleware.checkAccess,
     callback: getReq.saveDb
+  },
+  {
+    url: '/download_dump/:file',
+    middleware: middleware.checkAccess,
+    callback: getReq.downloadDump
   }
 ]
 

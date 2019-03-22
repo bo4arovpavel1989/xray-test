@@ -1,5 +1,6 @@
 const db = require('./dbqueries');
 const fs = require('fs');
+const path = require('path');
 
 module.exports.tests = function (req, res) {
   db.find('Test')
@@ -43,3 +44,13 @@ module.exports.saveDb = function (req, res) {
   ]).then(rep => res.json({ success: true }))
     .catch(err => res.status(500).send(err.message))
 }
+
+module.exports.downloadDump = function (req, res) {
+  const { file } = req.params;
+  const filename = path.join(__dirname, 'dump', file);
+
+  fs.Stats.isFile(filename, (is) => {
+    if (is) res.download(filename)
+    else res.status(404).end()
+  })
+};

@@ -1,3 +1,4 @@
+import download from 'downloadjs';
 import { API_URL, defaultFetch, fileFetch } from './config'
 import { handleResponse } from './helpers'
 
@@ -37,4 +38,10 @@ const postFile = function (url, data) {
   })
 }
 
-export { postData, getData, postFile, deleteData }
+const downloadFile = function (url) {
+  return getData(url)
+          .then(res => res.blob())
+          .then(blob => download(blob));
+}
+
+export { postData, getData, postFile, deleteData, downloadFile }
