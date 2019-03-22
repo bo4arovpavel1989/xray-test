@@ -37,7 +37,7 @@ module.exports.checkAccess = function (req, res, next) {
       if (rep) next()
       else res.status(403).json({ forbidden: true })
     })
-    .catch(err => res.status(500).json({ err }))
+    .catch(err => res.status(500).json({ err: err.message }))
 };
 
 const uploadSlide = multer({ storage: multer.diskStorage(slideStorage) });

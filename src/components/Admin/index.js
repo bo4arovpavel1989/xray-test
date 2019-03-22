@@ -96,8 +96,9 @@ class Admin extends React.Component {
 
     return getData('savedb')
             .then(() => {
-              downloadFile('download_dump/tests.json');
-              downloadFile('download_dump/questions.json');
+              // Added timeout, otherwise firefox downloads only 1 file
+              downloadFile('download_dump/tests.json', 'tests.json');
+              setTimeout(downloadFile.bind(null, 'download_dump/questions.json', 'questions.json'), 100);
             })
             .catch(window.alert)
             .finally(() => this.setState({ submitting: false }))
@@ -108,24 +109,24 @@ class Admin extends React.Component {
 
     let sure = window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
 
-    if (sure) {
-      this.setState({ submitting: true })
+    if (!sure) return;
 
-      const questions = document.querySelector('input[type="file"][name="questions"]');
-      const tests = document.querySelector('input[type="file"][name="tests"]');
-      const data = new FormData();
+    this.setState({ submitting: true })
 
-      data.append('questions', questions.files[0]);
-      data.append('tests', tests.files[0]);
+    const questions = document.querySelector('input[type="file"][name="questions"]');
+    const tests = document.querySelector('input[type="file"][name="tests"]');
+    const data = new FormData();
 
-      return postFile('loaddb', data)
-              .then(() => {
-                window.alert('Успешно восстановлено!');
-                this.getTestData();
-              })
-              .catch(window.alert)
-              .finally(() => this.setState({ submitting: false }))
-    }
+    data.append('questions', questions.files[0]);
+    data.append('tests', tests.files[0]);
+
+    return postFile('loaddb', data)
+            .then(() => {
+              window.alert('Успешно восстановлено!');
+              this.getTestData();
+            })
+            .catch(window.alert)
+            .finally(() => this.setState({ submitting: false }))
   }
 
   handleSubmit (e) {

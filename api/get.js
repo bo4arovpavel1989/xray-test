@@ -42,15 +42,16 @@ module.exports.saveDb = function (req, res) {
     db.findAndStream('Test', fs.createWriteStream('dump/tests.json'), {}, '-_id'),
     db.findAndStream('Question', fs.createWriteStream('dump/questions.json'), {}, '-_id')
   ]).then(rep => res.json({ success: true }))
-    .catch(err => res.status(500).send(err.message))
+    .catch(err => res.status(500).json({ err: err.message }))
 }
 
 module.exports.downloadDump = function (req, res) {
   const { file } = req.params;
-  const filename = path.join(__dirname, 'dump', file);
+  const filename = path.join(__dirname, '../dump', file);
 
-  fs.Stats.isFile(filename, (is) => {
-    if (is) res.download(filename)
+  fs.stat(filename, (err, stats) => {
+    if (err) return res.status(500).json({ err: err.message })
+    else if (stats.isFile()) res.download(filename)
     else res.status(404).end()
-  })
+  });
 };

@@ -28,3 +28,13 @@ export const fileFetch = function (body) {
       }
     }
 }
+
+export const downLoadFetch = function () {
+  return {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'token': getToken()
+    }
+  }
+}
