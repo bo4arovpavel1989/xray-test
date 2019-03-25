@@ -1,0 +1,2 @@
+2019-03-25 09:27:05 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-03-25 09:27:05 - Started 325864
