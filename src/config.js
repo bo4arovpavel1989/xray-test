@@ -1,6 +1,6 @@
 import { getToken } from './helpers'
 
-export const API_URL = 'http://localhost:3001'
+export const API_URL = 'http://localhost:9245'
 
 export const defaultFetch = function (method = 'GET', body) {
   const configFetch = {

@@ -92,5 +92,5 @@ module.exports.loadDb = function (req, res) {
   dropTestData()
   .then(restoreTestdata)
   .then(() => res.json({ success: true }))
-  .catch(err => {console.log(err);res.status(500).json(err.message)});
+  .catch(err => res.status(500).json(err.message));
 };

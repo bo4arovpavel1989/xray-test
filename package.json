@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/bo4arovpavel1989/xray-test/issues"
   },
-  "homepage": "https://github.com/bo4arovpavel1989/xray-test#readme",
+  "homepage": "/",
   "dependencies": {
     "downloadjs": "^1.4.7",
     "image-size": "^0.7.2",
