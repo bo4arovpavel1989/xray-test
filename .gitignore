@@ -15,3 +15,4 @@ api/credentials.js
 public/images/
 dist/images
 daemon/*.log
+build
