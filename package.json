@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
@@ -32,6 +32,9 @@
     "split2": "^3.1.1"
   },
   "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "react-scripts": "^2.1.8",
     "react-scripts-sass": "^1.1.3"
   },
