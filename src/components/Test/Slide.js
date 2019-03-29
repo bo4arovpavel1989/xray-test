@@ -69,6 +69,7 @@ class Slide extends React.PureComponent {
       question,
       comment: comments.right,
       answered: false,
+      slideShowed:true,
       warningShowed: false,
       result: 0
     }, this.prepareCanvas);
