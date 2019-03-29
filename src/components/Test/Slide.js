@@ -109,9 +109,7 @@ class Slide extends React.PureComponent {
    */
   animateSlideShow () {
     return new Promise((resolve, reject) => {
-        // 3s - time of animation. then timer starts and user can click
-        this.setState({ slideShowed: true })
-        this.setTimer(() => resolve(), 3000)
+        this.getCanvasBackground().addEventListener('animationend', resolve);
     });
   }
 
