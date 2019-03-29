@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component Header logged in should fit snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Header)
+      authFail={false}
+      isAdmin={true}
+      login={[Function]}
+      logoff={[MockFunction]}
+    >
+      <Route>
+        <Header
+          authFail={false}
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          isAdmin={true}
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          login={[Function]}
+          logoff={[MockFunction]}
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <div
+            className="headerArea"
+          >
+            <Link
+              className="header"
+              replace={false}
+              to="/"
+            >
+              <a
+                className="header"
+                href="/"
+                onClick={[Function]}
+              >
+                <h1>
+                  XRay-test
+                </h1>
+              </a>
+            </Link>
+            <div
+              className="loginArea"
+            >
+              Вход выполнен
+              <a
+                className="logoff"
+                onClick={[MockFunction]}
+              >
+                Выйти
+              </a>
+            </div>
+          </div>
+        </Header>
+      </Route>
+    </withRouter(Header)>
+  </Router>
+</BrowserRouter>
+`;
+
+exports[`Header component Header snapshot should fit snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Header)
+      authFail={false}
+      isAdmin={false}
+      login={[Function]}
+      logoff={[Function]}
+    >
+      <Route>
+        <Header
+          authFail={false}
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          isAdmin={false}
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          login={[Function]}
+          logoff={[Function]}
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <div
+            className="headerArea"
+          >
+            <Link
+              className="header"
+              replace={false}
+              to="/"
+            >
+              <a
+                className="header"
+                href="/"
+                onClick={[Function]}
+              >
+                <h1>
+                  XRay-test
+                </h1>
+              </a>
+            </Link>
+            <withRouter(Login)
+              authFail={false}
+              login={[Function]}
+            >
+              <Route>
+                <Login
+                  authFail={false}
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  login={[Function]}
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                >
+                  <form
+                    className="loginForm"
+                    onSubmit={[Function]}
+                  >
+                    <span>
+                      <input
+                        name="login"
+                        placeholder="login"
+                        type="login"
+                      />
+                      <input
+                        name="password"
+                        placeholder="password"
+                        type="password"
+                      />
+                    </span>
+                    <span>
+                      <input
+                        type="submit"
+                        value="Войти"
+                      />
+                    </span>
+                  </form>
+                </Login>
+              </Route>
+            </withRouter(Login)>
+          </div>
+        </Header>
+      </Route>
+    </withRouter(Header)>
+  </Router>
+</BrowserRouter>
+`;
