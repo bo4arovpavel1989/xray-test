@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should render corect when logging failed 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Login)
+      authFail={true}
+      isLogging={false}
+      login={[MockFunction]}
+    >
+      <Route>
+        <Login
+          authFail={true}
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          isLogging={false}
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          login={[MockFunction]}
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <form
+            className="loginForm"
+            onSubmit={[MockFunction]}
+          >
+            <div
+              className="authFailMessage"
+            >
+              Неверное имя пользователя или пароль!
+            </div>
+            <span>
+              <input
+                name="login"
+                placeholder="login"
+                type="login"
+              />
+              <input
+                name="password"
+                placeholder="password"
+                type="password"
+              />
+            </span>
+            <span>
+              <input
+                disabled={false}
+                type="submit"
+                value="Войти"
+              />
+            </span>
+          </form>
+        </Login>
+      </Route>
+    </withRouter(Login)>
+  </Router>
+</BrowserRouter>
+`;
+
+exports[`Login component should render correct 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Login)
+      authFail={false}
+      isLogging={false}
+      login={[MockFunction]}
+    >
+      <Route>
+        <Login
+          authFail={false}
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          isLogging={false}
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          login={[MockFunction]}
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <form
+            className="loginForm"
+            onSubmit={[MockFunction]}
+          >
+            <span>
+              <input
+                name="login"
+                placeholder="login"
+                type="login"
+              />
+              <input
+                name="password"
+                placeholder="password"
+                type="password"
+              />
+            </span>
+            <span>
+              <input
+                disabled={false}
+                type="submit"
+                value="Войти"
+              />
+            </span>
+          </form>
+        </Login>
+      </Route>
+    </withRouter(Login)>
+  </Router>
+</BrowserRouter>
+`;
+
+exports[`Login component should render disable submit when logging 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Login)
+      authFail={false}
+      isLogging={true}
+      login={[MockFunction]}
+    >
+      <Route>
+        <Login
+          authFail={false}
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          isLogging={true}
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          login={[MockFunction]}
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <form
+            className="loginForm"
+            onSubmit={[MockFunction]}
+          >
+            <span>
+              <input
+                name="login"
+                placeholder="login"
+                type="login"
+              />
+              <input
+                name="password"
+                placeholder="password"
+                type="password"
+              />
+            </span>
+            <span>
+              <input
+                disabled={true}
+                type="submit"
+                value="Войти"
+              />
+            </span>
+          </form>
+        </Login>
+      </Route>
+    </withRouter(Login)>
+  </Router>
+</BrowserRouter>
+`;
