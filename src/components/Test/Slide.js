@@ -69,7 +69,6 @@ class Slide extends React.PureComponent {
       question,
       comment: comments.right,
       answered: false,
-      slideShowed: true,
       warningShowed: false,
       result: 0
     }, this.prepareCanvas);
@@ -111,6 +110,7 @@ class Slide extends React.PureComponent {
   animateSlideShow () {
     return new Promise((resolve, reject) => {
         // 3s - time of animation. then timer starts and user can click
+        this.setState({ slideShowed: true })
         this.setTimer(() => resolve(), 3000)
     });
   }
