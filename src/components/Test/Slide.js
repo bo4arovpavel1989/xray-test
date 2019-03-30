@@ -110,7 +110,12 @@ class Slide extends React.PureComponent {
    */
   animateSlideShow () {
     return new Promise((resolve, reject) => {
-        this.getCanvasBackground().addEventListener('animationend', resolve);
+        const bg = this.getCanvasBackground();
+        const dl = this.getCanvasDraw();
+
+        // If slide was loading too long and animation is over now
+        if (bg.offsetLeft === dl.offsetLeft) resolve();
+        else this.getCanvasBackground().addEventListener('animationend', resolve);
     });
   }
 
