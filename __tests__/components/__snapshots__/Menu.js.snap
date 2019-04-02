@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu component should render correct 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Menu)>
+      <Route>
+        <Menu
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <div
+            className="container"
+          >
+            <div
+              className="menuItem"
+            >
+              <Link
+                className="menuButton"
+                replace={false}
+                to="/test"
+              >
+                <a
+                  className="menuButton"
+                  href="/test"
+                  onClick={[Function]}
+                >
+                  Начать тест
+                </a>
+              </Link>
+            </div>
+            <div
+              className="menuItem"
+            >
+              <Link
+                className="menuButton"
+                replace={false}
+                to="/admin"
+              >
+                <a
+                  className="menuButton"
+                  href="/admin"
+                  onClick={[Function]}
+                >
+                  Настройки
+                </a>
+              </Link>
+            </div>
+          </div>
+        </Menu>
+      </Route>
+    </withRouter(Menu)>
+  </Router>
+</BrowserRouter>
+`;
