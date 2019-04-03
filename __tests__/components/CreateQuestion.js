@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import App from '../../src/components/App';
+import CreateQuestion from '../../src/components/CreateQuestion';
 import Enzyme, { render } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('App', () => {
+describe('CreateQuestion component', () => {
   it('should render correct', () => {
-      const app = render(
-        <App/>
+      const component = render(
+        <BrowserRouter>
+          <CreateQuestion/>
+        </BrowserRouter>
       );
 
-      expect(shallowToJson(app)).toMatchSnapshot()
+      expect(shallowToJson(component)).toMatchSnapshot()
   })
 })

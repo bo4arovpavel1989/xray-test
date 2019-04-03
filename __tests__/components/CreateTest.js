@@ -1,0 +1,20 @@
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom'
+import CreateTest from '../../src/components/CreateTest';
+import Enzyme, { mount } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
+describe('CreateTest component', () => {
+  it('should render correct', () => {
+      const component = mount(
+        <BrowserRouter>
+          <CreateTest/>
+        </BrowserRouter>
+      );
+
+      expect(shallowToJson(component)).toMatchSnapshot()
+  })
+})

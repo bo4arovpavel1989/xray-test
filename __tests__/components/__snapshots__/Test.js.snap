@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test component should render correct 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Test)>
+      <Route>
+        <Test
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <div
+            className="container"
+          >
+            <div
+              className="userArea"
+            >
+              <withRouter(User)
+                handleChange={[Function]}
+                handleSubmit={[Function]}
+              >
+                <Route>
+                  <User
+                    handleChange={[Function]}
+                    handleSubmit={[Function]}
+                    history={
+                      Object {
+                        "action": "POP",
+                        "block": [Function],
+                        "createHref": [Function],
+                        "go": [Function],
+                        "goBack": [Function],
+                        "goForward": [Function],
+                        "length": 1,
+                        "listen": [Function],
+                        "location": Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        },
+                        "push": [Function],
+                        "replace": [Function],
+                      }
+                    }
+                    location={
+                      Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      }
+                    }
+                    match={
+                      Object {
+                        "isExact": true,
+                        "params": Object {},
+                        "path": "/",
+                        "url": "/",
+                      }
+                    }
+                  >
+                    <div>
+                      <div
+                        className="paranja"
+                      />
+                      <div
+                        className="userLoginArea"
+                      >
+                        <form
+                          className="userLogin"
+                          onSubmit={[Function]}
+                        >
+                          <div>
+                            <span>
+                              <label>
+                                Ваше имя:  
+                                <input
+                                  id="user"
+                                  onChange={[Function]}
+                                  required={true}
+                                  type="text"
+                                />
+                              </label>
+                            </span>
+                            <span>
+                              <input
+                                type="submit"
+                                value="Начать тест"
+                              />
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </User>
+                </Route>
+              </withRouter(User)>
+            </div>
+          </div>
+        </Test>
+      </Route>
+    </withRouter(Test)>
+  </Router>
+</BrowserRouter>
+`;
