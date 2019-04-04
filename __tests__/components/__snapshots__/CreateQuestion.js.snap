@@ -1,3 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateQuestion component should render correct 1`] = `null`;
+exports[`CreateQuestion component should render correct should fit shapshot 1`] = `
+<CreateQuestion
+  drawer={
+    Object {
+      "clearZones": [MockFunction],
+      "getZones": [MockFunction],
+      "reset": [MockFunction],
+      "start": [MockFunction],
+    }
+  }
+>
+  <div
+    className="container"
+  >
+    <div
+      className="formArea"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Вопрос:  
+            <input
+              id="name"
+              name="name"
+              onChange={[Function]}
+              pattern="[0-9]+_[0-9]+"
+              placeholder="№ Теста_№ вопроса"
+              required={true}
+              type="text"
+              value=""
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Загрузите слайд:  
+            <input
+              name="slide"
+              required={true}
+              type="file"
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Багаж опасен?  
+            <select
+              id="isDanger"
+              onChange={[Function]}
+              value="1"
+            >
+              <option
+                value="1"
+              >
+                Да
+              </option>
+              <option
+                value="0"
+              >
+                нет
+              </option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Загрузите фото:  
+            <input
+              name="photo"
+              required={true}
+              type="file"
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            disabled={false}
+            type="submit"
+            value="Продолжить"
+          />
+        </div>
+      </form>
+    </div>
+    <div>
+      <div
+        className="canvasControls"
+      >
+        <button
+          className="danger"
+          onClick={[Function]}
+        >
+          Очистить
+        </button>
+        <button
+          className="success"
+          disabled={true}
+          onClick={[Function]}
+        >
+          Сохранить
+        </button>
+      </div>
+      <div
+        className="createQuestion canvasArea"
+      >
+        <canvas
+          id="canvasBackground"
+        />
+        <canvas
+          id="canvasDrawArea"
+        />
+      </div>
+    </div>
+  </div>
+</CreateQuestion>
+`;

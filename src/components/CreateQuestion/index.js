@@ -29,7 +29,7 @@ class CreateQuestion extends React.Component {
     const canvasBackground = '#canvasBackground';
     this.setState({ canvasBackground, canvasDraw })
 
-    this.drawer = new Drawer(document.querySelector(canvasDraw));
+    this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
     this.checkIfQuestionCreated()
   }
 
@@ -61,7 +61,7 @@ class CreateQuestion extends React.Component {
    * @return {Function} - fetch to API for question data
    */
   checkIfQuestionCreated () {
-    if (this.props.location.search.length > 0) {
+    if (this.props.location && this.props.location.search.length > 0) {
       const query = new URLSearchParams(this.props.location.search);
       const question = query.get('question');
 
@@ -301,3 +301,4 @@ class CreateQuestion extends React.Component {
 }
 
 export default withRouter(CreateQuestion)
+export { CreateQuestion };
