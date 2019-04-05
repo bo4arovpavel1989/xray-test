@@ -92,7 +92,7 @@ class CreateQuestion extends React.Component {
   uploadPhotos (e) {
     e.preventDefault();
 
-    const data = this.handleFormData();
+    let data; // = this.handleFormData();
 
     this.setState({ loading: true });
     postFile('preupload', data)

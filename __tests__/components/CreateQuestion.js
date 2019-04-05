@@ -44,18 +44,12 @@ describe('CreateQuestion component', () => {
   })
 
 
-  describe('should update state on input change', () => {
-    //  component.setState(initialState)
+  describe('should update state on #name input change', () => {
       beforeEach(() => {
         component.find('input#name').simulate('change', {
-          currentTarget: {
-            value: 'name'
-          }
-        });
-
-        component.find('#isDanger').simulate('change', {
-          currentTarget: {
-            value: '1'
+          target: {
+            value: 'name',
+            id: 'name'
           }
         });
       })
@@ -63,20 +57,38 @@ describe('CreateQuestion component', () => {
       it('should update name', () => {
         expect(component.state().name).toEqual('name')
       });
+  })
+
+  describe('should update state on #isDanger input change', () => {
+      beforeEach(() => {
+        component.find('#isDanger').simulate('change', {
+          target: {
+            value: '0',
+            id: 'isDanger'
+          }
+        });
+      })
 
       it('should update isDanger', () => {
-        expect(component.state().isDanger).toEqual('1')
+        expect(component.state().isDanger).toEqual('0')
       })
   })
-/*
-  it('should submit images', () => {
-      const component = mount(
-        <BrowserRouter>
-          <CreateQuestion { ...props }/>
-        </BrowserRouter>
-      );
+
+  describe('should submit images', () => {
+      window.postFile = jest.fn();
       component.handleFormData = jest.fn();
       component.find('.formArea form').simulate('submit');
-      expect(component.state().loading).toEqual(true);
-  })*/
+
+      it ('should set state loading true', () => {
+        expect(component.state().loading).toEqual(true);
+      })
+
+      it ('should handle form data', () => {
+        expect(component.handleFormData).toHaveBeenCalledTimes(1)
+      })
+
+      it ('should call postFile helper function', () => {
+        expect(window.postFile).toHaveBeenCalledTimes(1)
+      })
+  })
 })
