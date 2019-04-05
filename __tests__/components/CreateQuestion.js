@@ -9,6 +9,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('CreateQuestion component', () => {
   const props = {
+    postFile: jest.fn(() => new Promise((res, rej) => res({ type: 'mockJPG' }))),
+    handleFormData: {},
     drawer: {
       reset: jest.fn(),
       start: jest.fn(),
@@ -54,6 +56,10 @@ describe('CreateQuestion component', () => {
         });
       })
 
+      afterEach(() => {
+        component.setState(initialState)
+      })
+
       it('should update name', () => {
         expect(component.state().name).toEqual('name')
       });
@@ -69,26 +75,26 @@ describe('CreateQuestion component', () => {
         });
       })
 
+      afterEach(() => {
+        component.setState(initialState)
+      })
+
       it('should update isDanger', () => {
         expect(component.state().isDanger).toEqual('0')
       })
   })
 
   describe('should submit images', () => {
-      window.postFile = jest.fn();
-      component.handleFormData = jest.fn();
-      component.find('.formArea form').simulate('submit');
+      beforeAll(() => {
+        component.find('.formArea form').simulate('submit');
+      })
 
       it ('should set state loading true', () => {
         expect(component.state().loading).toEqual(true);
       })
 
-      it ('should handle form data', () => {
-        expect(component.handleFormData).toHaveBeenCalledTimes(1)
-      })
-
       it ('should call postFile helper function', () => {
-        expect(window.postFile).toHaveBeenCalledTimes(1)
+        expect(props.postFile).toHaveBeenCalledTimes(1)
       })
   })
 })

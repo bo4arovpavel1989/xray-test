@@ -30,6 +30,7 @@ class CreateQuestion extends React.Component {
     this.setState({ canvasBackground, canvasDraw })
 
     this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
+    this.postFile = this.props.postFile || postFile;
     this.checkIfQuestionCreated()
   }
 
@@ -92,22 +93,30 @@ class CreateQuestion extends React.Component {
   uploadPhotos (e) {
     e.preventDefault();
 
-    let data; // = this.handleFormData();
+    const data = this.props.handleFormData || this.handleFormData();
 
     this.setState({ loading: true });
-    postFile('preupload', data)
-      .then(rep => {
-        const { name } = this.state;
-        const imgPath = `/images/${name}_slide.${rep.type}`;
-        this.drawer.reset();
 
-        this.setState({
-          imgPath: imgPath,
-          dimensions: rep
-        }, this.prepareCanvas)
-      })
+    this.postFile('preupload', data)
+      .then(this.handleUpload)
       .catch(err => window.alert(err))
-      .finally(() => this.setState({ loading: false }));
+      .finally(() => this.setState());
+  }
+
+  /**
+    * Method takes response form API and set state for canvas drawing
+    * @param {Object} rep - reply from API
+    * @retusn {void}
+    */
+  handleUpload (rep) {
+    const { name } = this.state;
+    const imgPath = `/images/${name}_slide.${rep.type}`;
+    this.drawer.reset();
+
+    this.setState({
+      imgPath: imgPath,
+      dimensions: rep
+    }, this.prepareCanvas)
   }
 
   /**
