@@ -8,14 +8,18 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('CreateQuestion component', () => {
+  window.alert = jest.fn();
+
   const props = {
     postFile: jest.fn(() => new Promise((res, rej) => res({ type: 'mockJPG' }))),
+    postData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     handleFormData: {},
     drawer: {
       reset: jest.fn(),
       start: jest.fn(),
       clearZones: jest.fn(),
-      getZones: jest.fn()
+      // return mock danger zones
+      getZones: jest.fn( () => [[0, 0, 10, 10]] )
     }
   }
 
@@ -94,7 +98,45 @@ describe('CreateQuestion component', () => {
       })
 
       it ('should call postFile helper function', () => {
-        expect(props.postFile).toHaveBeenCalledTimes(1)
+        expect(props.postFile).toBeCalledWith('preupload', props.handleFormData)
+      })
+  })
+
+  describe('should clear canvas on clear button click', () => {
+      beforeAll(() => {
+        component.find('.danger').simulate('click');
+      })
+
+      it ('should call drawer.clearZones', () => {
+        expect(props.drawer.clearZones).toHaveBeenCalledTimes(1)
+      })
+  })
+
+  describe('should perform save question on save button click', () => {
+      beforeAll(() => {
+        component.setState({ name: 'name' }, () => {
+          component.find('.canvasControls .success').simulate('click')
+        })
+      })
+
+      afterAll(() => {
+        component.setState(initialState)
+      })
+
+      it ('should set state loading true', () => {
+        expect(component.state().loading).toEqual(true);
+      })
+
+      it ('should alert success', () => {
+        expect(window.alert).toBeCalledWith('Успешно сохранено!')
+      })
+
+      it ('should call drawer.getZones', () => {
+        expect(props.drawer.getZones).toHaveBeenCalledTimes(1)
+      })
+
+      it ('should call postData', () => {
+        expect(props.postData).toHaveBeenCalledTimes(1)
       })
   })
 })

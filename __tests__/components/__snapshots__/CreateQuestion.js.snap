@@ -11,6 +11,7 @@ exports[`CreateQuestion component should render correct should fit shapshot 1`] 
     }
   }
   handleFormData={Object {}}
+  postData={[MockFunction]}
   postFile={[MockFunction]}
 >
   <div

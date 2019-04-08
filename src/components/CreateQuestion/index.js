@@ -20,6 +20,7 @@ class CreateQuestion extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.uploadPhotos = this.uploadPhotos.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.saveQuestion = this.saveQuestion.bind(this);
   }
@@ -31,6 +32,7 @@ class CreateQuestion extends React.Component {
 
     this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
     this.postFile = this.props.postFile || postFile;
+    this.postData = this.props.postData || postData;
     this.checkIfQuestionCreated()
   }
 
@@ -98,9 +100,9 @@ class CreateQuestion extends React.Component {
     this.setState({ loading: true });
 
     this.postFile('preupload', data)
-      .then(this.handleUpload)
-      .catch(err => window.alert(err))
-      .finally(() => this.setState());
+        .then(this.handleUpload)
+        .catch(err => window.alert(err))
+        .finally(() => this.setState());
   }
 
   /**
@@ -224,10 +226,10 @@ class CreateQuestion extends React.Component {
 
      this.setState({ loading: true });
 
-     return postData('savequestion', question)
-              .then(rep => window.alert('Успешно сохранено!'))
-              .catch(err => window.alert(err))
-              .finally(() => this.setState({ loading: false }))
+     return this.postData('savequestion', question)
+                .then(rep => window.alert('Успешно сохранено!'))
+                .catch(window.alert)
+                .finally(() => this.setState({ loading: false }))
   }
 
   render () {
