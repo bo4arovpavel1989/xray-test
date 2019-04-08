@@ -20,6 +20,7 @@ class CreateQuestion extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.uploadPhotos = this.uploadPhotos.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.saveQuestion = this.saveQuestion.bind(this);
   }
@@ -95,11 +96,12 @@ class CreateQuestion extends React.Component {
     e.preventDefault();
 
     const data = this.props.handleFormData || this.handleFormData();
+    const handleUpload = this.props.handleUpload || this.handleUpload;
 
     this.setState({ loading: true });
 
     this.postFile('preupload', data)
-      .then(this.handleUpload)
+      .then(handleUpload)
       .catch(err => window.alert(err))
       .finally(() => this.setState({ loading: false }));
   }

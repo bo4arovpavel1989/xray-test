@@ -14,6 +14,7 @@ describe('CreateQuestion component', () => {
     postFile: jest.fn(() => new Promise((res, rej) => res({ type: 'mockJPG' }))),
     postData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     handleFormData: {},
+    handleUpload: jest.fn(),
     drawer: {
       reset: jest.fn(),
       start: jest.fn(),
@@ -98,6 +99,10 @@ describe('CreateQuestion component', () => {
 
       it ('should call postFile helper function', () => {
         expect(props.postFile).toHaveBeenCalledWith('preupload', props.handleFormData)
+      })
+
+      it ('should call handleUpload function', () => {
+        expect(props.handleUpload).toHaveBeenCalledTimes(1)
       })
   })
 
