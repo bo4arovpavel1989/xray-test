@@ -18,8 +18,7 @@ describe('CreateQuestion component', () => {
       reset: jest.fn(),
       start: jest.fn(),
       clearZones: jest.fn(),
-      // return mock danger zones
-      getZones: jest.fn( () => [[0, 0, 10, 10]] )
+      getZones: jest.fn(() => [[0, 0, 100, 100]])
     }
   }
 
@@ -93,22 +92,12 @@ describe('CreateQuestion component', () => {
         component.find('.formArea form').simulate('submit');
       })
 
-      it ('should set state loading true', () => {
-        expect(component.state().loading).toEqual(true);
+      afterAll(() => {
+        component.setState(initialState)
       })
 
       it ('should call postFile helper function', () => {
-        expect(props.postFile).toBeCalledWith('preupload', props.handleFormData)
-      })
-  })
-
-  describe('should clear canvas on clear button click', () => {
-      beforeAll(() => {
-        component.find('.danger').simulate('click');
-      })
-
-      it ('should call drawer.clearZones', () => {
-        expect(props.drawer.clearZones).toHaveBeenCalledTimes(1)
+        expect(props.postFile).toHaveBeenCalledWith('preupload', props.handleFormData)
       })
   })
 
@@ -123,9 +112,13 @@ describe('CreateQuestion component', () => {
         component.setState(initialState)
       })
 
-      it ('should set state loading true', () => {
-        expect(component.state().loading).toEqual(true);
-      })
+      const mockQuestionObject = {
+        dangerZones: [[0, 0, 100, 100]],
+        imgPath: '',
+        dimensions: { width: 0, height: 0 },
+        name: 'name',
+        isDanger: '1'
+      }
 
       it ('should alert success', () => {
         expect(window.alert).toBeCalledWith('Успешно сохранено!')
@@ -136,7 +129,7 @@ describe('CreateQuestion component', () => {
       })
 
       it ('should call postData', () => {
-        expect(props.postData).toHaveBeenCalledTimes(1)
+        expect(props.postData).toHaveBeenCalledWith('savequestion', mockQuestionObject)
       })
-  })
+})
 })
