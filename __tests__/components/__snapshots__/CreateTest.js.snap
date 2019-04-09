@@ -1,104 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateTest component should render correct 1`] = `
-<BrowserRouter>
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "createHref": [Function],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "pathname": "/",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
+<CreateTest
+  postData={[MockFunction]}
+>
+  <div
+    className="container"
   >
-    <withRouter(CreateTest)>
-      <Route>
-        <CreateTest
-          history={
-            Object {
-              "action": "POP",
-              "block": [Function],
-              "createHref": [Function],
-              "go": [Function],
-              "goBack": [Function],
-              "goForward": [Function],
-              "length": 1,
-              "listen": [Function],
-              "location": Object {
-                "hash": "",
-                "pathname": "/",
-                "search": "",
-                "state": undefined,
-              },
-              "push": [Function],
-              "replace": [Function],
-            }
-          }
-          location={
-            Object {
-              "hash": "",
-              "pathname": "/",
-              "search": "",
-              "state": undefined,
-            }
-          }
-          match={
-            Object {
-              "isExact": true,
-              "params": Object {},
-              "path": "/",
-              "url": "/",
-            }
-          }
-        >
-          <div
-            className="container"
-          >
-            <div
-              className="formArea"
-            >
-              <form
-                onSubmit={[Function]}
-              >
-                <div>
-                  <span>
-                    <label>
-                      Номер теста:  
-                      <input
-                        id="name"
-                        min="1"
-                        onChange={[Function]}
-                        type="number"
-                      />
-                    </label>
-                  </span>
-                  <span>
-                    <input
-                      disabled={false}
-                      type="submit"
-                      value="Создать"
-                    />
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-        </CreateTest>
-      </Route>
-    </withRouter(CreateTest)>
-  </Router>
-</BrowserRouter>
+    <div
+      className="formArea"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <span>
+            <label>
+              Номер теста:  
+              <input
+                id="name"
+                min="1"
+                onChange={[Function]}
+                type="number"
+              />
+            </label>
+          </span>
+          <span>
+            <input
+              disabled={false}
+              type="submit"
+              value="Создать"
+            />
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</CreateTest>
 `;

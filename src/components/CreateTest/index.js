@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { postData } from './../../actions'
 
 class CreateTest extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       err: false,
@@ -14,6 +14,7 @@ class CreateTest extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.postData = props.postData || postData;
   }
 
   handleSubmit (e) {
@@ -23,10 +24,10 @@ class CreateTest extends React.Component {
 
     this.setState({ loading: true });
 
-    return postData('test', { name })
-            .then(rep => window.alert('Успешно сохранено!'))
-            .catch(err => window.alert(err))
-            .finally(() => this.setState({ loading: false }))
+    return this.postData('test', { name })
+               .then(rep => window.alert('Успешно сохранено!'))
+               .catch(window.alert)
+               .finally(() => this.setState({ loading: false }))
   }
 
   handleChange (e) {
@@ -61,4 +62,5 @@ class CreateTest extends React.Component {
   }
 }
 
-export default withRouter(CreateTest)
+export default withRouter(CreateTest);
+export { CreateTest };
