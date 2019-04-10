@@ -23,15 +23,6 @@ describe('Header component', () => {
     );
 
     it('should fit snapshot', () => expect(shallowToJson(header)).toMatchSnapshot())
-  })
-
-  describe('Header initial', () => {
-    const header = mount(
-      <BrowserRouter>
-        <Header { ...props }/>
-      </BrowserRouter>
-    );
-
     it('should render h1', () => expect(header.find('h1').text()).toEqual('XRay-test'))
     it('should render Login component', () => expect(header.find('Login')).toHaveLength(1))
   })

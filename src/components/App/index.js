@@ -38,8 +38,8 @@ class App extends React.Component {
     this.setState({ isLogging: true })
 
     postData('login', data)
-      .then(rep => this.handleAuth(rep))
-      .catch(err => console.log(err))
+      .then(this.handleAuth)
+      .catch(console.log)
       .finally(() => this.setState({ isLogging: false }))
   }
 

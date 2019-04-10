@@ -1,20 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Admin component should render correct 1`] = `
-<BrowserRouter>
+<MemoryRouter>
   <Router
     history={
       Object {
         "action": "POP",
         "block": [Function],
+        "canGo": [Function],
         "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "2s1vua",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "index": 0,
         "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "2s1vua",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -24,160 +36,155 @@ exports[`Admin component should render correct 1`] = `
       }
     }
   >
-    <withRouter(Admin)>
-      <Route>
-        <Admin
-          history={
+    <Admin
+      deleteData={[MockFunction]}
+      getData={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "settings",
+            ],
+            Array [
+              "tests",
+            ],
+            Array [
+              "questions",
+            ],
+          ],
+          "results": Array [
             Object {
-              "action": "POP",
-              "block": [Function],
-              "createHref": [Function],
-              "go": [Function],
-              "goBack": [Function],
-              "goForward": [Function],
-              "length": 1,
-              "listen": [Function],
-              "location": Object {
-                "hash": "",
-                "pathname": "/",
-                "search": "",
-                "state": undefined,
-              },
-              "push": [Function],
-              "replace": [Function],
-            }
-          }
-          location={
+              "isThrow": false,
+              "value": Promise {},
+            },
             Object {
-              "hash": "",
-              "pathname": "/",
-              "search": "",
-              "state": undefined,
-            }
-          }
-          match={
+              "isThrow": false,
+              "value": Promise {},
+            },
             Object {
-              "isExact": true,
-              "params": Object {},
-              "path": "/",
-              "url": "/",
-            }
-          }
+              "isThrow": false,
+              "value": Promise {},
+            },
+          ],
+        }
+      }
+      postData={[MockFunction]}
+      postFile={[MockFunction]}
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="newTest"
         >
           <div
-            className="container"
+            className="menuItem"
           >
-            <div
-              className="newTest"
+            <Link
+              className="menuButton"
+              replace={false}
+              to="/create/test"
             >
-              <div
-                className="menuItem"
+              <a
+                className="menuButton"
+                href="/create/test"
+                onClick={[Function]}
               >
-                <Link
-                  className="menuButton"
-                  replace={false}
-                  to="/create/test"
-                >
-                  <a
-                    className="menuButton"
-                    href="/create/test"
-                    onClick={[Function]}
-                  >
-                    Создать новый тест
-                  </a>
-                </Link>
-                <Link
-                  className="menuButton"
-                  replace={false}
-                  to="/create/question"
-                >
-                  <a
-                    className="menuButton"
-                    href="/create/question"
-                    onClick={[Function]}
-                  >
-                    Создать новый вопрос
-                  </a>
-                </Link>
-              </div>
-              <div>
-                <button
-                  className="menuButton small"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  Сохранить базу
-                </button>
-                <form
-                  onSubmit={[Function]}
-                >
-                  <label>
-                     Выберите JSON файл с вопросами  
-                    <input
-                      accept=".json"
-                      name="questions"
-                      required={true}
-                      type="file"
-                    />
-                  </label>
-                  <br />
-                  <label>
-                     Выберите JSON файл с тестами  
-                    <input
-                      accept=".json"
-                      name="tests"
-                      required={true}
-                      type="file"
-                    />
-                  </label>
-                  <br />
-                  <input
-                    disabled={false}
-                    type="submit"
-                    value="Восстановить базу"
-                  />
-                </form>
-              </div>
-            </div>
-            <h2>
-              Настройки
-            </h2>
-            <div
-              className="formArea"
+                Создать новый тест
+              </a>
+            </Link>
+            <Link
+              className="menuButton"
+              replace={false}
+              to="/create/question"
             >
-              <form
-                onSubmit={[Function]}
+              <a
+                className="menuButton"
+                href="/create/question"
+                onClick={[Function]}
               >
-                <div>
-                  <input
-                    disabled={false}
-                    type="submit"
-                    value="Сохранить"
-                  />
-                </div>
-              </form>
-            </div>
-            <div />
-            <div
-              className="oldTest"
-            >
-              <h2>
-                Тесты
-              </h2>
-              <ul />
-            </div>
-            <div
-              className="oldQuestions"
-            >
-              <h2>
-                Вопросы
-              </h2>
-              <ul />
-            </div>
+                Создать новый вопрос
+              </a>
+            </Link>
           </div>
-        </Admin>
-      </Route>
-    </withRouter(Admin)>
+          <div
+            className="dbControls"
+          >
+            <button
+              className="menuButton small saveDb"
+              disabled={false}
+              onClick={[Function]}
+            >
+              Сохранить базу
+            </button>
+            <form
+              className="loadDb"
+              onSubmit={[Function]}
+            >
+              <label>
+                 Выберите JSON файл с вопросами  
+                <input
+                  accept=".json"
+                  name="questions"
+                  required={true}
+                  type="file"
+                />
+              </label>
+              <br />
+              <label>
+                 Выберите JSON файл с тестами  
+                <input
+                  accept=".json"
+                  name="tests"
+                  required={true}
+                  type="file"
+                />
+              </label>
+              <br />
+              <input
+                disabled={false}
+                type="submit"
+                value="Восстановить базу"
+              />
+            </form>
+          </div>
+        </div>
+        <h2>
+          Настройки
+        </h2>
+        <div
+          className="formArea"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <div>
+              <input
+                disabled={false}
+                type="submit"
+                value="Сохранить"
+              />
+            </div>
+          </form>
+        </div>
+        <div />
+        <div
+          className="oldTest"
+        >
+          <h2>
+            Тесты
+          </h2>
+          <ul />
+        </div>
+        <div
+          className="oldQuestions"
+        >
+          <h2>
+            Вопросы
+          </h2>
+          <ul />
+        </div>
+      </div>
+    </Admin>
   </Router>
-</BrowserRouter>
+</MemoryRouter>
 `;

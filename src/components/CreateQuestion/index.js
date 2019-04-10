@@ -84,7 +84,7 @@ class CreateQuestion extends React.Component {
                 this.setState(rep, this.prepareCanvas)
               }
             })
-            .catch(err => window.alert(err))
+            .catch(window.alert)
   }
 
   /**
@@ -102,7 +102,7 @@ class CreateQuestion extends React.Component {
 
     this.postFile('preupload', data)
       .then(handleUpload)
-      .catch(err => window.alert(err))
+      .catch(window.alert)
       .finally(() => this.setState({ loading: false }));
   }
 
@@ -229,7 +229,7 @@ class CreateQuestion extends React.Component {
 
      return this.postData('savequestion', question)
                 .then(rep => window.alert('Успешно сохранено!'))
-                .catch(err => window.alert(err))
+                .catch(window.alert)
                 .finally(() => this.setState({ loading: false }))
   }
 

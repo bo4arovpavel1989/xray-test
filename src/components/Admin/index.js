@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { getData, deleteData, postData, postFile, downloadFile } from './../../actions'
 
 class Admin extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       questions: [],
@@ -20,6 +20,11 @@ class Admin extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.saveDb = this.saveDb.bind(this);
     this.handleDbRecovery = this.handleDbRecovery.bind(this);
+
+    this.getData = this.props.getData || getData;
+    this.postData = this.props.postData || postData;
+    this.postFile = this.props.postFile || postFile;
+    this.deleteData = this.props.deleteData || deleteData;
   }
 
   componentDidMount () {
@@ -29,21 +34,21 @@ class Admin extends React.Component {
   }
 
   getSettings () {
-    return getData('settings')
-            .then(settings => this.setState({ settings }))
-            .catch(err => this.setState({ err: true }))
+    return this.getData('settings')
+               .then(settings => this.setState({ settings }))
+               .catch(err => this.setState({ err: true }))
   }
 
   getTests () {
-    return getData('tests')
-            .then(tests => this.setState({ tests }))
-            .catch(err => this.setState({ err: true }))
+    return this.getData('tests')
+               .then(tests => this.setState({ tests }))
+               .catch(err => this.setState({ err: true }))
   }
 
   getQuestions () {
-    return getData('questions')
-            .then(questions => this.setState({ questions }))
-            .catch(err => this.setState({ err: true }))
+    return this.getData('questions')
+               .then(questions => this.setState({ questions }))
+               .catch(err => this.setState({ err: true }))
   }
 
   getTestData () {
@@ -151,9 +156,9 @@ class Admin extends React.Component {
             <Link className='menuButton' to='/create/test'>Создать новый тест</Link>
             <Link className='menuButton' to='/create/question'>Создать новый вопрос</Link>
           </div>
-          <div>
-            <button disabled={submitting} className='menuButton small' onClick={this.saveDb}>Сохранить базу</button>
-            <form onSubmit={this.handleDbRecovery}>
+          <div className='dbControls'>
+            <button disabled={submitting} className='menuButton small saveDb' onClick={this.saveDb}>Сохранить базу</button>
+            <form className='loadDb' onSubmit={this.handleDbRecovery}>
               <label> Выберите JSON файл с вопросами &emsp;
                 <input type='file' name='questions' accept='.json' required/>
               </label><br/>
@@ -222,3 +227,4 @@ class Admin extends React.Component {
 }
 
 export default withRouter(Admin)
+export { Admin }
