@@ -14,31 +14,87 @@ describe('Admin component', () => {
     postFile: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     postData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     getData: jest.fn(() => new Promise((res, rej) => res([{ name: 'test', _id: 'testID' }]))),
-    deleteData: jest.fn(() => new Promise((res, rej) => res({ success: true })))
-  }
+    deleteData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
+    downloadFile: jest.fn(),
+    confirm: true,
+    handleFormData: {}
+  };
+  const initialState = {
+      questions: [{ name: 'test', _id: 'testID' }],
+      settings: [{ name: 'test', _id: 'testID' }],
+      tests: [{ name: 'test', _id: 'testID' }],
+      submitting: false,
+      err: false
+  };
   const component = mount(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
       <Admin { ...props }/>
     </MemoryRouter>
   );
 
-  it('should render correct', () => {
-      expect(shallowToJson(component)).toMatchSnapshot()
+  describe('component mounted', () => {
+    afterAll(() => {
+      props.getData.mockClear();
+    });
+
+    it('should render correct', () => {
+        expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should call 3 initial getData (tests, settings, questions) functions', () => {
+      expect(props.getData).toHaveBeenCalledTimes(3)
+    })
+
+    it('should have initial state', () => {
+      expect(component.find(Admin).instance().state).toEqual(initialState)
+    })
   })
 
-  it('should call 3 initial getData (tests, settings, questions) functions', () => {
-    expect(props.getData).toHaveBeenCalledTimes(3)
+  describe('it should perform db save', () => {
+    beforeAll(() => {
+      component.find('.saveDb').simulate('click');
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.getData.mockClear();
+      props.downloadFile.mockClear();
+    })
+
+    it('should make get request /savedb', () => {
+      expect(props.getData).toHaveBeenCalledWith('savedb')
+    })
+
+    it('should call downloadFile 2 time after timeout', (done) => {
+      setTimeout(() => {
+        expect(props.downloadFile).toHaveBeenCalledTimes(2);
+        done();
+      }, 150)
+    })
   })
 
-  it('should update teste state on getting data', () => {
-    expect(component.find(Admin).instance().state.tests).toEqual([{ name: 'test', _id: 'testID' }])
-  })
+  describe('it should perform restore db', () => {
+    beforeAll(() => {
+      component.find('.loadDb').simulate('submit');
+    })
 
-  it('should update questions state on getting data', () => {
-    expect(component.find(Admin).instance().state.questions).toEqual([{ name: 'test', _id: 'testID' }])
-  })
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.getData.mockClear();
+      props.postFile.mockClear();
+      window.alert.mockClear();
+    })
 
-  it('should update settings state on getting data', () => {
-    expect(component.find(Admin).instance().state.settings).toEqual([{ name: 'test', _id: 'testID' }])
+    it('should call postFile', () => {
+      expect(props.postFile).toHaveBeenCalledWith('loaddb', props.handleFormData)
+    })
+
+    it('should alert success', () => {
+      expect(window.alert).toBeCalledWith('Успешно восстановлено!')
+    })
+
+    it('should call 2 getData (getTests and getQuestions from this.getTestData)', () => {
+      expect(props.getData).toHaveBeenCalledTimes(2)
+    })
   })
 })

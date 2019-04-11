@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Admin component should render correct 1`] = `
-<MemoryRouter>
+exports[`Admin component component mounted should render correct 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
   <Router
     history={
       Object {
@@ -12,10 +20,9 @@ exports[`Admin component should render correct 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "2s1vua",
+            "key": "testKey",
             "pathname": "/",
             "search": "",
-            "state": undefined,
           },
         ],
         "go": [Function],
@@ -26,10 +33,9 @@ exports[`Admin component should render correct 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "2s1vua",
+          "key": "testKey",
           "pathname": "/",
           "search": "",
-          "state": undefined,
         },
         "push": [Function],
         "replace": [Function],
@@ -37,7 +43,9 @@ exports[`Admin component should render correct 1`] = `
     }
   >
     <Admin
+      confirm={true}
       deleteData={[MockFunction]}
+      downloadFile={[MockFunction]}
       getData={
         [MockFunction] {
           "calls": Array [
@@ -67,6 +75,7 @@ exports[`Admin component should render correct 1`] = `
           ],
         }
       }
+      handleFormData={Object {}}
       postData={[MockFunction]}
       postFile={[MockFunction]}
     >

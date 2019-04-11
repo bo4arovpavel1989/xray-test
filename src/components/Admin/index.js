@@ -25,6 +25,7 @@ class Admin extends React.Component {
     this.postData = this.props.postData || postData;
     this.postFile = this.props.postFile || postFile;
     this.deleteData = this.props.deleteData || deleteData;
+    this.downloadFile = this.props.downloadFile || downloadFile;
   }
 
   componentDidMount () {
@@ -99,25 +100,39 @@ class Admin extends React.Component {
   saveDb () {
     this.setState({ submitting: true })
 
-    return getData('savedb')
-            .then(() => {
-              // Added timeout, otherwise firefox downloads only 1 file
-              downloadFile('download_dump/tests.json', 'tests.json');
-              setTimeout(downloadFile.bind(null, 'download_dump/questions.json', 'questions.json'), 100);
-            })
-            .catch(window.alert)
-            .finally(() => this.setState({ submitting: false }))
+    return this.getData('savedb')
+               .then(() => {
+                  // Added timeout, otherwise firefox downloads only 1 file
+                  this.downloadFile('download_dump/tests.json', 'tests.json');
+                  setTimeout(() =>
+                    this.downloadFile('download_dump/questions.json', 'questions.json'),
+                  100);
+               })
+               .catch(window.alert)
+               .finally(() => this.setState({ submitting: false }))
   }
 
   handleDbRecovery (e) {
     e.preventDefault();
 
-    let sure = window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
+    let sure = this.props.confirm || window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
 
     if (!sure) return;
 
     this.setState({ submitting: true })
 
+    const data = this.props.handleFormData || this.handleFormData()
+
+    return this.postFile('loaddb', data)
+               .then(() => {
+                  window.alert('Успешно восстановлено!');
+                  this.getTestData();
+               })
+               .catch(window.alert)
+               .finally(() => this.setState({ submitting: false }))
+  }
+
+  handleFormData () {
     const questions = document.querySelector('input[type="file"][name="questions"]');
     const tests = document.querySelector('input[type="file"][name="tests"]');
     const data = new FormData();
@@ -125,13 +140,7 @@ class Admin extends React.Component {
     data.append('questions', questions.files[0]);
     data.append('tests', tests.files[0]);
 
-    return postFile('loaddb', data)
-            .then(() => {
-              window.alert('Успешно восстановлено!');
-              this.getTestData();
-            })
-            .catch(window.alert)
-            .finally(() => this.setState({ submitting: false }))
+    return data;
   }
 
   handleSubmit (e) {
