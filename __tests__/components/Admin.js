@@ -147,4 +147,29 @@ describe('Admin component', () => {
       expect(props.getData).toHaveBeenCalledTimes(2)
     })
   })
+
+  describe('it should perform delete question on delete question button click', () => {
+    beforeAll(() => {
+      component.find('.oldQuestions li .danger').simulate('click');
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.deleteData.mockClear();
+      props.getData.mockClear();
+      window.confirm.mockClear();
+    })
+
+    it('should ask confirm', () => {
+      expect(window.confirm).toHaveBeenCalledTimes(1);
+    })
+
+    it('should call deleteData', () => {
+      expect(props.deleteData).toHaveBeenCalledWith(`deleteobj/Question/test`)
+    })
+
+    it('should call 2 getData (getTests and getQuestions) from this.getTestData)', () => {
+      expect(props.getData).toHaveBeenCalledTimes(2)
+    })
+  })
 })
