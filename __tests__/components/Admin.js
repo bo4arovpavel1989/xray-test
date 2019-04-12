@@ -14,14 +14,20 @@ describe('Admin component', () => {
   const props = {
     postFile: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     postData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
-    getData: jest.fn(() => new Promise((res, rej) => res([{ name: 'test', _id: 'testID' }]))),
+    getData: jest.fn((arg) => new Promise((res, rej) => {
+        if (arg === 'settings') {
+          res([{ name: 'test', _id: 'testID', value: 'testValue', description: 'test' }])
+        }
+
+        res([{ name: 'test', _id: 'testID' }])
+    })),
     deleteData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     downloadFile: jest.fn(),
     handleFormData: {}
   };
   const initialState = {
       questions: [{ name: 'test', _id: 'testID' }],
-      settings: [{ name: 'test', _id: 'testID' }],
+      settings: [{ name: 'test', _id: 'testID', value: 'testValue', description: 'test' }],
       tests: [{ name: 'test', _id: 'testID' }],
       submitting: false,
       err: false
@@ -170,6 +176,42 @@ describe('Admin component', () => {
 
     it('should call 2 getData (getTests and getQuestions) from this.getTestData)', () => {
       expect(props.getData).toHaveBeenCalledTimes(2)
+    })
+  })
+
+  describe('it should perform settings form submit', () => {
+    beforeAll(() => {
+      component.find('.formArea form').simulate('submit');
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.postData.mockClear();
+    })
+
+    it('should call postData', () => {
+      const settings = component.find(Admin).instance().state.settings;
+
+      expect(props.postData).toHaveBeenCalledWith('settings', { settings })
+    })
+  })
+
+  describe('it should perform settings form input change', () => {
+    beforeAll(() => {
+      component.find('input#test').simulate('change', {
+        target: {
+          value: 'newTestValue',
+          id: 'test'
+        }
+      });
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+    })
+
+    it('should change state', () => {
+      expect(component.find(Admin).instance().state.settings[0].value).toEqual('newTestValue');
     })
   })
 })

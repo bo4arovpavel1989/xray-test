@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554791145569" clover="3.2.0">
-  <project timestamp="1554791145569" name="All files">
-    <metrics statements="463" coveredstatements="140" conditionals="118" coveredconditionals="31" methods="180" coveredmethods="43" elements="761" coveredelements="214" complexity="0" loc="463" ncloc="463" packages="10" files="15" classes="15">
+<coverage generated="1555103163215" clover="3.2.0">
+  <project timestamp="1555103163215" name="All files">
+    <metrics statements="466" coveredstatements="191" conditionals="132" coveredconditionals="42" methods="177" coveredmethods="67" elements="775" coveredelements="300" complexity="0" loc="466" ncloc="466" packages="10" files="15" classes="15">
       <package name="src">
         <metrics statements="41" coveredstatements="15" conditionals="7" coveredconditionals="0" methods="26" coveredmethods="2"/>
-        <file name="actions.js" path="D:\git\xray-test\src\actions.js">
+        <file name="actions.js" path="/home/pavel/git/xray-test/src/actions.js">
           <metrics statements="24" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="19" coveredmethods="2"/>
           <line num="5" count="5" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
@@ -12,8 +12,8 @@
           <line num="9" count="0" type="stmt"/>
           <line num="10" count="0" type="stmt"/>
           <line num="14" count="5" type="stmt"/>
-          <line num="15" count="5" type="stmt"/>
-          <line num="16" count="5" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
           <line num="18" count="0" type="stmt"/>
           <line num="19" count="0" type="stmt"/>
           <line num="23" count="5" type="stmt"/>
@@ -31,7 +31,7 @@
           <line num="43" count="0" type="stmt"/>
           <line num="44" count="0" type="stmt"/>
         </file>
-        <file name="config.js" path="D:\git\xray-test\src\config.js">
+        <file name="config.js" path="/home/pavel/git/xray-test/src/config.js">
           <metrics statements="9" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="3" count="5" type="stmt"/>
           <line num="5" count="5" type="cond" truecount="0" falsecount="1"/>
@@ -43,7 +43,7 @@
           <line num="32" count="5" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
         </file>
-        <file name="helpers.js" path="D:\git\xray-test\src\helpers.js">
+        <file name="helpers.js" path="/home/pavel/git/xray-test/src/helpers.js">
           <metrics statements="8" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
           <line num="6" count="6" type="cond" truecount="0" falsecount="2"/>
           <line num="13" count="6" type="stmt"/>
@@ -56,9 +56,9 @@
         </file>
       </package>
       <package name="src.components.Admin">
-        <metrics statements="73" coveredstatements="19" conditionals="8" coveredconditionals="0" methods="37" coveredmethods="9"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\Admin\index.js">
-          <metrics statements="73" coveredstatements="19" conditionals="8" coveredconditionals="0" methods="37" coveredmethods="9"/>
+        <metrics statements="81" coveredstatements="70" conditionals="22" coveredconditionals="11" methods="39" coveredmethods="33"/>
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Admin/index.js">
+          <metrics statements="81" coveredstatements="70" conditionals="22" coveredconditionals="11" methods="39" coveredmethods="33"/>
           <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
           <line num="17" count="1" type="stmt"/>
@@ -67,77 +67,85 @@
           <line num="20" count="1" type="stmt"/>
           <line num="21" count="1" type="stmt"/>
           <line num="22" count="1" type="stmt"/>
-          <line num="26" count="1" type="stmt"/>
-          <line num="27" count="1" type="stmt"/>
-          <line num="28" count="1" type="stmt"/>
+          <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="32" count="1" type="stmt"/>
-          <line num="33" count="0" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
           <line num="34" count="1" type="stmt"/>
           <line num="38" count="1" type="stmt"/>
-          <line num="39" count="0" type="stmt"/>
-          <line num="40" count="1" type="stmt"/>
-          <line num="44" count="1" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="46" count="1" type="stmt"/>
-          <line num="50" count="0" type="stmt"/>
-          <line num="51" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="58" count="0" type="stmt"/>
-          <line num="59" count="0" type="stmt"/>
-          <line num="60" count="0" type="stmt"/>
-          <line num="65" count="0" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="44" count="4" type="stmt"/>
+          <line num="45" count="4" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="50" count="4" type="stmt"/>
+          <line num="51" count="4" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="56" count="3" type="stmt"/>
+          <line num="57" count="3" type="stmt"/>
+          <line num="61" count="2" type="stmt"/>
+          <line num="63" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="64" count="2" type="stmt"/>
+          <line num="65" count="2" type="stmt"/>
           <line num="66" count="0" type="stmt"/>
-          <line num="71" count="0" type="stmt"/>
-          <line num="72" count="0" type="stmt"/>
-          <line num="73" count="0" type="stmt"/>
-          <line num="74" count="0" type="stmt"/>
-          <line num="76" count="0" type="stmt"/>
-          <line num="78" count="0" type="stmt"/>
-          <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="82" count="0" type="stmt"/>
-          <line num="86" count="0" type="stmt"/>
-          <line num="87" count="0" type="stmt"/>
-          <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="91" count="0" type="stmt"/>
-          <line num="95" count="0" type="stmt"/>
-          <line num="97" count="0" type="stmt"/>
-          <line num="100" count="0" type="stmt"/>
-          <line num="101" count="0" type="stmt"/>
-          <line num="104" count="0" type="stmt"/>
-          <line num="108" count="0" type="stmt"/>
-          <line num="110" count="0" type="stmt"/>
-          <line num="112" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="114" count="0" type="stmt"/>
-          <line num="116" count="0" type="stmt"/>
-          <line num="117" count="0" type="stmt"/>
-          <line num="118" count="0" type="stmt"/>
-          <line num="120" count="0" type="stmt"/>
-          <line num="121" count="0" type="stmt"/>
-          <line num="123" count="0" type="stmt"/>
-          <line num="125" count="0" type="stmt"/>
-          <line num="126" count="0" type="stmt"/>
-          <line num="129" count="0" type="stmt"/>
-          <line num="133" count="0" type="stmt"/>
-          <line num="134" count="0" type="stmt"/>
+          <line num="71" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="77" count="1" type="stmt"/>
+          <line num="78" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="79" count="1" type="stmt"/>
+          <line num="80" count="1" type="stmt"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="85" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="88" count="1" type="stmt"/>
+          <line num="92" count="1" type="stmt"/>
+          <line num="93" count="0" type="stmt"/>
+          <line num="96" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="97" count="1" type="stmt"/>
+          <line num="101" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
+          <line num="106" count="1" type="stmt"/>
+          <line num="107" count="1" type="stmt"/>
+          <line num="108" count="1" type="stmt"/>
+          <line num="112" count="1" type="stmt"/>
+          <line num="116" count="1" type="stmt"/>
+          <line num="118" count="1" type="stmt"/>
+          <line num="120" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="122" count="1" type="stmt"/>
+          <line num="124" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="126" count="1" type="stmt"/>
+          <line num="128" count="1" type="stmt"/>
+          <line num="129" count="1" type="stmt"/>
+          <line num="132" count="1" type="stmt"/>
           <line num="136" count="0" type="stmt"/>
+          <line num="137" count="0" type="stmt"/>
           <line num="138" count="0" type="stmt"/>
-          <line num="139" count="0" type="stmt"/>
+          <line num="140" count="0" type="stmt"/>
           <line num="141" count="0" type="stmt"/>
-          <line num="145" count="4" type="stmt"/>
-          <line num="147" count="4" type="stmt"/>
-          <line num="172" count="0" type="stmt"/>
-          <line num="198" count="0" type="stmt"/>
-          <line num="199" count="0" type="stmt"/>
-          <line num="200" count="0" type="stmt"/>
-          <line num="211" count="0" type="stmt"/>
-          <line num="213" count="0" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+          <line num="147" count="1" type="stmt"/>
+          <line num="148" count="1" type="stmt"/>
+          <line num="150" count="1" type="stmt"/>
+          <line num="152" count="1" type="stmt"/>
+          <line num="153" count="1" type="stmt"/>
+          <line num="155" count="1" type="stmt"/>
+          <line num="159" count="24" type="stmt"/>
+          <line num="161" count="24" type="stmt"/>
+          <line num="186" count="23" type="stmt"/>
+          <line num="212" count="22" type="stmt"/>
+          <line num="213" count="1" type="stmt"/>
+          <line num="214" count="1" type="stmt"/>
+          <line num="225" count="21" type="stmt"/>
+          <line num="227" count="1" type="stmt"/>
         </file>
       </package>
       <package name="src.components.App">
-        <metrics statements="18" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="2"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\App\index.js">
-          <metrics statements="18" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="2"/>
+        <metrics statements="16" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="2"/>
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/App/index.js">
+          <metrics statements="16" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="2"/>
           <line num="16" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
           <line num="25" count="1" type="stmt"/>
@@ -147,8 +155,6 @@
           <line num="33" count="0" type="stmt"/>
           <line num="38" count="0" type="stmt"/>
           <line num="40" count="0" type="stmt"/>
-          <line num="41" count="0" type="stmt"/>
-          <line num="42" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
           <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="48" count="0" type="stmt"/>
@@ -159,9 +165,9 @@
         </file>
       </package>
       <package name="src.components.CreateQuestion">
-        <metrics statements="72" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="26" coveredmethods="10"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\CreateQuestion\index.js">
-          <metrics statements="72" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="26" coveredmethods="10"/>
+        <metrics statements="69" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="23" coveredmethods="10"/>
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/CreateQuestion/index.js">
+          <metrics statements="69" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="23" coveredmethods="10"/>
           <line num="9" count="1" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
           <line num="21" count="1" type="stmt"/>
@@ -186,13 +192,11 @@
           <line num="81" count="0" type="stmt"/>
           <line num="83" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="84" count="0" type="stmt"/>
-          <line num="87" count="0" type="stmt"/>
           <line num="96" count="1" type="stmt"/>
           <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="99" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="101" count="1" type="stmt"/>
           <line num="103" count="1" type="stmt"/>
-          <line num="105" count="0" type="stmt"/>
           <line num="106" count="1" type="stmt"/>
           <line num="115" count="0" type="stmt"/>
           <line num="116" count="0" type="stmt"/>
@@ -230,7 +234,6 @@
           <line num="228" count="1" type="stmt"/>
           <line num="230" count="1" type="stmt"/>
           <line num="231" count="1" type="stmt"/>
-          <line num="232" count="0" type="stmt"/>
           <line num="233" count="1" type="stmt"/>
           <line num="237" count="13" type="stmt"/>
           <line num="239" count="13" type="stmt"/>
@@ -238,7 +241,7 @@
       </package>
       <package name="src.components.CreateTest">
         <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\CreateTest\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/CreateTest/index.js">
           <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
           <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
@@ -260,7 +263,7 @@
       </package>
       <package name="src.components.Drawer">
         <metrics statements="70" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\Drawer\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Drawer/index.js">
           <metrics statements="70" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="17" coveredmethods="0"/>
           <line num="3" count="0" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
@@ -336,38 +339,38 @@
       </package>
       <package name="src.components.Forbidden">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\Forbidden\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Forbidden/index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="6" count="1" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Header">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <file name="Login.js" path="D:\git\xray-test\src\components\Header\Login.js">
+        <file name="Login.js" path="/home/pavel/git/xray-test/src/components/Header/Login.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="6" count="3" type="stmt"/>
-          <line num="7" count="7" type="stmt"/>
-          <line num="9" count="7" type="stmt"/>
+          <line num="7" count="6" type="stmt"/>
+          <line num="9" count="6" type="stmt"/>
           <line num="28" count="3" type="stmt"/>
         </file>
-        <file name="index.js" path="D:\git\xray-test\src\components\Header\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Header/index.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="7" count="2" type="stmt"/>
-          <line num="8" count="4" type="stmt"/>
-          <line num="10" count="4" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="10" count="3" type="stmt"/>
           <line num="29" count="2" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Menu">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="index.js" path="D:\git\xray-test\src\components\Menu\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Menu/index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="7" count="2" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Test">
         <metrics statements="163" coveredstatements="41" conditionals="58" coveredconditionals="8" methods="56" coveredmethods="10"/>
-        <file name="Slide.js" path="D:\git\xray-test\src\components\Test\Slide.js">
+        <file name="Slide.js" path="/home/pavel/git/xray-test/src/components/Test/Slide.js">
           <metrics statements="116" coveredstatements="21" conditionals="48" coveredconditionals="6" methods="35" coveredmethods="2"/>
           <line num="10" count="1" type="stmt"/>
           <line num="12" count="1" type="stmt"/>
@@ -486,14 +489,14 @@
           <line num="318" count="1" type="stmt"/>
           <line num="372" count="3" type="stmt"/>
         </file>
-        <file name="User.js" path="D:\git\xray-test\src\components\Test\User.js">
+        <file name="User.js" path="/home/pavel/git/xray-test/src/components/Test/User.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="6" count="2" type="stmt"/>
           <line num="7" count="3" type="stmt"/>
           <line num="9" count="3" type="stmt"/>
           <line num="32" count="2" type="stmt"/>
         </file>
-        <file name="index.js" path="D:\git\xray-test\src\components\Test\index.js">
+        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Test/index.js">
           <metrics statements="43" coveredstatements="16" conditionals="10" coveredconditionals="2" methods="20" coveredmethods="7"/>
           <line num="10" count="1" type="stmt"/>
           <line num="12" count="1" type="stmt"/>

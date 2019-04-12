@@ -75,14 +75,14 @@ class Admin extends React.Component {
 
   handleChange (e) {
     let { value, type } = e.target;
-    const { description } = e.target.dataset;
+    const { description } = e.target || e.target.dataset;
     const name = e.target.id;
     const { settings } = this.state;
 
     value = this.handleTypes(value, type);
 
     settings.forEach((tune, i) => {
-      if (name === tune.name) settings[i] = { name, value, type, description }
+      if (name === tune.name) settings[i] = { _id: tune._id, name, value, type, description }
     })
 
     this.setState({ settings })
@@ -149,10 +149,10 @@ class Admin extends React.Component {
 
     const { settings } = this.state;
 
-    return postData('settings', { settings })
-            .then(rep => window.alert('Успешно сохранено!'))
-            .catch(window.alert)
-            .finally(() => this.setState({ submitting: false }))
+    return this.postData('settings', { settings })
+               .then(rep => window.alert('Успешно сохранено!'))
+               .catch(window.alert)
+               .finally(() => this.setState({ submitting: false }))
   }
 
   render () {
