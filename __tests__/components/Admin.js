@@ -9,6 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Admin component', () => {
   window.alert = jest.fn();
+  window.confirm = jest.fn(() => true)
 
   const props = {
     postFile: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
@@ -16,7 +17,6 @@ describe('Admin component', () => {
     getData: jest.fn(() => new Promise((res, rej) => res([{ name: 'test', _id: 'testID' }]))),
     deleteData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     downloadFile: jest.fn(),
-    confirm: true,
     handleFormData: {}
   };
   const initialState = {
@@ -83,6 +83,11 @@ describe('Admin component', () => {
       props.getData.mockClear();
       props.postFile.mockClear();
       window.alert.mockClear();
+      window.confirm.mockClear();
+    })
+
+    it('should ask confirm', () => {
+      expect(window.confirm).toHaveBeenCalledTimes(1);
     })
 
     it('should call postFile', () => {
@@ -93,7 +98,52 @@ describe('Admin component', () => {
       expect(window.alert).toBeCalledWith('Успешно восстановлено!')
     })
 
-    it('should call 2 getData (getTests and getQuestions from this.getTestData)', () => {
+    it('should call 2 getData (getTests and getQuestions) from this.getTestData)', () => {
+      expect(props.getData).toHaveBeenCalledTimes(2)
+    })
+  })
+
+  describe('it should perform refresh test on refresh test button click', () => {
+    beforeAll(() => {
+      component.find('.oldTest li a').first().simulate('click');
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.postData.mockClear();
+      window.alert.mockClear();
+    })
+
+    it('should call postData', () => {
+      expect(props.postData).toHaveBeenCalledWith('test', { name: 'test' })
+    })
+
+    it('should alert success', () => {
+      expect(window.alert).toBeCalledWith('Успешно обновлено!')
+    })
+  })
+
+  describe('it should perform delete test on delete test button click', () => {
+    beforeAll(() => {
+      component.find('.oldTest li .danger').simulate('click');
+    })
+
+    afterAll(() => {
+      component.find(Admin).instance().setState(initialState);
+      props.deleteData.mockClear();
+      props.getData.mockClear();
+      window.confirm.mockClear();
+    })
+
+    it('should ask confirm', () => {
+      expect(window.confirm).toHaveBeenCalledTimes(1);
+    })
+
+    it('should call deleteData', () => {
+      expect(props.deleteData).toHaveBeenCalledWith(`deleteobj/Test/test`)
+    })
+
+    it('should call 2 getData (getTests and getQuestions) from this.getTestData)', () => {
       expect(props.getData).toHaveBeenCalledTimes(2)
     })
   })

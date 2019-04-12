@@ -43,7 +43,6 @@ exports[`Admin component component mounted should render correct 1`] = `
     }
   >
     <Admin
-      confirm={true}
       deleteData={[MockFunction]}
       downloadFile={[MockFunction]}
       getData={

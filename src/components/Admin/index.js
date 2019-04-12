@@ -61,16 +61,16 @@ class Admin extends React.Component {
     let conf = window.confirm('Вы уверены?');
 
     if (conf) {
-      return deleteData(`deleteobj/${obj}/${name}`)
-              .then(rep => this.getTestData())
-              .catch(err => this.setState({ err: true }))
+      return this.deleteData(`deleteobj/${obj}/${name}`)
+                 .then(rep => this.getTestData())
+                 .catch(err => this.setState({ err: true }))
     }
   }
 
   refreshTest (name) {
-    return postData('test', { name })
-            .then(rep => window.alert('Успешно обновлено!'))
-            .catch(window.alert)
+    return this.postData('test', { name })
+               .then(rep => window.alert('Успешно обновлено!'))
+               .catch(window.alert)
   }
 
   handleChange (e) {
@@ -115,7 +115,7 @@ class Admin extends React.Component {
   handleDbRecovery (e) {
     e.preventDefault();
 
-    let sure = this.props.confirm || window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
+    let sure = window.confirm('Вы уверены? Текущая база данных будет перезаписана!')
 
     if (!sure) return;
 
