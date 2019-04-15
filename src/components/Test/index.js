@@ -6,8 +6,8 @@ import './Test.sass'
 import { getData } from './../../actions'
 
 class Test extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       loading: false,
@@ -27,6 +27,8 @@ class Test extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
     this.sendResult = this.sendResult.bind(this);
+
+    this.getData = this.props.getData || getData;
   }
 
   componentDidMount () {
@@ -49,15 +51,15 @@ class Test extends React.Component {
   }
 
   getSettings () {
-    return getData('settings')
-            .then(settings => this.setSettings(settings))
-            .catch(err => this.setState({ err: true }))
+    return this.getData('settings')
+               .then(settings => this.setSettings(settings))
+               .catch(err => this.setState({ err: true }))
   }
 
   getTests () {
-    return getData('tests')
-            .then(tests => this.setState({ tests }))
-            .catch(err => this.setState({ err: true }))
+    return this.getData('tests')
+               .then(tests => this.setState({ tests }))
+               .catch(err => this.setState({ err: true }))
   }
 
   setSettings (settingsArray) {
@@ -146,3 +148,4 @@ class Test extends React.Component {
 }
 
 export default withRouter(Test)
+export { Test }

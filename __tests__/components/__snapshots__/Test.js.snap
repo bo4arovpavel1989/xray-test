@@ -1,161 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test component should render correct 1`] = `
-<BrowserRouter>
+exports[`Test component component mounted should render correct 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
   <Router
     history={
       Object {
         "action": "POP",
         "block": [Function],
+        "canGo": [Function],
         "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "index": 0,
         "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "testKey",
           "pathname": "/",
           "search": "",
-          "state": undefined,
         },
         "push": [Function],
         "replace": [Function],
       }
     }
   >
-    <withRouter(Test)>
-      <Route>
-        <Test
-          history={
+    <Test
+      getData={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "settings",
+            ],
+            Array [
+              "tests",
+            ],
+          ],
+          "results": Array [
             Object {
-              "action": "POP",
-              "block": [Function],
-              "createHref": [Function],
-              "go": [Function],
-              "goBack": [Function],
-              "goForward": [Function],
-              "length": 1,
-              "listen": [Function],
-              "location": Object {
-                "hash": "",
-                "pathname": "/",
-                "search": "",
-                "state": undefined,
-              },
-              "push": [Function],
-              "replace": [Function],
-            }
-          }
-          location={
+              "isThrow": false,
+              "value": Promise {},
+            },
             Object {
-              "hash": "",
-              "pathname": "/",
-              "search": "",
-              "state": undefined,
-            }
-          }
-          match={
-            Object {
-              "isExact": true,
-              "params": Object {},
-              "path": "/",
-              "url": "/",
-            }
-          }
+              "isThrow": false,
+              "value": Promise {},
+            },
+          ],
+        }
+      }
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="userArea"
         >
-          <div
-            className="container"
+          <withRouter(User)
+            handleChange={[Function]}
+            handleSubmit={[Function]}
           >
-            <div
-              className="userArea"
-            >
-              <withRouter(User)
+            <Route>
+              <User
                 handleChange={[Function]}
                 handleSubmit={[Function]}
-              >
-                <Route>
-                  <User
-                    handleChange={[Function]}
-                    handleSubmit={[Function]}
-                    history={
-                      Object {
-                        "action": "POP",
-                        "block": [Function],
-                        "createHref": [Function],
-                        "go": [Function],
-                        "goBack": [Function],
-                        "goForward": [Function],
-                        "length": 1,
-                        "listen": [Function],
-                        "location": Object {
-                          "hash": "",
-                          "pathname": "/",
-                          "search": "",
-                          "state": undefined,
-                        },
-                        "push": [Function],
-                        "replace": [Function],
-                      }
-                    }
-                    location={
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "canGo": [Function],
+                    "createHref": [Function],
+                    "entries": Array [
                       Object {
                         "hash": "",
+                        "key": "testKey",
                         "pathname": "/",
                         "search": "",
-                        "state": undefined,
-                      }
-                    }
-                    match={
-                      Object {
-                        "isExact": true,
-                        "params": Object {},
-                        "path": "/",
-                        "url": "/",
-                      }
-                    }
+                      },
+                    ],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "index": 0,
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "key": "testKey",
+                      "pathname": "/",
+                      "search": "",
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "testKey",
+                    "pathname": "/",
+                    "search": "",
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div>
+                  <div
+                    className="paranja"
+                  />
+                  <div
+                    className="userLoginArea"
                   >
-                    <div>
-                      <div
-                        className="paranja"
-                      />
-                      <div
-                        className="userLoginArea"
-                      >
-                        <form
-                          className="userLogin"
-                          onSubmit={[Function]}
-                        >
-                          <div>
-                            <span>
-                              <label>
-                                Ваше имя:  
-                                <input
-                                  id="user"
-                                  onChange={[Function]}
-                                  required={true}
-                                  type="text"
-                                />
-                              </label>
-                            </span>
-                            <span>
-                              <input
-                                type="submit"
-                                value="Начать тест"
-                              />
-                            </span>
-                          </div>
-                        </form>
+                    <form
+                      className="userLogin"
+                      onSubmit={[Function]}
+                    >
+                      <div>
+                        <span>
+                          <label>
+                            Ваше имя:  
+                            <input
+                              id="user"
+                              onChange={[Function]}
+                              required={true}
+                              type="text"
+                            />
+                          </label>
+                        </span>
+                        <span>
+                          <input
+                            type="submit"
+                            value="Начать тест"
+                          />
+                        </span>
                       </div>
-                    </div>
-                  </User>
-                </Route>
-              </withRouter(User)>
-            </div>
-          </div>
-        </Test>
-      </Route>
-    </withRouter(Test)>
+                    </form>
+                  </div>
+                </div>
+              </User>
+            </Route>
+          </withRouter(User)>
+        </div>
+      </div>
+    </Test>
   </Router>
-</BrowserRouter>
+</MemoryRouter>
 `;
