@@ -23,9 +23,9 @@ describe('Test component', () => {
        reset: jest.fn(),
        start: jest.fn(),
        clearZones: jest.fn(),
-       getZones: jest.fn(() => [[0, 0, 100, 100]]),
-       prepareCanvas:  jest.fn()
-     }
+       getZones: jest.fn(() => [[0, 0, 100, 100]])
+     },
+     prepareCanvas:  jest.fn()
   };
   const initialState = {
     loading: false,

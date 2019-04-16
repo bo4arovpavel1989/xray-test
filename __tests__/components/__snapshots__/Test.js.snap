@@ -47,7 +47,6 @@ exports[`Test component component mounted should render correct 1`] = `
         Object {
           "clearZones": [MockFunction],
           "getZones": [MockFunction],
-          "prepareCanvas": [MockFunction],
           "reset": [MockFunction],
           "start": [MockFunction],
         }
@@ -74,6 +73,7 @@ exports[`Test component component mounted should render correct 1`] = `
           ],
         }
       }
+      prepareCanvas={[MockFunction]}
     >
       <div
         className="container"
@@ -226,22 +226,24 @@ exports[`Test component test started should render correct 1`] = `
         Object {
           "clearZones": [MockFunction],
           "getZones": [MockFunction],
-          "prepareCanvas": [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          },
           "reset": [MockFunction],
           "start": [MockFunction],
         }
       }
       getData={[MockFunction]}
+      prepareCanvas={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
     >
       <div
         className="container"

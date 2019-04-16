@@ -108,7 +108,7 @@ class Test extends React.Component {
 
   render () {
     const { testStarted, settings, currentQuestion, questions, total, testFinished } = this.state;
-    const { drawer } = this.props;
+    const { drawer, prepareCanvas } = this.props;
     const { errorThreshold } = settings;
 
     return (
@@ -119,7 +119,7 @@ class Test extends React.Component {
                 Итого: { total }%
               </div>
               <Slide
-                prepareCanvas = { drawer.prepareCanvas }
+                prepareCanvas = { prepareCanvas }
                 drawer = { drawer }
                 question = { questions[currentQuestion] }
                 settings = { settings }
