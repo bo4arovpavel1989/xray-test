@@ -43,7 +43,8 @@ class Slide extends React.PureComponent {
   componentDidMount () {
     const { canvasDraw } = this.state;
 
-    this.drawer = new Drawer(document.querySelector(canvasDraw));
+    this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
+    this.prepareCanvas = this.props.prepareCanvas || this.prepareCanvas;
     this.setNewQuestion();
   }
 
@@ -78,7 +79,7 @@ class Slide extends React.PureComponent {
   removeClickListener () {
     const drawLayer = this.getCanvasDraw();
 
-    drawLayer.removeEventListener('click', this.handleCanvasClick)
+    if (drawLayer) drawLayer.removeEventListener('click', this.handleCanvasClick)
   }
 
   /**

@@ -18,7 +18,14 @@ describe('Test component', () => {
         }
 
         res([{ name: 'test', _id: 'testID' }])
-    }))
+     })),
+     drawer: {
+       reset: jest.fn(),
+       start: jest.fn(),
+       clearZones: jest.fn(),
+       getZones: jest.fn(() => [[0, 0, 100, 100]]),
+       prepareCanvas:  jest.fn()
+     }
   };
   const initialState = {
     loading: false,
@@ -55,6 +62,23 @@ describe('Test component', () => {
 
     it('should have initial state', () => {
       expect(component.find(Test).instance().state).toEqual(initialState)
+    })
+  })
+
+  describe('test started', () => {
+    beforeAll(() => {
+      component.find(Test).instance().setState({
+        testStarted: true,
+        questions: [{ name: 'name', dimensions: { width: 100, height: 100 } }],
+        currentQuestion: 0
+       })
+    })
+    afterAll(() => {
+       component.find(Test).instance().setState(initialState);
+    });
+
+    it('should render correct', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
     })
   })
 })
