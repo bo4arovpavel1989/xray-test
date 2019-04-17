@@ -121,18 +121,21 @@ describe('Test component', () => {
         testStarted: false,
         testFinished: true,
         settings: { errorThreshold: 80 }
-       })
+      });
+      component.update();
     })
+    
     afterAll(() => {
        component.find(Test).instance().setState(initialState);
     });
+
 
     it('should render correct', () => {
       expect(shallowToJson(component)).toMatchSnapshot()
     })
 
     it('should havel class perfect for 100% result', () => {
-      expect(component.find('.resultArea h2 span').hasClass('perfect')).to.equal(true);
+        expect(component.find('.resultArea h2 span').hasClass('perfect')).toEqual(true);
     })
   })
 })
