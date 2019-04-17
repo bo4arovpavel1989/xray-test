@@ -8,9 +8,6 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Test component', () => {
-  window.alert = jest.fn();
-  window.confirm = jest.fn(() => true)
-
   const props = {
     getData: jest.fn((arg) => new Promise((res, rej) => {
         if (arg === 'settings') {
@@ -34,7 +31,6 @@ describe('Test component', () => {
     user: '',
     settings: { test: 'testValue' },
     tests: [{ _id: 'testID', name: 'test' }],
-    currentTest: '',
     currentQuestion: -1,
     questions: [],
     total: 100
@@ -65,6 +61,43 @@ describe('Test component', () => {
     })
   })
 
+  describe('handle userArea submit', () => {
+    beforeAll(() => {
+      component.find('.userLogin #user').simulate('change', {
+        target: {
+          value: 'testUser',
+          id: 'user' }
+        });
+
+      component.find('.userLogin').simulate('submit')
+    });
+
+    afterAll(() => {
+      props.getData.mockClear();
+      component.find(Test).instance().setState(initialState);
+    });
+
+    it('should call 2 initial getData (tests, settings) functions', () => {
+      expect(props.getData).toHaveBeenCalledWith('questions/test');
+    })
+
+    it('should have questions in state', () => {
+      expect(component.find(Test).instance().state.questions).toEqual([{ _id: 'testID', name: 'test' }])
+    })
+
+    it('should have test-started state', () => {
+      expect(component.find(Test).instance().state.testStarted).toEqual(true)
+    })
+
+    it('should have currentQuestion state = 0', () => {
+      expect(component.find(Test).instance().state.currentQuestion).toEqual(0)
+    })
+
+    it('should have user state = testUser', () => {
+      expect(component.find(Test).instance().state.user).toEqual('testUser')
+    })
+  })
+
   describe('test started', () => {
     beforeAll(() => {
       component.find(Test).instance().setState({
@@ -79,6 +112,27 @@ describe('Test component', () => {
 
     it('should render correct', () => {
       expect(shallowToJson(component)).toMatchSnapshot()
+    })
+  })
+
+  describe('test finished', () => {
+    beforeAll(() => {
+      component.find(Test).instance().setState({
+        testStarted: false,
+        testFinished: true,
+        settings: { errorThreshold: 80 }
+       })
+    })
+    afterAll(() => {
+       component.find(Test).instance().setState(initialState);
+    });
+
+    it('should render correct', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should havel class perfect for 100% result', () => {
+      expect(component.find('.resultArea h2 span').hasClass('perfect')).to.equal(true);
     })
   })
 })

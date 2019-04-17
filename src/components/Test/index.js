@@ -16,7 +16,6 @@ class Test extends React.Component {
       user: '',
       settings: {},
       tests: [],
-      currentTest: '',
       currentQuestion: -1,
       questions: [],
       total: 100
@@ -82,9 +81,9 @@ class Test extends React.Component {
   }
 
   getQuestions (chosenTest) {
-    return getData(`questions/${chosenTest}`)
-            .then(questions => this.setState({ questions }, this.setCurrentQuestion))
-            .catch(err => window.alert(err))
+    return this.getData(`questions/${chosenTest}`)
+               .then(questions => this.setState({ questions }, this.setCurrentQuestion))
+               .catch(err => window.alert(err))
   }
 
   setCurrentQuestion () {
