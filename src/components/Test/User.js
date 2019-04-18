@@ -35,3 +35,4 @@ User.propTypes = {
 }
 
 export default withRouter(User)
+export { User }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import Login from '../../src/components/Header/Login.js';
 import Enzyme, { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
@@ -16,9 +16,9 @@ describe('Login component', () => {
 
   it('should render correct', () => {
       const login = mount(
-        <BrowserRouter>
+        <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
           <Login { ...props }/>
-        </BrowserRouter>
+        </MemoryRouter>
       );
 
       expect(shallowToJson(login)).toMatchSnapshot()
@@ -27,9 +27,9 @@ describe('Login component', () => {
   it('should render corect when logging failed', () => {
     props.authFail = true;
     const login = mount(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
         <Login { ...props }/>
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     expect(shallowToJson(login)).toMatchSnapshot()
@@ -39,9 +39,9 @@ describe('Login component', () => {
     props.authFail = false;
     props.isLogging = true;
     const login = mount(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
         <Login { ...props }/>
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     expect(shallowToJson(login)).toMatchSnapshot()
@@ -51,9 +51,9 @@ describe('Login component', () => {
     props.authFail = false;
     props.isLogging = false;
     const login = mount(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
         <Login { ...props }/>
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     login.find('form').simulate('submit');

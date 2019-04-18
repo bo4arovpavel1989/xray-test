@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import Header from '../../src/components/Header';
 import Enzyme, { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
@@ -17,9 +17,9 @@ describe('Header component', () => {
 
   describe('Header snapshot', () => {
     const header = mount(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
         <Header { ...props }/>
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     it('should fit snapshot', () => expect(shallowToJson(header)).toMatchSnapshot())
@@ -34,9 +34,9 @@ describe('Header component', () => {
     props.logoff = mockLogoff;
 
     const header = mount(
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
         <Header { ...props }/>
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     it('should fit snapshot', () => expect(shallowToJson(header)).toMatchSnapshot())

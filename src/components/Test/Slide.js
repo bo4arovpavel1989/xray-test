@@ -378,3 +378,4 @@ Slide.propTypes = {
 }
 
 export default withRouter(Slide)
+export { Slide }

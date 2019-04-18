@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import Forbidden from '../../src/components/Forbidden';
 import Enzyme, { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
@@ -10,9 +10,9 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Forbidden component', () => {
   it('should render correct', () => {
       const p404 = mount(
-        <BrowserRouter>
+        <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
           <Forbidden/>
-        </BrowserRouter>
+        </MemoryRouter>
       );
 
       expect(shallowToJson(p404)).toMatchSnapshot()

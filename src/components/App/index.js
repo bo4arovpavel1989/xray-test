@@ -12,8 +12,8 @@ import { postData } from '../../actions.js'
 import { setToken } from '../../helpers'
 
 class App extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       isAdmin: false,
@@ -25,6 +25,9 @@ class App extends React.Component {
     this.login = this.login.bind(this)
     this.logoff = this.logoff.bind(this)
     this.handleAuth = this.handleAuth.bind(this)
+
+    this.postData = this.props.postData || postData;
+    this.setToken = this.props.setToken || setToken;
   }
 
   login (e) {
@@ -37,14 +40,14 @@ class App extends React.Component {
 
     this.setState({ isLogging: true })
 
-    postData('login', data)
-      .then(this.handleAuth)
-      .catch(console.log)
-      .finally(() => this.setState({ isLogging: false }))
+    return this.postData('login', data)
+               .then(this.handleAuth)
+               .catch(console.log)
+               .finally(() => this.setState({ isLogging: false }))
   }
 
   handleAuth (rep) {
-    if (rep.auth) setToken(rep.token)
+    if (rep.auth) this.setToken(rep.token);
     this.setState({ isAdmin: rep.auth, authFail: !rep.auth, token: rep.token })
   }
 

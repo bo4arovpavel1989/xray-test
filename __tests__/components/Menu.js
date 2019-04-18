@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import Menu from '../../src/components/Menu';
 import Enzyme, { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
@@ -10,9 +10,9 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Menu component', () => {
   it('should render correct', () => {
       const menu = mount(
-        <BrowserRouter>
+        <MemoryRouter initialEntries={[ { key: 'testKey' } ]}>
           <Menu/>
-        </BrowserRouter>
+        </MemoryRouter>
       );
 
       expect(shallowToJson(menu)).toMatchSnapshot()

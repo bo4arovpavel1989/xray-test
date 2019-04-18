@@ -1,23 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component Header logged in should fit snapshot 1`] = `
-<BrowserRouter>
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
   <Router
     history={
       Object {
         "action": "POP",
         "block": [Function],
+        "canGo": [Function],
         "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "index": 0,
         "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "testKey",
           "pathname": "/",
           "search": "",
-          "state": undefined,
         },
         "push": [Function],
         "replace": [Function],
@@ -37,17 +55,27 @@ exports[`Header component Header logged in should fit snapshot 1`] = `
             Object {
               "action": "POP",
               "block": [Function],
+              "canGo": [Function],
               "createHref": [Function],
+              "entries": Array [
+                Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+              ],
               "go": [Function],
               "goBack": [Function],
               "goForward": [Function],
+              "index": 0,
               "length": 1,
               "listen": [Function],
               "location": Object {
                 "hash": "",
+                "key": "testKey",
                 "pathname": "/",
                 "search": "",
-                "state": undefined,
               },
               "push": [Function],
               "replace": [Function],
@@ -57,9 +85,9 @@ exports[`Header component Header logged in should fit snapshot 1`] = `
           location={
             Object {
               "hash": "",
+              "key": "testKey",
               "pathname": "/",
               "search": "",
-              "state": undefined,
             }
           }
           login={[Function]}
@@ -107,27 +135,45 @@ exports[`Header component Header logged in should fit snapshot 1`] = `
       </Route>
     </withRouter(Header)>
   </Router>
-</BrowserRouter>
+</MemoryRouter>
 `;
 
 exports[`Header component Header snapshot should fit snapshot 1`] = `
-<BrowserRouter>
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
   <Router
     history={
       Object {
         "action": "POP",
         "block": [Function],
+        "canGo": [Function],
         "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "index": 0,
         "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "testKey",
           "pathname": "/",
           "search": "",
-          "state": undefined,
         },
         "push": [Function],
         "replace": [Function],
@@ -147,17 +193,27 @@ exports[`Header component Header snapshot should fit snapshot 1`] = `
             Object {
               "action": "POP",
               "block": [Function],
+              "canGo": [Function],
               "createHref": [Function],
+              "entries": Array [
+                Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+              ],
               "go": [Function],
               "goBack": [Function],
               "goForward": [Function],
+              "index": 0,
               "length": 1,
               "listen": [Function],
               "location": Object {
                 "hash": "",
+                "key": "testKey",
                 "pathname": "/",
                 "search": "",
-                "state": undefined,
               },
               "push": [Function],
               "replace": [Function],
@@ -167,9 +223,9 @@ exports[`Header component Header snapshot should fit snapshot 1`] = `
           location={
             Object {
               "hash": "",
+              "key": "testKey",
               "pathname": "/",
               "search": "",
-              "state": undefined,
             }
           }
           login={[Function]}
@@ -212,17 +268,27 @@ exports[`Header component Header snapshot should fit snapshot 1`] = `
                     Object {
                       "action": "POP",
                       "block": [Function],
+                      "canGo": [Function],
                       "createHref": [Function],
+                      "entries": Array [
+                        Object {
+                          "hash": "",
+                          "key": "testKey",
+                          "pathname": "/",
+                          "search": "",
+                        },
+                      ],
                       "go": [Function],
                       "goBack": [Function],
                       "goForward": [Function],
+                      "index": 0,
                       "length": 1,
                       "listen": [Function],
                       "location": Object {
                         "hash": "",
+                        "key": "testKey",
                         "pathname": "/",
                         "search": "",
-                        "state": undefined,
                       },
                       "push": [Function],
                       "replace": [Function],
@@ -231,9 +297,9 @@ exports[`Header component Header snapshot should fit snapshot 1`] = `
                   location={
                     Object {
                       "hash": "",
+                      "key": "testKey",
                       "pathname": "/",
                       "search": "",
-                      "state": undefined,
                     }
                   }
                   login={[Function]}
@@ -277,5 +343,5 @@ exports[`Header component Header snapshot should fit snapshot 1`] = `
       </Route>
     </withRouter(Header)>
   </Router>
-</BrowserRouter>
+</MemoryRouter>
 `;

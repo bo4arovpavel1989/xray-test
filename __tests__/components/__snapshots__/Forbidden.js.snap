@@ -1,23 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Forbidden component should render correct 1`] = `
-<BrowserRouter>
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
   <Router
     history={
       Object {
         "action": "POP",
         "block": [Function],
+        "canGo": [Function],
         "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "index": 0,
         "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "testKey",
           "pathname": "/",
           "search": "",
-          "state": undefined,
         },
         "push": [Function],
         "replace": [Function],
@@ -31,17 +49,27 @@ exports[`Forbidden component should render correct 1`] = `
             Object {
               "action": "POP",
               "block": [Function],
+              "canGo": [Function],
               "createHref": [Function],
+              "entries": Array [
+                Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+              ],
               "go": [Function],
               "goBack": [Function],
               "goForward": [Function],
+              "index": 0,
               "length": 1,
               "listen": [Function],
               "location": Object {
                 "hash": "",
+                "key": "testKey",
                 "pathname": "/",
                 "search": "",
-                "state": undefined,
               },
               "push": [Function],
               "replace": [Function],
@@ -50,9 +78,9 @@ exports[`Forbidden component should render correct 1`] = `
           location={
             Object {
               "hash": "",
+              "key": "testKey",
               "pathname": "/",
               "search": "",
-              "state": undefined,
             }
           }
           match={
@@ -76,5 +104,5 @@ exports[`Forbidden component should render correct 1`] = `
       </Route>
     </withRouter(Forbidden)>
   </Router>
-</BrowserRouter>
+</MemoryRouter>
 `;

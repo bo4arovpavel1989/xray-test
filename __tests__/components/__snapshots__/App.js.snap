@@ -1,3 +1,283 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render correct 1`] = `null`;
+exports[`App should render correct 1`] = `
+<App
+  postData={[MockFunction]}
+  setToken={[MockFunction]}
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <div>
+        <withRouter(Header)
+          authFail={false}
+          isAdmin={false}
+          isLogging={false}
+          login={[Function]}
+          logoff={[Function]}
+        >
+          <Route>
+            <Header
+              authFail={false}
+              history={
+                Object {
+                  "action": "POP",
+                  "block": [Function],
+                  "createHref": [Function],
+                  "go": [Function],
+                  "goBack": [Function],
+                  "goForward": [Function],
+                  "length": 1,
+                  "listen": [Function],
+                  "location": Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  },
+                  "push": [Function],
+                  "replace": [Function],
+                }
+              }
+              isAdmin={false}
+              isLogging={false}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              login={[Function]}
+              logoff={[Function]}
+              match={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+            >
+              <div
+                className="headerArea"
+              >
+                <Link
+                  className="header"
+                  replace={false}
+                  to="/"
+                >
+                  <a
+                    className="header"
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    <h1>
+                      XRay-test
+                    </h1>
+                  </a>
+                </Link>
+                <withRouter(Login)
+                  authFail={false}
+                  login={[Function]}
+                >
+                  <Route>
+                    <Login
+                      authFail={false}
+                      history={
+                        Object {
+                          "action": "POP",
+                          "block": [Function],
+                          "createHref": [Function],
+                          "go": [Function],
+                          "goBack": [Function],
+                          "goForward": [Function],
+                          "length": 1,
+                          "listen": [Function],
+                          "location": Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          },
+                          "push": [Function],
+                          "replace": [Function],
+                        }
+                      }
+                      location={
+                        Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        }
+                      }
+                      login={[Function]}
+                      match={
+                        Object {
+                          "isExact": true,
+                          "params": Object {},
+                          "path": "/",
+                          "url": "/",
+                        }
+                      }
+                    >
+                      <form
+                        className="loginForm"
+                        onSubmit={[Function]}
+                      >
+                        <span>
+                          <input
+                            name="login"
+                            placeholder="login"
+                            type="login"
+                          />
+                          <input
+                            name="password"
+                            placeholder="password"
+                            type="password"
+                          />
+                        </span>
+                        <span>
+                          <input
+                            type="submit"
+                            value="Войти"
+                          />
+                        </span>
+                      </form>
+                    </Login>
+                  </Route>
+                </withRouter(Login)>
+              </div>
+            </Header>
+          </Route>
+        </withRouter(Header)>
+        <Switch>
+          <Route
+            computedMatch={
+              Object {
+                "isExact": true,
+                "params": Object {},
+                "path": "/",
+                "url": "/",
+              }
+            }
+            exact={true}
+            location={
+              Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              }
+            }
+            path="/"
+            render={[Function]}
+          >
+            <Route>
+              <Menu
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="container"
+                >
+                  <div
+                    className="menuItem"
+                  >
+                    <Link
+                      className="menuButton"
+                      replace={false}
+                      to="/test"
+                    >
+                      <a
+                        className="menuButton"
+                        href="/test"
+                        onClick={[Function]}
+                      >
+                        Начать тест
+                      </a>
+                    </Link>
+                  </div>
+                  <div
+                    className="menuItem"
+                  >
+                    <Link
+                      className="menuButton"
+                      replace={false}
+                      to="/admin"
+                    >
+                      <a
+                        className="menuButton"
+                        href="/admin"
+                        onClick={[Function]}
+                      >
+                        Настройки
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </Menu>
+            </Route>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  </BrowserRouter>
+</App>
+`;

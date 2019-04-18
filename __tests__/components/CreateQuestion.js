@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
 import { CreateQuestion } from '../../src/components/CreateQuestion';
 import Enzyme, { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';

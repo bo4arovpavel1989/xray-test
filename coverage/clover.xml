@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555517641435" clover="3.2.0">
-  <project timestamp="1555517641436" name="All files">
-    <metrics statements="469" coveredstatements="226" conditionals="140" coveredconditionals="53" methods="177" coveredmethods="80" elements="786" coveredelements="359" complexity="0" loc="469" ncloc="469" packages="10" files="15" classes="15">
+<coverage generated="1555569838093" clover="3.2.0">
+  <project timestamp="1555569838093" name="All files">
+    <metrics statements="471" coveredstatements="235" conditionals="144" coveredconditionals="59" methods="177" coveredmethods="83" elements="792" coveredelements="377" complexity="0" loc="471" ncloc="471" packages="10" files="15" classes="15">
       <package name="src">
         <metrics statements="41" coveredstatements="13" conditionals="7" coveredconditionals="0" methods="26" coveredmethods="0"/>
-        <file name="actions.js" path="/home/pavel/git/xray-test/src/actions.js">
+        <file name="actions.js" path="D:\git\xray-test\src\actions.js">
           <metrics statements="24" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="19" coveredmethods="0"/>
           <line num="5" count="5" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
@@ -31,7 +31,7 @@
           <line num="43" count="0" type="stmt"/>
           <line num="44" count="0" type="stmt"/>
         </file>
-        <file name="config.js" path="/home/pavel/git/xray-test/src/config.js">
+        <file name="config.js" path="D:\git\xray-test\src\config.js">
           <metrics statements="9" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="3" count="5" type="stmt"/>
           <line num="5" count="5" type="cond" truecount="0" falsecount="1"/>
@@ -43,7 +43,7 @@
           <line num="32" count="5" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
         </file>
-        <file name="helpers.js" path="/home/pavel/git/xray-test/src/helpers.js">
+        <file name="helpers.js" path="D:\git\xray-test\src\helpers.js">
           <metrics statements="8" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
           <line num="6" count="6" type="cond" truecount="0" falsecount="2"/>
           <line num="13" count="6" type="stmt"/>
@@ -57,7 +57,7 @@
       </package>
       <package name="src.components.Admin">
         <metrics statements="81" coveredstatements="70" conditionals="22" coveredconditionals="11" methods="39" coveredmethods="33"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Admin/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Admin\index.js">
           <metrics statements="81" coveredstatements="70" conditionals="22" coveredconditionals="11" methods="39" coveredmethods="33"/>
           <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
@@ -143,30 +143,32 @@
         </file>
       </package>
       <package name="src.components.App">
-        <metrics statements="16" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="2"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/App/index.js">
-          <metrics statements="16" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="2"/>
+        <metrics statements="18" coveredstatements="16" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="5"/>
+        <file name="index.js" path="D:\git\xray-test\src\components\App\index.js">
+          <metrics statements="18" coveredstatements="16" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="5"/>
           <line num="16" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
           <line num="25" count="1" type="stmt"/>
           <line num="26" count="1" type="stmt"/>
           <line num="27" count="1" type="stmt"/>
-          <line num="31" count="0" type="stmt"/>
-          <line num="33" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
-          <line num="40" count="0" type="stmt"/>
-          <line num="43" count="0" type="stmt"/>
-          <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="48" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
-          <line num="57" count="0" type="stmt"/>
-          <line num="61" count="1" type="stmt"/>
-          <line num="63" count="1" type="stmt"/>
+          <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="46" count="1" type="stmt"/>
+          <line num="50" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="64" count="5" type="stmt"/>
+          <line num="66" count="5" type="stmt"/>
         </file>
       </package>
       <package name="src.components.CreateQuestion">
         <metrics statements="69" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="23" coveredmethods="10"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/CreateQuestion/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\CreateQuestion\index.js">
           <metrics statements="69" coveredstatements="32" conditionals="28" coveredconditionals="15" methods="23" coveredmethods="10"/>
           <line num="9" count="1" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
@@ -241,7 +243,7 @@
       </package>
       <package name="src.components.CreateTest">
         <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/CreateTest/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\CreateTest\index.js">
           <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
           <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
@@ -263,7 +265,7 @@
       </package>
       <package name="src.components.Drawer">
         <metrics statements="70" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Drawer/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Drawer\index.js">
           <metrics statements="70" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="17" coveredmethods="0"/>
           <line num="3" count="0" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
@@ -339,38 +341,38 @@
       </package>
       <package name="src.components.Forbidden">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Forbidden/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Forbidden\index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="6" count="1" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Header">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <file name="Login.js" path="/home/pavel/git/xray-test/src/components/Header/Login.js">
+        <file name="Login.js" path="D:\git\xray-test\src\components\Header\Login.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="6" count="3" type="stmt"/>
-          <line num="7" count="6" type="stmt"/>
-          <line num="9" count="6" type="stmt"/>
+          <line num="7" count="8" type="stmt"/>
+          <line num="9" count="8" type="stmt"/>
           <line num="28" count="3" type="stmt"/>
         </file>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Header/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Header\index.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="7" count="2" type="stmt"/>
-          <line num="8" count="3" type="stmt"/>
-          <line num="10" count="3" type="stmt"/>
+          <line num="8" count="7" type="stmt"/>
+          <line num="10" count="7" type="stmt"/>
           <line num="29" count="2" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Menu">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Menu/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Menu\index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="7" count="2" type="stmt"/>
+          <line num="7" count="6" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Test">
         <metrics statements="166" coveredstatements="78" conditionals="66" coveredconditionals="19" methods="56" coveredmethods="25"/>
-        <file name="Slide.js" path="/home/pavel/git/xray-test/src/components/Test/Slide.js">
+        <file name="Slide.js" path="D:\git\xray-test\src\components\Test\Slide.js">
           <metrics statements="117" coveredstatements="37" conditionals="54" coveredconditionals="11" methods="35" coveredmethods="9"/>
           <line num="10" count="3" type="stmt"/>
           <line num="12" count="3" type="stmt"/>
@@ -388,18 +390,18 @@
           <line num="37" count="3" type="stmt"/>
           <line num="38" count="3" type="stmt"/>
           <line num="40" count="3" type="stmt"/>
-          <line num="44" count="2" type="stmt"/>
-          <line num="46" count="2" type="cond" truecount="1" falsecount="1"/>
-          <line num="47" count="2" type="cond" truecount="1" falsecount="1"/>
-          <line num="48" count="2" type="stmt"/>
-          <line num="52" count="2" type="stmt"/>
-          <line num="53" count="2" type="stmt"/>
-          <line num="55" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="44" count="3" type="stmt"/>
+          <line num="46" count="3" type="cond" truecount="1" falsecount="1"/>
+          <line num="47" count="3" type="cond" truecount="1" falsecount="1"/>
+          <line num="48" count="3" type="stmt"/>
+          <line num="52" count="3" type="stmt"/>
+          <line num="53" count="3" type="stmt"/>
+          <line num="55" count="3" type="cond" truecount="1" falsecount="1"/>
           <line num="56" count="0" type="stmt"/>
           <line num="61" count="2" type="stmt"/>
           <line num="62" count="2" type="stmt"/>
-          <line num="66" count="2" type="stmt"/>
-          <line num="68" count="2" type="stmt"/>
+          <line num="66" count="3" type="stmt"/>
+          <line num="68" count="3" type="stmt"/>
           <line num="80" count="2" type="stmt"/>
           <line num="82" count="2" type="cond" truecount="1" falsecount="1"/>
           <line num="91" count="0" type="stmt"/>
@@ -484,20 +486,20 @@
           <line num="308" count="0" type="stmt"/>
           <line num="309" count="0" type="stmt"/>
           <line num="311" count="0" type="stmt"/>
-          <line num="315" count="5" type="stmt"/>
-          <line num="316" count="5" type="stmt"/>
-          <line num="317" count="5" type="stmt"/>
-          <line num="319" count="5" type="stmt"/>
+          <line num="315" count="6" type="stmt"/>
+          <line num="316" count="6" type="stmt"/>
+          <line num="317" count="6" type="stmt"/>
+          <line num="319" count="6" type="stmt"/>
           <line num="373" count="3" type="stmt"/>
         </file>
-        <file name="User.js" path="/home/pavel/git/xray-test/src/components/Test/User.js">
+        <file name="User.js" path="D:\git\xray-test\src\components\Test\User.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="6" count="2" type="stmt"/>
-          <line num="7" count="8" type="stmt"/>
-          <line num="9" count="8" type="stmt"/>
-          <line num="32" count="2" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="9" type="stmt"/>
+          <line num="9" count="9" type="stmt"/>
+          <line num="32" count="3" type="stmt"/>
         </file>
-        <file name="index.js" path="/home/pavel/git/xray-test/src/components/Test/index.js">
+        <file name="index.js" path="D:\git\xray-test\src\components\Test\index.js">
           <metrics statements="45" coveredstatements="37" conditionals="12" coveredconditionals="8" methods="20" coveredmethods="15"/>
           <line num="10" count="1" type="stmt"/>
           <line num="12" count="1" type="stmt"/>

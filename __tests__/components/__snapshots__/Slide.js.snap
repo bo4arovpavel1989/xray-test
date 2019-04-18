@@ -1,3 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slide component should render correct 1`] = `null`;
+exports[`Slide component should render correct match snapshot 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Slide
+      drawer={
+        Object {
+          "clearZones": [MockFunction],
+          "getZones": [MockFunction],
+          "reset": [MockFunction],
+          "start": [MockFunction],
+        }
+      }
+      nextQuestion={[MockFunction]}
+      prepareCanvas={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      question={Object {}}
+      sendResult={[MockFunction]}
+      settings={Object {}}
+    >
+      <div>
+        <div>
+          Вопрос 
+        </div>
+        <div
+          className="canvasArea"
+        >
+          <div
+            className="actionComment_container speech"
+          />
+          <div
+            className="markIcon_cotainer"
+          />
+          <div
+            className="clearButton_container"
+          >
+            <button
+              disabled={false}
+              id="clearButton"
+              onClick={[Function]}
+            >
+              ☑
+            </button>
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              className="animatedShow"
+              id="canvasBackground"
+            />
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasDrawArea"
+            />
+          </div>
+          <div
+            className="timerWarning_container"
+          />
+          <div
+            className="forwardButton_container"
+          >
+            <button
+              disabled={true}
+              id="forwardButton"
+              onClick={[Function]}
+            >
+              ►
+            </button>
+          </div>
+        </div>
+        <img
+          alt="Опасный предмет"
+          className="hidden"
+        />
+      </div>
+    </Slide>
+  </Router>
+</MemoryRouter>
+`;
