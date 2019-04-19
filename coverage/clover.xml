@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555569838093" clover="3.2.0">
-  <project timestamp="1555569838093" name="All files">
-    <metrics statements="471" coveredstatements="235" conditionals="144" coveredconditionals="59" methods="177" coveredmethods="83" elements="792" coveredelements="377" complexity="0" loc="471" ncloc="471" packages="10" files="15" classes="15">
+<coverage generated="1555656064428" clover="3.2.0">
+  <project timestamp="1555656064429" name="All files">
+    <metrics statements="471" coveredstatements="259" conditionals="144" coveredconditionals="71" methods="177" coveredmethods="92" elements="792" coveredelements="422" complexity="0" loc="471" ncloc="471" packages="10" files="15" classes="15">
       <package name="src">
         <metrics statements="41" coveredstatements="13" conditionals="7" coveredconditionals="0" methods="26" coveredmethods="0"/>
         <file name="actions.js" path="D:\git\xray-test\src\actions.js">
@@ -143,9 +143,9 @@
         </file>
       </package>
       <package name="src.components.App">
-        <metrics statements="18" coveredstatements="16" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="5"/>
+        <metrics statements="18" coveredstatements="18" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="6"/>
         <file name="index.js" path="D:\git\xray-test\src\components\App\index.js">
-          <metrics statements="18" coveredstatements="16" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="5"/>
+          <metrics statements="18" coveredstatements="18" conditionals="12" coveredconditionals="9" methods="6" coveredmethods="6"/>
           <line num="16" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
           <line num="25" count="1" type="stmt"/>
@@ -160,10 +160,10 @@
           <line num="46" count="1" type="stmt"/>
           <line num="50" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="51" count="1" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="60" count="0" type="stmt"/>
-          <line num="64" count="5" type="stmt"/>
-          <line num="66" count="5" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="60" count="1" type="stmt"/>
+          <line num="64" count="7" type="stmt"/>
+          <line num="66" count="7" type="stmt"/>
         </file>
       </package>
       <package name="src.components.CreateQuestion">
@@ -351,15 +351,15 @@
         <file name="Login.js" path="D:\git\xray-test\src\components\Header\Login.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="6" count="3" type="stmt"/>
-          <line num="7" count="8" type="stmt"/>
-          <line num="9" count="8" type="stmt"/>
+          <line num="7" count="10" type="stmt"/>
+          <line num="9" count="10" type="stmt"/>
           <line num="28" count="3" type="stmt"/>
         </file>
         <file name="index.js" path="D:\git\xray-test\src\components\Header\index.js">
           <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="7" count="2" type="stmt"/>
-          <line num="8" count="7" type="stmt"/>
-          <line num="10" count="7" type="stmt"/>
+          <line num="8" count="9" type="stmt"/>
+          <line num="10" count="9" type="stmt"/>
           <line num="29" count="2" type="stmt"/>
         </file>
       </package>
@@ -367,13 +367,13 @@
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="index.js" path="D:\git\xray-test\src\components\Menu\index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="7" count="6" type="stmt"/>
+          <line num="7" count="8" type="stmt"/>
         </file>
       </package>
       <package name="src.components.Test">
-        <metrics statements="166" coveredstatements="78" conditionals="66" coveredconditionals="19" methods="56" coveredmethods="25"/>
+        <metrics statements="166" coveredstatements="100" conditionals="66" coveredconditionals="31" methods="56" coveredmethods="33"/>
         <file name="Slide.js" path="D:\git\xray-test\src\components\Test\Slide.js">
-          <metrics statements="117" coveredstatements="37" conditionals="54" coveredconditionals="11" methods="35" coveredmethods="9"/>
+          <metrics statements="117" coveredstatements="59" conditionals="54" coveredconditionals="23" methods="35" coveredmethods="17"/>
           <line num="10" count="3" type="stmt"/>
           <line num="12" count="3" type="stmt"/>
           <line num="13" count="3" type="stmt"/>
@@ -394,9 +394,9 @@
           <line num="46" count="3" type="cond" truecount="1" falsecount="1"/>
           <line num="47" count="3" type="cond" truecount="1" falsecount="1"/>
           <line num="48" count="3" type="stmt"/>
-          <line num="52" count="3" type="stmt"/>
-          <line num="53" count="3" type="stmt"/>
-          <line num="55" count="3" type="cond" truecount="1" falsecount="1"/>
+          <line num="52" count="7" type="stmt"/>
+          <line num="53" count="7" type="stmt"/>
+          <line num="55" count="7" type="cond" truecount="1" falsecount="1"/>
           <line num="56" count="0" type="stmt"/>
           <line num="61" count="2" type="stmt"/>
           <line num="62" count="2" type="stmt"/>
@@ -423,8 +423,8 @@
           <line num="132" count="0" type="stmt"/>
           <line num="133" count="0" type="stmt"/>
           <line num="141" count="0" type="stmt"/>
-          <line num="150" count="0" type="stmt"/>
-          <line num="151" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="150" count="1" type="stmt"/>
+          <line num="151" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="153" count="0" type="stmt"/>
           <line num="161" count="2" type="stmt"/>
           <line num="169" count="0" type="stmt"/>
@@ -435,22 +435,22 @@
           <line num="181" count="0" type="stmt"/>
           <line num="185" count="0" type="stmt"/>
           <line num="187" count="0" type="stmt"/>
-          <line num="198" count="0" type="stmt"/>
-          <line num="200" count="0" type="stmt"/>
-          <line num="209" count="0" type="stmt"/>
-          <line num="211" count="0" type="stmt"/>
-          <line num="212" count="0" type="stmt"/>
-          <line num="220" count="2" type="stmt"/>
-          <line num="221" count="0" type="stmt"/>
-          <line num="224" count="2" type="stmt"/>
-          <line num="228" count="0" type="stmt"/>
-          <line num="229" count="0" type="stmt"/>
-          <line num="230" count="0" type="stmt"/>
-          <line num="232" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="235" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="236" count="0" type="stmt"/>
+          <line num="198" count="2" type="stmt"/>
+          <line num="200" count="2" type="stmt"/>
+          <line num="209" count="1" type="stmt"/>
+          <line num="211" count="1" type="stmt"/>
+          <line num="212" count="1" type="stmt"/>
+          <line num="220" count="3" type="stmt"/>
+          <line num="221" count="2" type="stmt"/>
+          <line num="224" count="3" type="stmt"/>
+          <line num="228" count="1" type="stmt"/>
+          <line num="229" count="1" type="stmt"/>
+          <line num="230" count="1" type="stmt"/>
+          <line num="232" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="235" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="236" count="1" type="stmt"/>
           <line num="239" count="0" type="stmt"/>
-          <line num="243" count="0" type="stmt"/>
+          <line num="243" count="1" type="stmt"/>
           <line num="247" count="0" type="stmt"/>
           <line num="248" count="0" type="stmt"/>
           <line num="249" count="0" type="stmt"/>
@@ -475,21 +475,21 @@
           <line num="286" count="0" type="stmt"/>
           <line num="287" count="0" type="stmt"/>
           <line num="288" count="0" type="stmt"/>
-          <line num="292" count="0" type="stmt"/>
-          <line num="293" count="0" type="stmt"/>
-          <line num="294" count="0" type="stmt"/>
-          <line num="295" count="0" type="stmt"/>
-          <line num="299" count="0" type="stmt"/>
-          <line num="300" count="0" type="stmt"/>
-          <line num="302" count="0" type="stmt"/>
+          <line num="292" count="1" type="stmt"/>
+          <line num="293" count="1" type="stmt"/>
+          <line num="294" count="1" type="stmt"/>
+          <line num="295" count="1" type="stmt"/>
+          <line num="299" count="1" type="stmt"/>
+          <line num="300" count="1" type="stmt"/>
+          <line num="302" count="1" type="stmt"/>
           <line num="306" count="0" type="stmt"/>
           <line num="308" count="0" type="stmt"/>
           <line num="309" count="0" type="stmt"/>
           <line num="311" count="0" type="stmt"/>
-          <line num="315" count="6" type="stmt"/>
-          <line num="316" count="6" type="stmt"/>
-          <line num="317" count="6" type="stmt"/>
-          <line num="319" count="6" type="stmt"/>
+          <line num="315" count="10" type="stmt"/>
+          <line num="316" count="10" type="stmt"/>
+          <line num="317" count="10" type="stmt"/>
+          <line num="319" count="10" type="stmt"/>
           <line num="373" count="3" type="stmt"/>
         </file>
         <file name="User.js" path="D:\git\xray-test\src\components\Test\User.js">

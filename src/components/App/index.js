@@ -57,7 +57,7 @@ class App extends React.Component {
       token: undefined
      })
 
-     setToken(null)
+     this.setToken(null)
   }
 
   render () {

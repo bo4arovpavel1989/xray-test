@@ -67,4 +67,19 @@ describe('App', () => {
       });
     })
   })
+
+  describe('should handle logoff', () => {
+    beforeAll(() => {
+      return app.instance().logoff();
+    })
+
+    afterAll(() => {
+      app.instance().setState(initialState);
+      props.setToken.mockClear();
+    })
+
+    it('should call setToken', () => {
+      expect(props.setToken).toHaveBeenCalledWith(null);
+    })
+  })
 })
