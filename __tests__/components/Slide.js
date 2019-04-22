@@ -108,4 +108,69 @@ describe('Slide component', () => {
       })
   })
 
+  describe('should handle clear-button click - when danger', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        settings: {
+          timerWarning: 10,
+          time: 15,
+          redError: 8
+        },
+        question: {
+          dangerZones: [0, 0, 100, 100],
+          isDanger: '1'
+        }
+      });
+      component.find('#clearButton').simulate('click');
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+      props.drawer.drawOldZones.mockClear();
+    });
+
+    it('match snapshot', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should change state - comment', () => {
+      expect(component.find(Slide).instance().state.comment).toEqual(comments.red1)
+    })
+    it('should change state - answered', () => {
+      expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+    it('should change state - result', () => {
+      expect(component.find(Slide).instance().state.result).toEqual(8)
+    })
+
+    it('should call drawZones', () => {
+      expect(props.drawer.drawOldZones).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('should handle clear-button click - when safe', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        settings: {
+          timerWarning: 10,
+          time: 15
+        },
+        question: {
+          dangerZones: [],
+          isDanger: '0'
+        }
+      });
+      component.find('#clearButton').simulate('click');
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+    });
+
+    it('match snapshot', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should change state - answered', () => {
+      expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+  })
 })

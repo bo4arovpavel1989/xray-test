@@ -23,6 +23,7 @@ class Slide extends React.PureComponent {
       answered: false,
       result: 0,
       slideShowed: false,
+      clickAllowed: false,
       photoShowed: false
     }
 
@@ -59,7 +60,6 @@ class Slide extends React.PureComponent {
 
   componentWillUnmount () {
     this.clearTimers();
-    this.removeClickListener();
   }
 
   setNewQuestion () {
@@ -74,12 +74,6 @@ class Slide extends React.PureComponent {
       warningShowed: false,
       result: 0
     }, this.prepareCanvas);
-  }
-
-  removeClickListener () {
-    const drawLayer = this.getCanvasDraw();
-
-    if (drawLayer) drawLayer.removeEventListener('click', this.handleCanvasClick)
   }
 
   /**
@@ -98,7 +92,7 @@ class Slide extends React.PureComponent {
       this.animateSlideShow()
           .then(() => {
             this.setQuestionTimers();
-            this.setClickListener();
+            this.setState({ clickAllowed: true });
           })
           .catch(window.alert);
     }
@@ -170,6 +164,7 @@ class Slide extends React.PureComponent {
   }
 
   setClear () {
+    console.log(this.state.clickAllowed)
     const { isDanger } = this.state.question;
     const { redError } = this.state.settings;
 
@@ -179,12 +174,6 @@ class Slide extends React.PureComponent {
         result: redError
       }, this.finishQuestion)
     } else this.finishQuestion();
-  }
-
-  setClickListener () {
-    const drawLayer = this.getCanvasDraw();
-
-    drawLayer.addEventListener('click', this.handleCanvasClick)
   }
 
   /**
@@ -244,6 +233,8 @@ class Slide extends React.PureComponent {
   }
 
   handleCanvasClick (e) {
+    e.persist();
+
     const { answered } = this.state;
     const { isDanger } = this.state.question;
     const { yellowError } = this.state.settings;
@@ -252,7 +243,7 @@ class Slide extends React.PureComponent {
       return this.setState({ comment: comments.yellow, result: yellowError }, this.finishQuestion)
     }
 
-    return this.checkIfClickInDangerZone(e)
+    return this.checkIfClickInDangerZone(e.nativeEvent)
   }
 
   checkIfClickInDangerZone (e) {
@@ -305,14 +296,13 @@ class Slide extends React.PureComponent {
   nextQuestion () {
     const { nextQuestion } = this.props;
 
-    this.removeClickListener();
-    this.setState({ slideShowed: false });
+    this.setState({ slideShowed: false, clickAllowed: false });
 
     return nextQuestion();
   }
 
   render () {
-    const { answered, question, warningShowed, result, photoShowed, comment, slideShowed } = this.state;
+    const { answered, question, warningShowed, result, photoShowed, comment, slideShowed, clickAllowed } = this.state;
     const { yellowError } = this.state.settings;
     const { dangerPicture } = question;
 
@@ -340,7 +330,7 @@ class Slide extends React.PureComponent {
             }
           </div>
           <div className='clearButton_container'>
-            <button id='clearButton' disabled = { answered } onClick= { this.setClear } >&#9745;</button>
+            <button id='clearButton' disabled = { answered || !clickAllowed } onClick= { this.setClear } >&#9745;</button>
           </div>
           <div className='canvas_container'>
             { slideShowed ?
@@ -350,7 +340,7 @@ class Slide extends React.PureComponent {
             }
           </div>
           <div className='canvas_container'>
-            <canvas id="canvasDrawArea"></canvas>
+            <canvas id="canvasDrawArea" onClick= { clickAllowed ? (e) => this.handleCanvasClick(e) : () => {}}></canvas>
           </div>
           <div className='timerWarning_container'>
             { warningShowed ?
