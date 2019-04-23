@@ -164,7 +164,6 @@ class Slide extends React.PureComponent {
   }
 
   setClear () {
-    console.log(this.state.clickAllowed)
     const { isDanger } = this.state.question;
     const { redError } = this.state.settings;
 
@@ -273,6 +272,8 @@ class Slide extends React.PureComponent {
 
   handlePhotoPosition (e) {
     const photo = document.querySelector('.dangerPicture');
+
+    if (!photo) return false;
 
     photo.style.top = e.clientY - (photo.naturalHeight / 2) + 'px';
     photo.style.left = e.clientX - (photo.naturalWidth / 2) + 'px';

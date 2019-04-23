@@ -34,6 +34,7 @@ describe('Slide component', () => {
     result: 0,
     settings: {},
     slideShowed: true,
+    clickAllowed: false,
     warningShowed: false
   };
 
@@ -111,6 +112,7 @@ describe('Slide component', () => {
   describe('should handle clear-button click - when danger', () => {
     beforeAll(() => {
       component.find(Slide).instance().setState({
+        clickAllowed: true,
         settings: {
           timerWarning: 10,
           time: 15,
@@ -121,6 +123,7 @@ describe('Slide component', () => {
           isDanger: '1'
         }
       });
+      component.update();
       component.find('#clearButton').simulate('click');
     });
     afterAll(() => {
@@ -150,6 +153,7 @@ describe('Slide component', () => {
   describe('should handle clear-button click - when safe', () => {
     beforeAll(() => {
       component.find(Slide).instance().setState({
+        clickAllowed: true,
         settings: {
           timerWarning: 10,
           time: 15
@@ -171,6 +175,130 @@ describe('Slide component', () => {
 
     it('should change state - answered', () => {
       expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+  })
+
+  describe('should handle canvas click - when safe', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        clickAllowed: true,
+        settings: {
+          timerWarning: 10,
+          time: 15,
+          yellowError: 4
+        },
+        question: {
+          dangerZones: [],
+          isDanger: '0'
+        }
+      });
+      component.find('#canvasDrawArea').simulate('click');
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+    });
+
+    it('match snapshot', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should change state - comment', () => {
+      expect(component.find(Slide).instance().state.comment).toEqual(comments.yellow)
+    })
+    it('should change state - result', () => {
+      expect(component.find(Slide).instance().state.result).toEqual(4)
+    })
+    it('should change state - answered', () => {
+      expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+  })
+
+  describe('should handle canvas click - when danger - wrong click', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        clickAllowed: true,
+        settings: {
+          timerWarning: 10,
+          time: 15,
+          redError: 8
+        },
+        question: {
+          dangerZones: [[0, 0, 100, 100]],
+          isDanger: '1'
+        }
+      });
+      component.find('#canvasDrawArea').simulate('click', {
+        persist: () => {},
+        nativeEvent: {
+          offsetX: 101,
+          offsetY: 101
+        }
+      });
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+      props.drawer.drawOldZones.mockClear();
+    });
+
+    it('match snapshot', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should change state - comment', () => {
+      expect(component.find(Slide).instance().state.comment).toEqual(comments.red2)
+    })
+    it('should change state - result', () => {
+      expect(component.find(Slide).instance().state.result).toEqual(8)
+    })
+    it('should change state - answered', () => {
+      expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+
+    it('should call drawZones', () => {
+      expect(props.drawer.drawOldZones).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('should handle canvas click - when danger - right click', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        clickAllowed: true,
+        settings: {
+          timerWarning: 10,
+          time: 15,
+          redError: 8
+        },
+        question: {
+          dangerZones: [[0, 0, 100, 100]],
+          isDanger: '1'
+        }
+      });
+      component.find('#canvasDrawArea').simulate('click', {
+        persist: () => {},
+        nativeEvent: {
+          offsetX: 50,
+          offsetY: 50
+        }
+      });
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+      props.drawer.drawOldZones.mockClear();
+    });
+
+    it('match snapshot', () => {
+      expect(shallowToJson(component)).toMatchSnapshot()
+    })
+
+    it('should change state - answered', () => {
+      expect(component.find(Slide).instance().state.answered).toEqual(true)
+    })
+    it('should change state - photoShowed', () => {
+      expect(component.find(Slide).instance().state.photoShowed).toEqual(true)
+    })
+
+    it('should call drawZones', () => {
+      expect(props.drawer.drawOldZones).toHaveBeenCalledTimes(1)
     })
   })
 })

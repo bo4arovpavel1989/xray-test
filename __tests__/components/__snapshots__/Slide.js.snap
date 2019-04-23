@@ -1,5 +1,574 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Slide component should handle canvas click - when danger - right click match snapshot 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Slide
+      drawer={
+        Object {
+          "clearZones": [MockFunction],
+          "drawOldZones": [MockFunction] {
+            "calls": Array [
+              Array [
+                Array [
+                  Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                ],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "getZones": [MockFunction],
+          "reset": [MockFunction],
+          "start": [MockFunction],
+        }
+      }
+      nextQuestion={[MockFunction]}
+      prepareCanvas={[MockFunction]}
+      question={Object {}}
+      sendResult={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              8,
+            ],
+            Array [
+              8,
+            ],
+            Array [
+              0,
+            ],
+            Array [
+              4,
+            ],
+            Array [
+              8,
+            ],
+            Array [
+              0,
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      settings={Object {}}
+    >
+      <div>
+        <div>
+          Вопрос 
+        </div>
+        <div
+          className="canvasArea"
+        >
+          <div
+            className="actionComment_container speech"
+          >
+            <div
+              className="green"
+              id="actionComment"
+            >
+              Поздравляем! Правильный ответ.
+            </div>
+          </div>
+          <div
+            className="markIcon_cotainer"
+          >
+            <span
+              className="greenMark"
+              id="markIcon"
+            />
+          </div>
+          <div
+            className="clearButton_container"
+          >
+            <button
+              disabled={true}
+              id="clearButton"
+              onClick={[Function]}
+            >
+              ☑
+            </button>
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              className="animatedShow"
+              id="canvasBackground"
+            />
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasDrawArea"
+              onClick={[Function]}
+            />
+          </div>
+          <div
+            className="timerWarning_container"
+          />
+          <div
+            className="forwardButton_container"
+          >
+            <button
+              disabled={true}
+              id="forwardButton"
+              onClick={[Function]}
+            >
+              ►
+            </button>
+          </div>
+        </div>
+        <img
+          alt="Опасный предмет"
+          className="dangerPicture"
+        />
+      </div>
+    </Slide>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`Slide component should handle canvas click - when danger - wrong click match snapshot 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Slide
+      drawer={
+        Object {
+          "clearZones": [MockFunction],
+          "drawOldZones": [MockFunction] {
+            "calls": Array [
+              Array [
+                Array [
+                  Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                ],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "getZones": [MockFunction],
+          "reset": [MockFunction],
+          "start": [MockFunction],
+        }
+      }
+      nextQuestion={[MockFunction]}
+      prepareCanvas={[MockFunction]}
+      question={Object {}}
+      sendResult={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              8,
+            ],
+            Array [
+              8,
+            ],
+            Array [
+              0,
+            ],
+            Array [
+              4,
+            ],
+            Array [
+              8,
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      settings={Object {}}
+    >
+      <div>
+        <div>
+          Вопрос 
+        </div>
+        <div
+          className="canvasArea"
+        >
+          <div
+            className="actionComment_container speech"
+          >
+            <div
+              className="red"
+              id="actionComment"
+            >
+              Ошибка! Опасного предмета нет в обозначенной Вами области!
+            </div>
+          </div>
+          <div
+            className="markIcon_cotainer"
+          >
+            <span
+              className="redError"
+              id="markIcon"
+            />
+          </div>
+          <div
+            className="clearButton_container"
+          >
+            <button
+              disabled={true}
+              id="clearButton"
+              onClick={[Function]}
+            >
+              ☑
+            </button>
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              className="animatedShow"
+              id="canvasBackground"
+            />
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasDrawArea"
+              onClick={[Function]}
+            />
+          </div>
+          <div
+            className="timerWarning_container"
+          />
+          <div
+            className="forwardButton_container"
+          >
+            <button
+              disabled={false}
+              id="forwardButton"
+              onClick={[Function]}
+            >
+              ►
+            </button>
+          </div>
+        </div>
+        <img
+          alt="Опасный предмет"
+          className="hidden"
+        />
+      </div>
+    </Slide>
+  </Router>
+</MemoryRouter>
+`;
+
+exports[`Slide component should handle canvas click - when safe match snapshot 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Slide
+      drawer={
+        Object {
+          "clearZones": [MockFunction],
+          "drawOldZones": [MockFunction],
+          "getZones": [MockFunction],
+          "reset": [MockFunction],
+          "start": [MockFunction],
+        }
+      }
+      nextQuestion={[MockFunction]}
+      prepareCanvas={[MockFunction]}
+      question={Object {}}
+      sendResult={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              8,
+            ],
+            Array [
+              8,
+            ],
+            Array [
+              0,
+            ],
+            Array [
+              4,
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      settings={Object {}}
+    >
+      <div>
+        <div>
+          Вопрос 
+        </div>
+        <div
+          className="canvasArea"
+        >
+          <div
+            className="actionComment_container speech"
+          >
+            <div
+              className="yellow"
+              id="actionComment"
+            >
+              Ошибка! Опасных предметов нет!
+            </div>
+          </div>
+          <div
+            className="markIcon_cotainer"
+          >
+            <span
+              className="yellowError"
+              id="markIcon"
+            />
+          </div>
+          <div
+            className="clearButton_container"
+          >
+            <button
+              disabled={true}
+              id="clearButton"
+              onClick={[Function]}
+            >
+              ☑
+            </button>
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              className="animatedShow"
+              id="canvasBackground"
+            />
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasDrawArea"
+              onClick={[Function]}
+            />
+          </div>
+          <div
+            className="timerWarning_container"
+          />
+          <div
+            className="forwardButton_container"
+          >
+            <button
+              disabled={false}
+              id="forwardButton"
+              onClick={[Function]}
+            >
+              ►
+            </button>
+          </div>
+        </div>
+        <img
+          alt="Опасный предмет"
+          className="hidden"
+        />
+      </div>
+    </Slide>
+  </Router>
+</MemoryRouter>
+`;
+
 exports[`Slide component should handle clear-button click - when danger match snapshot 1`] = `
 <MemoryRouter
   initialEntries={
@@ -145,6 +714,7 @@ exports[`Slide component should handle clear-button click - when danger match sn
           >
             <canvas
               id="canvasDrawArea"
+              onClick={[Function]}
             />
           </div>
           <div
@@ -307,6 +877,7 @@ exports[`Slide component should handle clear-button click - when safe match snap
           >
             <canvas
               id="canvasDrawArea"
+              onClick={[Function]}
             />
           </div>
           <div
@@ -440,7 +1011,7 @@ exports[`Slide component should handle question warning timer match snapshot 1`]
             className="clearButton_container"
           >
             <button
-              disabled={false}
+              disabled={true}
               id="clearButton"
               onClick={[Function]}
             >
@@ -460,6 +1031,7 @@ exports[`Slide component should handle question warning timer match snapshot 1`]
           >
             <canvas
               id="canvasDrawArea"
+              onClick={[Function]}
             />
           </div>
           <div
@@ -574,7 +1146,7 @@ exports[`Slide component should render correct match snapshot 1`] = `
             className="clearButton_container"
           >
             <button
-              disabled={false}
+              disabled={true}
               id="clearButton"
               onClick={[Function]}
             >
@@ -594,6 +1166,7 @@ exports[`Slide component should render correct match snapshot 1`] = `
           >
             <canvas
               id="canvasDrawArea"
+              onClick={[Function]}
             />
           </div>
           <div
