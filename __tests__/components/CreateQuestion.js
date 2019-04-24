@@ -12,6 +12,7 @@ describe('CreateQuestion component', () => {
   const props = {
     postFile: jest.fn(() => new Promise((res, rej) => res({ type: 'mockJPG' }))),
     postData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
+    getData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     handleFormData: {},
     handleUpload: jest.fn(),
     drawer: {
@@ -135,5 +136,29 @@ describe('CreateQuestion component', () => {
       it ('should call postData', () => {
         expect(props.postData).toHaveBeenCalledWith('savequestion', mockQuestionObject)
       })
-})
+    })
+
+    describe('should check if question is created and get the created question', () => {
+      props.location = {
+        search: 'question=01_01'
+      }
+
+      const component = mount(
+        <CreateQuestion { ...props }/>
+      );
+
+      afterAll(() => {
+        delete props.location;
+        component.setState(initialState);
+        props.getData.mockClear();
+      })
+
+      it('should fit shapshot', () => {
+        expect(shallowToJson(component)).toMatchSnapshot()
+      })
+
+      it('should call getQuestion', () => {
+        expect(props.getData).toHaveBeenCalledWith('question/01_01')
+      })
+    })
 })

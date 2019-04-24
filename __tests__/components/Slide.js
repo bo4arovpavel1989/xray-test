@@ -301,4 +301,28 @@ describe('Slide component', () => {
       expect(props.drawer.drawOldZones).toHaveBeenCalledTimes(1)
     })
   })
+
+  describe('should handle next-button click', () => {
+    beforeAll(() => {
+      component.find(Slide).instance().setState({
+        answered: true
+      });
+      component.find('#forwardButton').simulate('click');
+    });
+    afterAll(() => {
+      component.find(Slide).instance().setState(initialState);
+      props.nextQuestion.mockClear();
+    });
+
+    it('should change state - slideShowed to false', () => {
+      expect(component.find(Slide).instance().state.slideShowed).toEqual(false)
+    })
+    it('should change state - clickAllowed to false', () => {
+      expect(component.find(Slide).instance().state.clickAllowed).toEqual(false)
+    })
+
+    it('should call nextQuestion props function', () => {
+      expect(props.nextQuestion).toHaveBeenCalledTimes(1);
+    })
+  })
 })

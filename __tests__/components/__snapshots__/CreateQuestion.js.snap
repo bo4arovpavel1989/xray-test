@@ -1,13 +1,269 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CreateQuestion component should check if question is created and get the created question should fit shapshot 1`] = `
+<CreateQuestion
+  drawer={
+    Object {
+      "clearZones": [MockFunction],
+      "getZones": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Array [
+              Array [
+                0,
+                0,
+                100,
+                100,
+              ],
+            ],
+          },
+        ],
+      },
+      "reset": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "start": [MockFunction],
+    }
+  }
+  getData={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "question/01_01",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
+    }
+  }
+  handleFormData={Object {}}
+  handleUpload={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "type": "mockJPG",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  location={
+    Object {
+      "search": "question=01_01",
+    }
+  }
+  postData={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "savequestion",
+          Object {
+            "dangerZones": Array [
+              Array [
+                0,
+                0,
+                100,
+                100,
+              ],
+            ],
+            "dimensions": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "imgPath": "",
+            "isDanger": "1",
+            "name": "name",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
+    }
+  }
+  postFile={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "preupload",
+          Object {},
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="container"
+  >
+    <div
+      className="formArea"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label>
+            Вопрос:  
+            <input
+              id="name"
+              name="name"
+              onChange={[Function]}
+              pattern="[0-9]+_[0-9]+"
+              placeholder="№ Теста_№ вопроса"
+              required={true}
+              type="text"
+              value=""
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Загрузите слайд:  
+            <input
+              name="slide"
+              required={true}
+              type="file"
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Багаж опасен?  
+            <select
+              id="isDanger"
+              onChange={[Function]}
+              value="1"
+            >
+              <option
+                value="1"
+              >
+                Да
+              </option>
+              <option
+                value="0"
+              >
+                нет
+              </option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Загрузите фото:  
+            <input
+              name="photo"
+              required={true}
+              type="file"
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            disabled={false}
+            type="submit"
+            value="Продолжить"
+          />
+        </div>
+      </form>
+    </div>
+    <div>
+      <div
+        className="canvasControls"
+      >
+        <button
+          className="danger"
+          onClick={[Function]}
+        >
+          Очистить
+        </button>
+        <button
+          className="success"
+          disabled={true}
+          onClick={[Function]}
+        >
+          Сохранить
+        </button>
+      </div>
+      <div
+        className="createQuestion canvasArea"
+      >
+        <canvas
+          id="canvasBackground"
+        />
+        <canvas
+          id="canvasDrawArea"
+        />
+      </div>
+    </div>
+  </div>
+</CreateQuestion>
+`;
+
 exports[`CreateQuestion component should render correct should fit shapshot 1`] = `
 <CreateQuestion
   drawer={
     Object {
       "clearZones": [MockFunction],
       "getZones": [MockFunction],
-      "reset": [MockFunction],
+      "reset": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
       "start": [MockFunction],
+    }
+  }
+  getData={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "question/01_01",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
     }
   }
   handleFormData={Object {}}

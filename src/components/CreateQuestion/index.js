@@ -33,6 +33,7 @@ class CreateQuestion extends React.Component {
     this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
     this.postFile = this.props.postFile || postFile;
     this.postData = this.props.postData || postData;
+    this.getData = this.props.getData || getData;
     this.checkIfQuestionCreated()
   }
 
@@ -78,13 +79,13 @@ class CreateQuestion extends React.Component {
    * @returns {Function} - fetch to API
    */
   getQuestion (question) {
-    return getData(`question/${question}`)
-            .then(rep => {
-              if (rep) {
-                this.setState(rep, this.prepareCanvas)
-              }
-            })
-            .catch(window.alert)
+    return this.getData(`question/${question}`)
+               .then(rep => {
+                  if (rep) {
+                    this.setState(rep, this.prepareCanvas)
+                  }
+               })
+               .catch(window.alert)
   }
 
   /**

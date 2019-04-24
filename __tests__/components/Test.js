@@ -124,11 +124,10 @@ describe('Test component', () => {
       });
       component.update();
     })
-    
+
     afterAll(() => {
        component.find(Test).instance().setState(initialState);
     });
-
 
     it('should render correct', () => {
       expect(shallowToJson(component)).toMatchSnapshot()
