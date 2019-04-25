@@ -15,6 +15,7 @@ describe('CreateQuestion component', () => {
     getData: jest.fn(() => new Promise((res, rej) => res({ success: true }))),
     handleFormData: {},
     handleUpload: jest.fn(),
+    prepareCanvas: jest.fn(),
     drawer: {
       reset: jest.fn(),
       start: jest.fn(),
@@ -151,6 +152,7 @@ describe('CreateQuestion component', () => {
         delete props.location;
         component.setState(initialState);
         props.getData.mockClear();
+        props.prepareCanvas.mockClear();
       })
 
       it('should fit shapshot', () => {
@@ -159,6 +161,10 @@ describe('CreateQuestion component', () => {
 
       it('should call getQuestion', () => {
         expect(props.getData).toHaveBeenCalledWith('question/01_01')
+      })
+
+      it('should call prepareCanvas', () => {
+        expect(props.prepareCanvas).toHaveBeenCalledTimes(1)
       })
     })
 })

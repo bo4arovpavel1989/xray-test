@@ -34,6 +34,7 @@ class CreateQuestion extends React.Component {
     this.postFile = this.props.postFile || postFile;
     this.postData = this.props.postData || postData;
     this.getData = this.props.getData || getData;
+    this.prepareCanvas = this.props.prepareCanvas || this.prepareCanvas;
     this.checkIfQuestionCreated()
   }
 

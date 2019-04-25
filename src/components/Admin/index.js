@@ -75,7 +75,7 @@ class Admin extends React.Component {
 
   handleChange (e) {
     let { value, type } = e.target;
-    const { description } = e.target || e.target.dataset;
+    const { description } = e.target && e.target.dataset;
     const name = e.target.id;
     const { settings } = this.state;
 

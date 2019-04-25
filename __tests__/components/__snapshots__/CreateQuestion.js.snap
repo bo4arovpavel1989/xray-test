@@ -23,17 +23,7 @@ exports[`CreateQuestion component should check if question is created and get th
           },
         ],
       },
-      "reset": [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": undefined,
-          },
-        ],
-      },
+      "reset": [MockFunction],
       "start": [MockFunction],
     }
   }
@@ -119,6 +109,19 @@ exports[`CreateQuestion component should check if question is created and get th
         Object {
           "isThrow": false,
           "value": Promise {},
+        },
+      ],
+    }
+  }
+  prepareCanvas={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
         },
       ],
     }
@@ -237,17 +240,7 @@ exports[`CreateQuestion component should render correct should fit shapshot 1`] 
     Object {
       "clearZones": [MockFunction],
       "getZones": [MockFunction],
-      "reset": [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": undefined,
-          },
-        ],
-      },
+      "reset": [MockFunction],
       "start": [MockFunction],
     }
   }
@@ -270,6 +263,19 @@ exports[`CreateQuestion component should render correct should fit shapshot 1`] 
   handleUpload={[MockFunction]}
   postData={[MockFunction]}
   postFile={[MockFunction]}
+  prepareCanvas={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
 >
   <div
     className="container"
