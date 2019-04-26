@@ -238,6 +238,7 @@ class Slide extends React.PureComponent {
     const { isDanger } = this.state.question;
     const { yellowError } = this.state.settings;
 
+    if (!answered) this.setState({ click: e.nativeEvent });
     if (isDanger === '0' && !answered) {
       return this.setState({ comment: comments.yellow, result: yellowError }, this.finishQuestion)
     }
@@ -288,10 +289,10 @@ class Slide extends React.PureComponent {
   }
 
   showResult () {
-    const { result } = this.state;
+    const { result, click, comment } = this.state;
     const { sendResult } = this.props;
 
-    return sendResult(result);
+    return sendResult({ result, click, comment });
   }
 
   nextQuestion () {

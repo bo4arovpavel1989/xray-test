@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import Slide from './Slide'
 import User from './User'
+import History from './History'
 import './Test.sass'
 import { getData } from './../../actions'
 
@@ -18,6 +19,8 @@ class Test extends React.Component {
       tests: [],
       currentQuestion: -1,
       questions: [],
+      history: [],
+      historyMode: false,
       total: 100
     }
 
@@ -26,6 +29,7 @@ class Test extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
     this.sendResult = this.sendResult.bind(this);
+    this.showHistory = this.showHistory.bind(this);
 
     this.getData = this.props.getData || getData;
   }
@@ -99,20 +103,45 @@ class Test extends React.Component {
   }
 
   sendResult (result) {
-    let { total } = this.state;
+    let { total, history } = this.state;
 
-    total = total - result;
-    this.setState({ total });
+    total = total - result.total;
+    history.push(result.answer);
+    this.setState({ total, history });
+  }
+
+  showHistory () {
+    this.setState({ historyMode: true })
+  }
+
+  closeHistory () {
+    this.setState({ historyMode: false })
   }
 
   render () {
-    const { testStarted, settings, currentQuestion, questions, total, testFinished } = this.state;
+    const {
+      testStarted,
+      settings,
+      currentQuestion,
+      questions,
+      total,
+      testFinished,
+      historyMode,
+      history,
+      closeHistory } = this.state;
     const { drawer, prepareCanvas } = this.props;
     const { errorThreshold } = settings;
 
     return (
       <div className='container'>
-        { testStarted ?
+        {
+          historyMode ?
+            <History
+              history = { history }
+              closeHistory = { closeHistory }
+            />
+          :
+          testStarted ?
             (<div className='testArea'>
               <div>
                 Итого: { total }%
@@ -135,6 +164,7 @@ class Test extends React.Component {
                 className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
                 > { total }%</span>
               </h2>
+              <a onClick= { this.showHistory }>Показать ответы</a>
             </div>)
           :
             (<div className='userArea'>
