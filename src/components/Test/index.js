@@ -19,7 +19,7 @@ class Test extends React.Component {
       tests: [],
       currentQuestion: -1,
       questions: [],
-      history: [],
+      testHistory: [],
       historyMode: false,
       total: 100
     }
@@ -103,11 +103,11 @@ class Test extends React.Component {
   }
 
   sendResult (result) {
-    let { total, history } = this.state;
-
-    total = total - result.total;
-    history.push(result.answer);
-    this.setState({ total, history });
+    let { total, testHistory } = this.state;
+    console.log(result)
+    total = total - result.result;
+    testHistory.push(result);
+    this.setState({ total, testHistory });
   }
 
   showHistory () {
@@ -127,8 +127,7 @@ class Test extends React.Component {
       total,
       testFinished,
       historyMode,
-      history,
-      closeHistory } = this.state;
+      testHistory } = this.state;
     const { drawer, prepareCanvas } = this.props;
     const { errorThreshold } = settings;
 
@@ -137,8 +136,8 @@ class Test extends React.Component {
         {
           historyMode ?
             <History
-              history = { history }
-              closeHistory = { closeHistory }
+              testHistory = { testHistory }
+              closeHistory = { this.closeHistory }
             />
           :
           testStarted ?

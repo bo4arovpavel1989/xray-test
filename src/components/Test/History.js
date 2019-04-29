@@ -7,31 +7,39 @@ class History extends React.PureComponent {
   constructor (props) {
     super(props);
 
-    const { history } = this.props;
+    const { testHistory } = this.props;
     const canvasDraw = '#canvasDrawArea';
     const canvasBackground = '#canvasBackground';
 
     this.state = {
-      history
+      testHistory,
+      currentQuestion: 0
     }
+
+    this.closeHistory = this.closeHistory.bind(this);
   }
 
   componentDidMount () {
-
+    console.log(this.state.testHistory)
   }
 
+  closeHistory () {
+    const { closeHistory } = this.props;
 
+    return closeHistory();
+  }
 
   render () {
-
     return (
-      <div></div>
+      <div>
+        <a onClick= { this.closeHistory }>Закрыть</a>
+      </div>
     )
   }
 }
 
 History.propTypes = {
-  history: PropTypes.array.isRequired,
+  testHistory: PropTypes.array.isRequired,
   closeHistory: PropTypes.func.isRequired
 }
 
