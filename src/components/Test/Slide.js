@@ -289,10 +289,10 @@ class Slide extends React.PureComponent {
   }
 
   showResult () {
-    const { result, click, comment } = this.state;
+    const { result, click, comment, question } = this.state;
     const { sendResult } = this.props;
 
-    return sendResult({ result, click, comment });
+    return sendResult({ result, click, comment, question });
   }
 
   nextQuestion () {

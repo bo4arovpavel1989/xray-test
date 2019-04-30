@@ -30,6 +30,7 @@ class Test extends React.Component {
     this.nextQuestion = this.nextQuestion.bind(this);
     this.sendResult = this.sendResult.bind(this);
     this.showHistory = this.showHistory.bind(this);
+    this.finishTest = this.finishTest.bind(this);
 
     this.getData = this.props.getData || getData;
   }
@@ -104,7 +105,7 @@ class Test extends React.Component {
 
   sendResult (result) {
     let { total, testHistory } = this.state;
-    console.log(result)
+
     total = total - result.result;
     testHistory.push(result);
     this.setState({ total, testHistory });
@@ -116,6 +117,10 @@ class Test extends React.Component {
 
   closeHistory () {
     this.setState({ historyMode: false })
+  }
+
+  finishTest () {
+    this.setState({ testFinished: true, testStarted: false })
   }
 
   render () {
@@ -133,11 +138,13 @@ class Test extends React.Component {
 
     return (
       <div className='container'>
+      <a onClick= { this.finishTest }>закончить тест</a>
         {
           historyMode ?
             <History
               testHistory = { testHistory }
               closeHistory = { this.closeHistory }
+              settings = { settings }
             />
           :
           testStarted ?
