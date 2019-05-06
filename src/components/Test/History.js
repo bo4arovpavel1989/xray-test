@@ -32,7 +32,7 @@ class History extends React.PureComponent {
 
     const index = this.state.currentQuestion;
     const answer = this.state.testHistory[index];
-    console.log(answer)
+
     this.setState({ answer }, this.prepareCanvas);
   }
 
@@ -53,7 +53,16 @@ class History extends React.PureComponent {
     }
   }
 
+  /**
+   * Method calls background layer canvas to draw background
+   * @returns {Function} - drawImage method of canvas
+   */
+  setCanvasBackground (bg) {
+    return this.getCanvasBackground().getContext('2d').drawImage(bg, 0, 0)
+  }
+
   placeUserClick () {
+    console.log(this.state.answer)
     console.log(this.state.answer.click)
   }
 
@@ -62,7 +71,6 @@ class History extends React.PureComponent {
    * @returns {void}
    */
   setCanvasDimensions () {
-    console.log(this.state)
     const { width, height } = this.state.answer.question.dimensions;
 
     this.getCanvasDraw().width = width;
@@ -99,6 +107,7 @@ class History extends React.PureComponent {
 
     return (
       <div>
+        <a onClick= { this.closeHistory }>закрыть</a>
         <div className='canvasArea'>
           <div className='actionComment_container speech'>
             <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ comment }</div> :
@@ -108,9 +117,6 @@ class History extends React.PureComponent {
               id='markIcon'
               className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
             ></span>
-          </div>
-          <div className='clearButton_container'>
-            <button id='clearButton' >&#9745;</button>
           </div>
           <div className='canvas_container'>
             <canvas id="canvasBackground"></canvas>

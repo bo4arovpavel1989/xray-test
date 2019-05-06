@@ -30,6 +30,7 @@ class Test extends React.Component {
     this.nextQuestion = this.nextQuestion.bind(this);
     this.sendResult = this.sendResult.bind(this);
     this.showHistory = this.showHistory.bind(this);
+    this.closeHistory = this.closeHistory.bind(this);
     this.finishTest = this.finishTest.bind(this);
 
     this.getData = this.props.getData || getData;
