@@ -282,10 +282,11 @@ class Slide extends React.PureComponent {
   }
 
   finishQuestion () {
-    this.setState({ answered: true });
-    this.clearTimers();
-    this.drawDangerZone();
-    this.showResult();
+    this.setState({ answered: true }, () => {
+      this.clearTimers();
+      this.drawDangerZone();
+      this.showResult();
+    });
   }
 
   showResult () {
