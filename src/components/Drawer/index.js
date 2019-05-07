@@ -95,6 +95,15 @@ class Drawer {
     })
   }
 
+  placeUserClick (click, color = 'red') {
+    const { x, y } = click;
+
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = color;
+    this.ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    this.ctx.stroke();
+  }
+
   getLeftUpCorner () {
     const { x1, x2, y1, y2 } = this;
 

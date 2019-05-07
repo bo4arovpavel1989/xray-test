@@ -234,11 +234,13 @@ class Slide extends React.PureComponent {
   handleCanvasClick (e) {
     e.persist();
 
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
     const { answered } = this.state;
     const { isDanger } = this.state.question;
     const { yellowError } = this.state.settings;
 
-    if (!answered) this.setState({ click: e.nativeEvent });
+    if (!answered) this.setState({ click: { x, y } })
     if (isDanger === '0' && !answered) {
       return this.setState({ comment: comments.yellow, result: yellowError }, this.finishQuestion)
     }

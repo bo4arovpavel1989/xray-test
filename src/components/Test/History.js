@@ -62,8 +62,9 @@ class History extends React.PureComponent {
   }
 
   placeUserClick () {
-    console.log(this.state.answer)
-    console.log(this.state.answer.click)
+    const { click } = this.state.answer;
+    console.log(click)
+    this.drawer.placeUserClick(click)
   }
 
   /**
@@ -108,6 +109,10 @@ class History extends React.PureComponent {
     return (
       <div>
         <a onClick= { this.closeHistory }>закрыть</a>
+        <div>
+          <span className='next'></span>
+          <span className='prev'></span>
+        </div>
         <div className='canvasArea'>
           <div className='actionComment_container speech'>
             <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ comment }</div> :
