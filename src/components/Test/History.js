@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import './History.sass'
 import Drawer from '../Drawer'
 
 class History extends React.PureComponent {
@@ -22,6 +23,8 @@ class History extends React.PureComponent {
     }
 
     this.closeHistory = this.closeHistory.bind(this);
+    this.getNext = this.getNext.bind(this);
+    this.getPrev = this.getPrev.bind(this);
   }
 
   componentDidMount () {
@@ -30,6 +33,10 @@ class History extends React.PureComponent {
     this.drawer = this.props.drawer || new Drawer(document.querySelector(canvasDraw));
     this.prepareCanvas = this.props.prepareCanvas || this.prepareCanvas;
 
+    this.setCurrentQuestion();
+  }
+
+  setCurrentQuestion () {
     const index = this.state.currentQuestion;
     const answer = this.state.testHistory[index];
 
@@ -63,8 +70,8 @@ class History extends React.PureComponent {
 
   placeUserClick () {
     const { click } = this.state.answer;
-    console.log(click)
-    this.drawer.placeUserClick(click)
+
+    if (click) this.drawer.placeUserClick(click)
   }
 
   /**
@@ -102,6 +109,22 @@ class History extends React.PureComponent {
     return closeHistory();
   }
 
+  getPrev () {
+    let { currentQuestion } = this.state;
+
+    if (currentQuestion === 0) return false;
+
+    this.setState({ currentQuestion: currentQuestion - 1 }, this.setCurrentQuestion)
+  }
+
+  getNext () {
+    let { currentQuestion, testHistory } = this.state;
+
+    if (currentQuestion === testHistory.length - 1) return false;
+
+    this.setState({ currentQuestion: currentQuestion + 1 }, this.setCurrentQuestion)
+  }
+
   render () {
     const { result, comment } = this.state.answer;
     const { yellowError } = this.state.settings;
@@ -110,8 +133,8 @@ class History extends React.PureComponent {
       <div>
         <a onClick= { this.closeHistory }>закрыть</a>
         <div>
-          <span className='next'></span>
-          <span className='prev'></span>
+          <span onClick = { this.getPrev } className='prev nav'>&#8592;</span>
+          <span onClick = { this.getNext } className='next nav'>&#8594;</span>
         </div>
         <div className='canvasArea'>
           <div className='actionComment_container speech'>
