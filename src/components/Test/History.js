@@ -133,12 +133,12 @@ class History extends React.PureComponent {
       <div>
         <a onClick= { this.closeHistory }>закрыть</a>
         <div>
-          <span onClick = { this.getPrev } className='prev nav'>&#8592;</span>
-          <span onClick = { this.getNext } className='next nav'>&#8594;</span>
+          <span onClick = { this.getPrev } className='prev nav'></span>
+          <span onClick = { this.getNext } className='next nav'></span>
         </div>
         <div className='canvasArea'>
           <div className='actionComment_container speech'>
-            <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ comment }</div> :
+            <div id='actionComment' className = { result === 0 ? 'green' : result === yellowError ? 'yellow' : 'red'} >{ comment }</div>
           </div>
           <div className='markIcon_cotainer'>
             <span

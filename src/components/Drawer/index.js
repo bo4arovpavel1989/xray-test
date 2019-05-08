@@ -97,10 +97,26 @@ class Drawer {
 
   placeUserClick (click, color = 'red') {
     const { x, y } = click;
+    const rad = 10;
 
+    this.drawCircle(x, y, rad, color)
+    this.drawLine(x - rad, y, x - rad / 2, y)
+    this.drawLine(x + rad, y, x + rad / 2, y)
+    this.drawLine(x, y + rad, x, y + rad / 2)
+    this.drawLine(x, y - rad, x, y - rad / 2)
+  }
+
+  drawCircle (x, y, rad, color = 'red') {
     this.ctx.beginPath();
     this.ctx.strokeStyle = color;
-    this.ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    this.ctx.arc(x, y, rad, 0, 2 * Math.PI);
+    this.ctx.stroke();
+  }
+
+  drawLine (x1, y1, x2, y2, color = 'red') {
+    this.ctx.beginPath();
+    this.ctx.moveTo(x1, y1)
+    this.ctx.lineTo(x2, y2)
     this.ctx.stroke();
   }
 
