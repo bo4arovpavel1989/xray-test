@@ -18,8 +18,7 @@ class History extends React.PureComponent {
       answer: {},
       currentQuestion: 0,
       canvasBackground,
-      canvasDraw,
-      clearPressed: false
+      canvasDraw
     }
 
     this.closeHistory = this.closeHistory.bind(this);
@@ -126,7 +125,7 @@ class History extends React.PureComponent {
   }
 
   render () {
-    const { result, comment } = this.state.answer;
+    const { result, comment, click } = this.state.answer;
     const { yellowError } = this.state.settings;
 
     return (
@@ -146,6 +145,14 @@ class History extends React.PureComponent {
               className = { result === 0 ? 'greenMark' : result === yellowError ? 'yellowError' : 'redError'}
             ></span>
           </div>
+          {
+            click ?
+              ''
+            :
+            <div className='clearButton_container'>
+              <button id='clearButton' className='highlighted'>&#9745;</button>
+            </div>
+          }
           <div className='canvas_container'>
             <canvas id="canvasBackground"></canvas>
           </div>

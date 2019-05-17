@@ -139,7 +139,6 @@ class Test extends React.Component {
 
     return (
       <div className='container'>
-      <a onClick= { this.finishTest }>закончить тест</a>
         {
           historyMode ?
             <History
@@ -165,13 +164,17 @@ class Test extends React.Component {
           :
           testFinished ?
             (<div className='resultArea'>
-              <h2>
-                Ваш результат:
-                <span
-                className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
-                > { total }%</span>
-              </h2>
-              <a onClick= { this.showHistory }>Показать ответы</a>
+              <div>
+                <h2>
+                  Ваш результат:
+                  <span
+                  className = { total < errorThreshold ? 'fail' : total < 100 ? 'enought' : 'perfect'}
+                  > { total }%</span>
+                </h2>
+              </div>
+              <div>
+                <a onClick= { this.showHistory }>Показать ответы</a>
+              </div>
             </div>)
           :
             (<div className='userArea'>

@@ -169,10 +169,11 @@ class Slide extends React.PureComponent {
 
     if (isDanger === '1') {
       this.setState({
+        click: null,
         comment: comments.red1,
         result: redError
       }, this.finishQuestion)
-    } else this.finishQuestion();
+    } else this.setState({ click: null }, this.finishQuestion);
   }
 
   /**

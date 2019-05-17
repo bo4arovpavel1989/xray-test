@@ -6,12 +6,20 @@
   height: 70%
   box-sizing: border-box
 .nav:hover
-  opacity: 0.9
+  opacity: 0.8
 .prev
   left: 1%
   border: 10px solid transparent
-  border-right: 10px solid green
+  border-right: 10px solid orange
 .next
   right: 1%
   border: 10px solid transparent
-  border-left: 10px solid green
+  border-left: 10px solid orange
+
+.highlighted
+  animation: pulse infinite ease-out .5s
+@keyframes pulse
+  from
+    transform: scale(.95, .95)
+  to
+    transform: scale(1.05, 1.05)
