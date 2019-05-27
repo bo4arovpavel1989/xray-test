@@ -77,3 +77,22 @@ Stacktrace:   в System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInter
    в winsw.WrapperService.OnShutdown()
 2019-04-16 09:03:04 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
 2019-04-16 09:03:04 - Started 4024
+2019-05-23 11:40:28 - Stopping xraytest.exe
+2019-05-23 11:40:28 - Finished xraytest.exe
+2019-05-23 11:40:54 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-05-23 11:40:54 - Started 4008
+2019-05-23 12:09:18 - Stopping xraytest.exe
+2019-05-23 12:09:18 - ProcessKill 4008
+2019-05-23 12:09:18 - Shutdown exception
+Message:Идет завершение работы системы. (Исключение из HRESULT: 0x8007045B)
+Stacktrace:   в System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   в System.Management.ManagementScope.InitializeGuts(Object o)
+   в System.Management.ManagementScope.Initialize()
+   в System.Management.ManagementObjectSearcher.Initialize()
+   в System.Management.ManagementObjectSearcher.Get()
+   в winsw.WrapperService.GetChildPids(Int32 pid)
+   в winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   в winsw.WrapperService.StopIt()
+   в winsw.WrapperService.OnShutdown()
+2019-05-23 12:12:14 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-05-23 12:12:16 - Started 3272

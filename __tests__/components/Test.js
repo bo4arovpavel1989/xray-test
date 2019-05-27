@@ -28,6 +28,8 @@ describe('Test component', () => {
     loading: false,
     testStarted: false,
     testFinished: false,
+    historyMode: false,
+    testHistory: [],
     user: '',
     settings: { test: 'testValue' },
     tests: [{ _id: 'testID', name: 'test' }],

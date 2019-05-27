@@ -201,7 +201,8 @@ describe('Admin component', () => {
       component.find('input#test').simulate('change', {
         target: {
           value: 'newTestValue',
-          id: 'test'
+          id: 'test',
+          dataset: { description: 'description' }
         }
       });
     })

@@ -256,16 +256,25 @@ exports[`Test component test finished should render correct 1`] = `
         <div
           className="resultArea"
         >
-          <h2>
-            Ваш результат:
-            <span
-              className="perfect"
+          <div>
+            <h2>
+              Ваш результат:
+              <span
+                className="perfect"
+              >
+                 
+                100
+                %
+              </span>
+            </h2>
+          </div>
+          <div>
+            <a
+              onClick={[Function]}
             >
-               
-              100
-              %
-            </span>
-          </h2>
+              Показать ответы
+            </a>
+          </div>
         </div>
       </div>
     </Test>

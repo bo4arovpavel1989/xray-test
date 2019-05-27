@@ -78,22 +78,103 @@ exports[`Slide component should handle canvas click - when danger - right click 
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": null,
+                "comment": "Ошибка! Опасный предмет есть!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              0,
+              Object {
+                "click": null,
+                "comment": "Поздравляем! Правильный ответ.",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 0,
+              },
             ],
             Array [
-              4,
+              Object {
+                "click": Object {
+                  "x": undefined,
+                  "y": undefined,
+                },
+                "comment": "Ошибка! Опасных предметов нет!",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 4,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": Object {
+                  "x": 101,
+                  "y": 101,
+                },
+                "comment": "Ошибка! Опасного предмета нет в обозначенной Вами области!",
+                "question": Object {
+                  "dangerZones": Array [
+                    Array [
+                      0,
+                      0,
+                      100,
+                      100,
+                    ],
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              0,
+              Object {
+                "click": Object {
+                  "x": 50,
+                  "y": 50,
+                },
+                "comment": "Поздравляем! Правильный ответ.",
+                "question": Object {
+                  "dangerZones": Array [
+                    Array [
+                      0,
+                      0,
+                      100,
+                      100,
+                    ],
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 0,
+              },
             ],
           ],
           "results": Array [
@@ -281,19 +362,82 @@ exports[`Slide component should handle canvas click - when danger - wrong click 
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": null,
+                "comment": "Ошибка! Опасный предмет есть!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              0,
+              Object {
+                "click": null,
+                "comment": "Поздравляем! Правильный ответ.",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 0,
+              },
             ],
             Array [
-              4,
+              Object {
+                "click": Object {
+                  "x": undefined,
+                  "y": undefined,
+                },
+                "comment": "Ошибка! Опасных предметов нет!",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 4,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": Object {
+                  "x": 101,
+                  "y": 101,
+                },
+                "comment": "Ошибка! Опасного предмета нет в обозначенной Вами области!",
+                "question": Object {
+                  "dangerZones": Array [
+                    Array [
+                      0,
+                      0,
+                      100,
+                      100,
+                    ],
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
           ],
           "results": Array [
@@ -458,16 +602,61 @@ exports[`Slide component should handle canvas click - when safe match snapshot 1
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": null,
+                "comment": "Ошибка! Опасный предмет есть!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              0,
+              Object {
+                "click": null,
+                "comment": "Поздравляем! Правильный ответ.",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 0,
+              },
             ],
             Array [
-              4,
+              Object {
+                "click": Object {
+                  "x": undefined,
+                  "y": undefined,
+                },
+                "comment": "Ошибка! Опасных предметов нет!",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 4,
+              },
             ],
           ],
           "results": Array [
@@ -645,10 +834,36 @@ exports[`Slide component should handle clear-button click - when danger match sn
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": null,
+                "comment": "Ошибка! Опасный предмет есть!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
           ],
           "results": Array [
@@ -801,13 +1016,47 @@ exports[`Slide component should handle clear-button click - when safe match snap
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              8,
+              Object {
+                "click": null,
+                "comment": "Ошибка! Опасный предмет есть!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
             Array [
-              0,
+              Object {
+                "click": null,
+                "comment": "Поздравляем! Правильный ответ.",
+                "question": Object {
+                  "dangerZones": Array [],
+                  "isDanger": "0",
+                },
+                "result": 0,
+              },
             ],
           ],
           "results": Array [
@@ -981,7 +1230,20 @@ exports[`Slide component should handle question warning timer match snapshot 1`]
         [MockFunction] {
           "calls": Array [
             Array [
-              8,
+              Object {
+                "click": undefined,
+                "comment": "Время истекло!",
+                "question": Object {
+                  "dangerZones": Array [
+                    0,
+                    0,
+                    100,
+                    100,
+                  ],
+                  "isDanger": "1",
+                },
+                "result": 8,
+              },
             ],
           ],
           "results": Array [
