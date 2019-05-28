@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History component should render correct match snapshot 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <History
+      closeHistory={[MockFunction]}
+      drawer={
+        Object {
+          "clearZones": [MockFunction],
+          "drawOldZones": [MockFunction],
+          "getZones": [MockFunction],
+          "reset": [MockFunction],
+          "start": [MockFunction],
+        }
+      }
+      prepareCanvas={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      settings={Object {}}
+      testHistory={
+        Array [
+          Object {
+            "result": 0,
+          },
+        ]
+      }
+    >
+      <div>
+        <a
+          onClick={[Function]}
+        >
+          закрыть
+        </a>
+        <div>
+          <span
+            className="prev nav"
+            onClick={[Function]}
+          />
+          <span
+            className="next nav"
+            onClick={[Function]}
+          />
+        </div>
+        <div
+          className="canvasArea"
+        >
+          <div
+            className="actionComment_container speech"
+          >
+            <div
+              className="green"
+              id="actionComment"
+            />
+          </div>
+          <div
+            className="markIcon_cotainer"
+          >
+            <span
+              className="greenMark"
+              id="markIcon"
+            />
+          </div>
+          <div
+            className="clearButton_container"
+          >
+            <button
+              className="highlighted"
+              id="clearButton"
+            >
+              ☑
+            </button>
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasBackground"
+            />
+          </div>
+          <div
+            className="canvas_container"
+          >
+            <canvas
+              id="canvasDrawArea"
+            />
+          </div>
+        </div>
+      </div>
+    </History>
+  </Router>
+</MemoryRouter>
+`;
