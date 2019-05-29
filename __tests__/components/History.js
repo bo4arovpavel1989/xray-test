@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('History component', () => {
   const props = {
-      testHistory: [{ result: 0 }],
+      testHistory: [{ result: 0 }, { result: 4 }, { result: 8 }],
       closeHistory: jest.fn(),
       settings: {},
       prepareCanvas:  jest.fn(),
@@ -23,7 +23,7 @@ describe('History component', () => {
   };
 
   const initialState = {
-    testHistory: [{ result: 0 }],
+    testHistory: props.testHistory,
     settings: {},
     answer: { result: 0 },
     currentQuestion: 0,
@@ -54,4 +54,40 @@ describe('History component', () => {
         expect(props.prepareCanvas).toHaveBeenCalledTimes(1);
       })
   })
+
+  describe('should close on close-button click', () => {
+      beforeAll(() => {
+        component.find('.closeButton').simulate('click')
+      })
+
+      afterAll(() => {
+        props.closeHistory.mockClear();
+        component.find(History).instance().setState(initialState);
+      });
+
+      it('should call closeHistory prop function', () => {
+        expect(props.closeHistory).toHaveBeenCalledTimes(1)
+      })
+  })
+
+  describe('should show next slide', () => {
+      beforeAll(() => {
+        component.find('.next.nav').simulate('click')
+      })
+
+      afterAll(() => {
+        component.find(History).instance().setState(initialState);
+        props.prepareCanvas.mockClear();
+      });
+
+      it('should change state', () => {
+          expect(component.find(History).instance().state.answer).toEqual({ result: 4 })
+          expect(component.find(History).instance().state.currentQuestion).toEqual(1)
+      })
+
+      it('should call prepareCanvas', () => {
+        expect(props.prepareCanvas).toHaveBeenCalledTimes(1);
+      })
+  })
+
 })

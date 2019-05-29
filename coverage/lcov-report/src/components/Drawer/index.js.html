@@ -22,22 +22,22 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/70</span>
+        <span class='fraction'>0/85</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/70</span>
+        <span class='fraction'>0/85</span>
       </div>
     </div>
   </div>
@@ -191,7 +191,32 @@
 146
 147
 148
-149</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -286,6 +311,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -436,6 +486,31 @@
     })
   }
 &nbsp;
+<span class="fstat-no" title="function not covered" >  pl</span>aceUserClick (click, color = <span class="branch-0 cbranch-no" title="branch not covered" >'red')</span> {
+    const { x, y } = <span class="cstat-no" title="statement not covered" >click;</span>
+    const rad = <span class="cstat-no" title="statement not covered" >10;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.drawCircle(x, y, rad, color)</span>
+<span class="cstat-no" title="statement not covered" >    this.drawLine(x - rad, y, x - rad / 2, y)</span>
+<span class="cstat-no" title="statement not covered" >    this.drawLine(x + rad, y, x + rad / 2, y)</span>
+<span class="cstat-no" title="statement not covered" >    this.drawLine(x, y + rad, x, y + rad / 2)</span>
+<span class="cstat-no" title="statement not covered" >    this.drawLine(x, y - rad, x, y - rad / 2)</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  dr</span>awCircle (x, y, rad, color = <span class="branch-0 cbranch-no" title="branch not covered" >'red')</span> {
+<span class="cstat-no" title="statement not covered" >    this.ctx.beginPath();</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.strokeStyle = color;</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.arc(x, y, rad, 0, 2 * Math.PI);</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.stroke();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  dr</span>awLine (x1, y1, x2, y2, color = <span class="branch-0 cbranch-no" title="branch not covered" >'red')</span> {
+<span class="cstat-no" title="statement not covered" >    this.ctx.beginPath();</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.moveTo(x1, y1)</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.lineTo(x2, y2)</span>
+<span class="cstat-no" title="statement not covered" >    this.ctx.stroke();</span>
+  }
+&nbsp;
 <span class="fstat-no" title="function not covered" >  ge</span>tLeftUpCorner () {
     const { x1, x2, y1, y2 } = <span class="cstat-no" title="statement not covered" >this;</span>
 &nbsp;
@@ -493,7 +568,7 @@ export default Drawer;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Apr 25 2019 09:09:35 GMT+0300 (RTZ 2 (зима))
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 29 2019 10:47:57 GMT+0300 (RTZ 2 (зима))
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

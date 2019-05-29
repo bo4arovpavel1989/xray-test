@@ -72,11 +72,18 @@ exports[`History component should render correct match snapshot 1`] = `
           Object {
             "result": 0,
           },
+          Object {
+            "result": 4,
+          },
+          Object {
+            "result": 8,
+          },
         ]
       }
     >
       <div>
         <a
+          className="closeButton"
           onClick={[Function]}
         >
           закрыть

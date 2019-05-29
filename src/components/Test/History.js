@@ -130,7 +130,7 @@ class History extends React.PureComponent {
 
     return (
       <div>
-        <a onClick= { this.closeHistory }>закрыть</a>
+        <a className='closeButton' onClick= { this.closeHistory }>закрыть</a>
         <div>
           <span onClick = { this.getPrev } className='prev nav'></span>
           <span onClick = { this.getNext } className='next nav'></span>
