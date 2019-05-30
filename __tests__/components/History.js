@@ -57,7 +57,7 @@ describe('History component', () => {
 
   describe('should close on close-button click', () => {
       beforeAll(() => {
-        component.find('.closeButton').simulate('click')
+        component.find('.closeButton').simulate('click');
       })
 
       afterAll(() => {
@@ -87,6 +87,72 @@ describe('History component', () => {
 
       it('should call prepareCanvas', () => {
         expect(props.prepareCanvas).toHaveBeenCalledTimes(1);
+      })
+  })
+
+  describe('should show prev slide', () => {
+      beforeAll(() => {
+        component.find(History).instance().setState({
+          currentQuestion: 1
+        }, () => {
+          component.find('.prev.nav').simulate('click')
+        })
+      })
+
+      afterAll(() => {
+        component.find(History).instance().setState(initialState);
+        props.prepareCanvas.mockClear();
+      });
+
+      it('should change state', () => {
+          expect(component.find(History).instance().state.answer).toEqual({ result: 0 })
+          expect(component.find(History).instance().state.currentQuestion).toEqual(0)
+      })
+
+      it('should call prepareCanvas', () => {
+        expect(props.prepareCanvas).toHaveBeenCalledTimes(1);
+      })
+  })
+
+  describe('should not show next slide', () => {
+      beforeAll(() => {
+        component.find(History).instance().setState({
+          currentQuestion: 2
+        }, () => {
+          component.find('.next.nav').simulate('click')
+        })
+      })
+
+      afterAll(() => {
+        component.find(History).instance().setState(initialState);
+        props.prepareCanvas.mockClear();
+      });
+
+      it('should change state', () => {
+          expect(component.find(History).instance().state.currentQuestion).toEqual(2)
+      })
+
+      it('should call prepareCanvas', () => {
+        expect(props.prepareCanvas).toHaveBeenCalledTimes(0);
+      })
+  })
+
+  describe('should not show prev slide', () => {
+      beforeAll(() => {
+        component.find('.prev.nav').simulate('click')
+      })
+
+      afterAll(() => {
+        component.find(History).instance().setState(initialState);
+        props.prepareCanvas.mockClear();
+      });
+
+      it('should change state', () => {
+          expect(component.find(History).instance().state.currentQuestion).toEqual(0)
+      })
+
+      it('should call prepareCanvas', () => {
+        expect(props.prepareCanvas).toHaveBeenCalledTimes(0);
       })
   })
 

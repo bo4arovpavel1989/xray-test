@@ -96,3 +96,5 @@ Stacktrace:   в System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInter
    в winsw.WrapperService.OnShutdown()
 2019-05-23 12:12:14 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
 2019-05-23 12:12:16 - Started 3272
+2019-05-29 15:26:01 - Starting C:\Program Files\nodejs\node.exe  --harmony D:\git\xray-test\node_modules\node-windows\lib\wrapper.js --file D:\git\xray-test\index.js --log "xray-test wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-05-29 15:26:01 - Started 4064
