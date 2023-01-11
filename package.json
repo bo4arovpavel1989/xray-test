@@ -21,7 +21,7 @@
   "dependencies": {
     "downloadjs": "^1.4.7",
     "image-size": "^0.7.2",
-    "jsonwebtoken": "^8.4.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.4.3",
     "multer": "^1.4.1",
     "node-sass": "^4.11.0",
